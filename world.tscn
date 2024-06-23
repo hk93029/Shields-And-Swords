@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://db2kklsy85vnm"]
+[gd_scene load_steps=13 format=3 uid="uid://db2kklsy85vnm"]
 
 [ext_resource type="Texture2D" uid="uid://dpee1i6eiar8b" path="res://player_complete_reference.png" id="1_qmg7m"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://sword.png" id="2_0b8cp"]
@@ -31,13 +31,55 @@ bone_index = 9
 bone2d_node = NodePath("Hip/ThighL/LegL/FeetL")
 target_nodepath = NodePath("TargetsFeets/TargetFeetL/TargetPointFeetL")
 
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_y4ya8"]
+target_nodepath = NodePath("TargetsHands/TargetHandR")
+joint_one_bone_idx = 4
+joint_one_bone2d_node = NodePath("Hip/ArmR")
+joint_two_bone_idx = 5
+joint_two_bone2d_node = NodePath("Hip/ArmR/ForearmR")
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_6pjp7"]
+target_nodepath = NodePath("TargetsHands/TargetHandL")
+joint_one_bone_idx = 1
+joint_one_bone2d_node = NodePath("Hip/ArmL")
+joint_two_bone_idx = 2
+joint_two_bone2d_node = NodePath("Hip/ArmL/ForearmL")
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_nqmh8"]
+target_nodepath = NodePath("TargetPlume")
+tip_nodepath = NodePath("Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5/TipPlume")
+ccdik_data_chain_length = 4
+joint_data/0/bone_index = 15
+joint_data/0/bone2d_node = NodePath("Hip/Head/PlumeBone1/PulmeBone2")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = false
+joint_data/0/editor_draw_gizmo = true
+joint_data/1/bone_index = 16
+joint_data/1/bone2d_node = NodePath("Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = false
+joint_data/1/editor_draw_gizmo = true
+joint_data/2/bone_index = 17
+joint_data/2/bone2d_node = NodePath("Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4")
+joint_data/2/rotate_from_joint = false
+joint_data/2/enable_constraint = false
+joint_data/2/editor_draw_gizmo = true
+joint_data/3/bone_index = 18
+joint_data/3/bone2d_node = NodePath("Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5")
+joint_data/3/rotate_from_joint = false
+joint_data/3/enable_constraint = false
+joint_data/3/editor_draw_gizmo = true
+
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_b7k2w"]
 enabled = true
-modification_count = 4
+modification_count = 7
 modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_rmuhn")
 modifications/1 = SubResource("SkeletonModification2DTwoBoneIK_p5inx")
 modifications/2 = SubResource("SkeletonModification2DLookAt_at1my")
 modifications/3 = SubResource("SkeletonModification2DLookAt_d4upl")
+modifications/4 = SubResource("SkeletonModification2DTwoBoneIK_y4ya8")
+modifications/5 = SubResource("SkeletonModification2DTwoBoneIK_6pjp7")
+modifications/6 = SubResource("SkeletonModification2DCCDIK_nqmh8")
 
 [node name="World" type="Node2D"]
 
@@ -262,7 +304,6 @@ uv = PackedVector2Array(100, 100, 150, 100, 150, 150, 150, 150, 100, 150)
 bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL/ForearmL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL/ForearmL/HandL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR/ForearmR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR/ForearmR/HandR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighL", PackedFloat32Array(1, 1, 1, 1, 1), "Hip/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighL/LegL/FeetL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR/LegR/FeetR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5", PackedFloat32Array(0, 0, 0, 0, 0)]
 
 [node name="Shield" type="Polygon2D" parent="Sprite/Polygons"]
-visible = false
 position = Vector2(-6.49966, -67.5048)
 texture = ExtResource("4_1y2lf")
 skeleton = NodePath("../../Skeleton2D")
@@ -273,16 +314,29 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="Skeleton2D" type="Skeleton2D" parent="Sprite"]
 modification_stack = SubResource("SkeletonModificationStack2D_b7k2w")
 
+[node name="TargetPlume" type="Marker2D" parent="Sprite/Skeleton2D"]
+position = Vector2(17.4904, -55.1357)
+
+[node name="TargetsHands" type="Node2D" parent="Sprite/Skeleton2D"]
+
+[node name="TargetHandR" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
+position = Vector2(-32.436, -8.00735)
+
+[node name="TargetHandL" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
+position = Vector2(16.6454, -17.3677)
+
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(14.4174, -35.9205)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
 position = Vector2(-8.92408, -0.0563793)
@@ -294,10 +348,12 @@ bone_angle = -175.385
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-13.6276, -32.5266)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="HandR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR"]
 position = Vector2(-12.9382, 7.05693)
@@ -353,20 +409,27 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
 rotation = 0.841846
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
 rotation = 0.426852
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="TipPlume" type="Marker2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5"]
+position = Vector2(17.876, 8.20844)
 
 [node name="TargetsFeets" type="Node2D" parent="Sprite/Skeleton2D"]
 

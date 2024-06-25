@@ -1,13 +1,10 @@
-[gd_scene load_steps=41 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=37 format=3 uid="uid://4eqb6gr024y2"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_hgjer"]
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://sword.png" id="2_jg4lb"]
-[ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
-[ext_resource type="Texture2D" uid="uid://cdt0j1lfk74mc" path="res://player_sprite.png" id="4_3byib"]
-[ext_resource type="Texture2D" uid="uid://esyfmi4okvjp" path="res://shield.png" id="5_s41gh"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_smckf"]
-radius = 66.8012
+[ext_resource type="Script" path="res://player.gd" id="1_lw3um"]
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://sword.png" id="2_b44xx"]
+[ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_e54by"]
+[ext_resource type="Texture2D" uid="uid://cdt0j1lfk74mc" path="res://player_sprite.png" id="4_7ljtm"]
+[ext_resource type="Texture2D" uid="uid://esyfmi4okvjp" path="res://shield.png" id="5_ptnor"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_a1skr"]
 target_nodepath = NodePath("TargetsFeets/TargetFeetR")
@@ -88,10 +85,6 @@ modifications/6 = SubResource("SkeletonModification2DCCDIK_jngmv")
 radius = 22.25
 height = 124.614
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_kxr61"]
-fadein_time = 0.15
-fadeout_time = 0.15
-
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_o6ct6"]
 fadein_time = 0.1
 fadeout_time = 0.1
@@ -105,8 +98,6 @@ fadeout_time = 0.1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1cy2n"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tocxs"]
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1ssjg"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_d177j"]
 
@@ -128,9 +119,6 @@ input_4/name = "physical_skill_area"
 input_4/auto_advance = false
 input_4/reset = true
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g78lo"]
-animation = &"attack_1"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_epkqo"]
 animation = &"attack_1"
 
@@ -150,11 +138,8 @@ animation = &"physical_skill_area"
 animation = &"run"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hors5"]
-graph_offset = Vector2(5.47355, 29.7814)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_o6ct6")
-nodes/OneShot/position = Vector2(1066.67, 186.667)
-"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_kxr61")
-"nodes/OneShot 2/position" = Vector2(746.667, 186.667)
+nodes/OneShot/position = Vector2(746.05, 294.637)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_d177j")
 nodes/TimeScale/position = Vector2(-26.6667, 80)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_bpm21")
@@ -166,27 +151,23 @@ nodes/TimeScale/position = Vector2(-26.6667, 80)
 "nodes/TimeScale 5/node" = SubResource("AnimationNodeTimeScale_1cy2n")
 "nodes/TimeScale 5/position" = Vector2(-26.6667, 746.667)
 "nodes/TimeScale 6/node" = SubResource("AnimationNodeTimeScale_tocxs")
-"nodes/TimeScale 6/position" = Vector2(933.333, 373.333)
-"nodes/TimeScale 7/node" = SubResource("AnimationNodeTimeScale_1ssjg")
-"nodes/TimeScale 7/position" = Vector2(586.667, 400)
+"nodes/TimeScale 6/position" = Vector2(560, 373.333)
 nodes/Transition/node = SubResource("AnimationNodeTransition_kthhr")
 nodes/Transition/position = Vector2(203.716, 123.896)
-nodes/attack_1/node = SubResource("AnimationNodeAnimation_g78lo")
-nodes/attack_1/position = Vector2(453.333, 480)
-nodes/attack_1d/node = SubResource("AnimationNodeAnimation_epkqo")
-nodes/attack_1d/position = Vector2(-213.333, 426.667)
+nodes/attack_1/node = SubResource("AnimationNodeAnimation_epkqo")
+nodes/attack_1/position = Vector2(-213.333, 426.667)
 nodes/attack_2/node = SubResource("AnimationNodeAnimation_w53ot")
 nodes/attack_2/position = Vector2(-213.333, 586.667)
 nodes/idle/node = SubResource("AnimationNodeAnimation_lwo6m")
 nodes/idle/position = Vector2(-213.333, 80)
-nodes/output/position = Vector2(1280, 80)
+nodes/output/position = Vector2(933.333, 160)
 nodes/physical_skill_area/node = SubResource("AnimationNodeAnimation_da7ge")
-nodes/physical_skill_area/position = Vector2(746.667, 480)
+nodes/physical_skill_area/position = Vector2(346.667, 480)
 nodes/physical_skill_area22/node = SubResource("AnimationNodeAnimation_gvsoj")
 nodes/physical_skill_area22/position = Vector2(-213.333, 746.667)
 nodes/run/node = SubResource("AnimationNodeAnimation_mw173")
 nodes/run/position = Vector2(-213.333, 240)
-node_connections = [&"OneShot", 0, &"OneShot 2", &"OneShot", 1, &"TimeScale 6", &"OneShot 2", 0, &"Transition", &"OneShot 2", 1, &"TimeScale 7", &"TimeScale", 0, &"idle", &"TimeScale 2", 0, &"run", &"TimeScale 3", 0, &"attack_1d", &"TimeScale 4", 0, &"attack_2", &"TimeScale 5", 0, &"physical_skill_area22", &"TimeScale 6", 0, &"physical_skill_area", &"TimeScale 7", 0, &"attack_1", &"Transition", 0, &"TimeScale", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale 3", &"Transition", 3, &"TimeScale 4", &"Transition", 4, &"TimeScale 5", &"output", 0, &"OneShot"]
+node_connections = [&"OneShot", 0, &"Transition", &"OneShot", 1, &"TimeScale 6", &"TimeScale", 0, &"idle", &"TimeScale 2", 0, &"run", &"TimeScale 3", 0, &"attack_1", &"TimeScale 4", 0, &"attack_2", &"TimeScale 5", 0, &"physical_skill_area22", &"TimeScale 6", 0, &"physical_skill_area", &"Transition", 0, &"TimeScale", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"TimeScale 3", &"Transition", 3, &"TimeScale 4", &"Transition", 4, &"TimeScale 5", &"output", 0, &"OneShot"]
 
 [sub_resource type="Animation" id="Animation_10qtj"]
 length = 0.001
@@ -938,7 +919,6 @@ tracks/61/keys = {
 [sub_resource type="Animation" id="Animation_wyups"]
 resource_name = "attack_1"
 length = 0.7
-step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3157,27 +3137,20 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_hgjer")
+script = ExtResource("1_lw3um")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0.0112829, -57.5291)
-
-[node name="AttackArea2D" type="Area2D" parent="Sprite"]
-position = Vector2(-0.0112829, 57.5291)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/AttackArea2D"]
-position = Vector2(-46.0559, -73.6748)
-shape = SubResource("CircleShape2D_smckf")
 
 [node name="Polygons" type="Node2D" parent="Sprite"]
 
 [node name="Itens" type="Node2D" parent="Sprite/Polygons"]
 
 [node name="Weapon" type="Sprite2D" parent="Sprite/Polygons/Itens"]
-position = Vector2(-29.9959, -61.5558)
-rotation = 1.24605
-scale = Vector2(0.999467, 0.999467)
-texture = ExtResource("2_jg4lb")
+position = Vector2(-39.669, -10.5643)
+rotation = -0.331613
+scale = Vector2(0.999478, 0.999478)
+texture = ExtResource("2_b44xx")
 offset = Vector2(1.43817, -18.5712)
 
 [node name="Effects" type="Node2D" parent="Sprite/Polygons"]
@@ -3185,7 +3158,7 @@ offset = Vector2(1.43817, -18.5712)
 [node name="PhysicalSkillDamageEffect" type="Sprite2D" parent="Sprite/Polygons/Effects"]
 visible = false
 position = Vector2(-49.1603, 60.3969)
-texture = ExtResource("3_w460m")
+texture = ExtResource("3_e54by")
 vframes = 9
 frame = 1
 
@@ -3195,14 +3168,14 @@ position = Vector2(-38.777, -9.881)
 rotation = -0.331613
 scale = Vector2(0.99953, 0.99953)
 offset = Vector2(-23.5, -68.625)
-texture = ExtResource("2_jg4lb")
+texture = ExtResource("2_b44xx")
 polygon = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
 uv = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
 bones = ["Bone2D", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="Plume" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-112.501, -97.5003)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(120.607, 27.3301, 119.302, 29.3591, 118.578, 32.1128, 118.867, 37.0403, 111.476, 37.0403, 111.621, 31.678, 110.607, 28.1997, 109.447, 23.707, 111.766, 15.3012, 116.549, 9.79391, 121.041, 7.90985, 125.679, 8.19971, 129.737, 9.93884, 132.346, 11.8229, 134.52, 14.8664, 136.838, 18.6345, 138.433, 21.678, 138.867, 25.8809, 143.795, 36.0258, 131.186, 33.9968, 130.462, 30.9533, 129.157, 27.3301, 127.708, 24.4316, 126.404, 23.2722, 124.664, 22.6925, 123.215, 23.707, 121.911, 25.1562, 114.954, 27.3301, 118.578, 18.4896, 124.664, 15.0113, 132.635, 23.562)
 uv = PackedVector2Array(120.607, 27.3301, 119.302, 29.3591, 118.578, 32.1128, 118.867, 37.0403, 111.476, 37.0403, 111.621, 31.678, 110.607, 28.1997, 109.447, 23.707, 111.766, 15.3012, 116.549, 9.79391, 121.041, 7.90985, 125.679, 8.19971, 129.737, 9.93884, 132.346, 11.8229, 134.52, 14.8664, 136.838, 18.6345, 138.433, 21.678, 138.867, 25.8809, 143.795, 36.0258, 131.186, 33.9968, 130.462, 30.9533, 129.157, 27.3301, 127.708, 24.4316, 126.404, 23.2722, 124.664, 22.6925, 123.215, 23.707, 121.911, 25.1562, 114.954, 27.3301, 118.578, 18.4896, 124.664, 15.0113, 132.635, 23.562)
@@ -3213,7 +3186,7 @@ internal_vertex_count = 4
 [node name="ArmR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-16.3655, -24.2729)
 offset = Vector2(-25.1336, -70.2293)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 50, 50, 50, 50, 100, 0, 100)
 uv = PackedVector2Array(0, 50, 50, 50, 50, 100, 0, 100)
@@ -3222,7 +3195,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="ForearmR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-19.8295, -14.2213)
 offset = Vector2(-29.6669, -123.276)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 100, 50, 100, 50, 150, 0, 150)
 uv = PackedVector2Array(0, 100, 50, 100, 50, 150, 0, 150)
@@ -3232,7 +3205,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 position = Vector2(-32.9865, -7.76021)
 rotation = -0.0883727
 offset = Vector2(-29.5027, -172.739)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 150, 50, 150, 50, 200, 0, 200)
 uv = PackedVector2Array(0, 150, 50, 150, 50, 200, 0, 200)
@@ -3241,7 +3214,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="ShoulderR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-13.1875, -32.5625)
 offset = Vector2(-24.3149, -23.935)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 0, 50, 0, 50, 50, 0, 50)
 uv = PackedVector2Array(0, 0, 50, 0, 50, 50, 0, 50)
@@ -3250,7 +3223,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="FauldsR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-6.89949, 1.90381)
 offset = Vector2(-126.597, -71.4029)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(100, 50, 150, 50, 150, 100, 100, 100)
 uv = PackedVector2Array(100, 50, 150, 50, 150, 100, 100, 100)
@@ -3259,7 +3232,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="FauldsMiddle" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(10.6426, 2.09676)
 offset = Vector2(-82.1134, -125.623)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 100, 100, 100, 100, 150, 50, 150)
 uv = PackedVector2Array(50, 100, 100, 100, 100, 150, 50, 150)
@@ -3268,7 +3241,7 @@ bones = ["Hip", PackedFloat32Array(1, 1, 1, 1), "Hip/ArmL", PackedFloat32Array(0
 [node name="ThighR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-1.46967, -0.199524)
 offset = Vector2(-79.0279, -166.303)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 150, 100, 150, 100, 200, 50, 200)
 uv = PackedVector2Array(50, 150, 100, 150, 100, 200, 50, 200)
@@ -3277,7 +3250,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="ThighL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(7.36347, 0.814852)
 offset = Vector2(-120.863, -166.314)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(100, 150, 150, 150, 150, 200, 100, 200)
 uv = PackedVector2Array(100, 150, 150, 150, 150, 200, 100, 200)
@@ -3286,7 +3259,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="Chest" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(1.01194, -7.62868)
 offset = Vector2(-73.5117, -90.8714)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 50, 100, 50, 100, 100, 50, 100)
 uv = PackedVector2Array(50, 50, 100, 50, 100, 100, 50, 100)
@@ -3295,7 +3268,7 @@ bones = ["Hip", PackedFloat32Array(1, 1, 1, 1), "Hip/ArmL", PackedFloat32Array(0
 [node name="ArmL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(20.9064, -27.2002)
 offset = Vector2(-172.468, -67.1766)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(150, 50, 200, 50, 200, 100, 150, 100)
 uv = PackedVector2Array(150, 50, 200, 50, 200, 100, 150, 100)
@@ -3304,7 +3277,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(1
 [node name="ShoulderL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(15.4393, -35.7426)
 offset = Vector2(-174.936, -23.7551)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(150, 0, 200, 0, 200, 50, 150, 50)
 uv = PackedVector2Array(150, 0, 200, 0, 200, 50, 150, 50)
@@ -3313,7 +3286,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(1
 [node name="Head" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(0.497269, -42.1196)
 offset = Vector2(-72.006, -35.3809)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 0, 100, 0, 100, 50, 50, 50)
 uv = PackedVector2Array(50, 0, 100, 0, 100, 50, 50, 50)
@@ -3322,7 +3295,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="ForearmL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(25.8327, -16.6024)
 offset = Vector2(-177.277, -125.736)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(150, 100, 200, 100, 200, 150, 150, 150)
 uv = PackedVector2Array(150, 100, 200, 100, 200, 150, 150, 150)
@@ -3331,7 +3304,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="HandL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(16.1875, -17.8438)
 offset = Vector2(-173.457, -177.371)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(150, 150, 200, 150, 200, 200, 200, 200, 150, 200)
 uv = PackedVector2Array(150, 150, 200, 150, 200, 200, 200, 200, 150, 200)
@@ -3340,7 +3313,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL", PackedFloat32Arra
 [node name="FeetR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-11.4641, 45.9795)
 offset = Vector2(-76.0335, -270.483)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 250, 100, 250, 100, 300, 50, 300)
 uv = PackedVector2Array(50, 250, 100, 250, 100, 300, 50, 300)
@@ -3349,7 +3322,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="LegR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-10.6702, 26.5771)
 offset = Vector2(-71.8357, -218.084)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(50, 200, 100, 200, 100, 250, 50, 250)
 uv = PackedVector2Array(50, 200, 100, 200, 100, 250, 50, 250)
@@ -3358,7 +3331,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="LegL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(14.8214, 26.0077)
 offset = Vector2(-124.323, -217.516)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(100, 200, 150, 200, 150, 250, 100, 250)
 uv = PackedVector2Array(100, 200, 150, 200, 150, 250, 100, 250)
@@ -3367,7 +3340,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="FeetL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(24.6163, 46.9405)
 offset = Vector2(-127.119, -268.432)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(100, 250, 150, 250, 150, 300, 100, 300)
 uv = PackedVector2Array(100, 250, 150, 250, 150, 300, 100, 300)
@@ -3376,7 +3349,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="KneeR" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-16.0391, 25.5469)
 offset = Vector2(-23.4574, -225.046)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 200, 50, 200, 50, 250, 0, 250)
 uv = PackedVector2Array(0, 200, 50, 200, 50, 250, 0, 250)
@@ -3385,7 +3358,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="KneeL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(10.1484, 28.0234)
 offset = Vector2(-174.652, -226.522)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(150, 200, 200, 200, 200, 250, 150, 250)
 uv = PackedVector2Array(150, 200, 200, 200, 200, 250, 150, 250)
@@ -3394,7 +3367,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0
 [node name="FauldsL" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(6.41685, 3.18487)
 offset = Vector2(-117.92, -123.683)
-texture = ExtResource("4_3byib")
+texture = ExtResource("4_7ljtm")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(100, 100, 150, 100, 150, 150, 150, 150, 100, 150)
 uv = PackedVector2Array(100, 100, 150, 100, 150, 150, 150, 150, 100, 150)
@@ -3402,7 +3375,7 @@ bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL", PackedFloat32Arra
 
 [node name="Shield" type="Polygon2D" parent="Sprite/Polygons"]
 position = Vector2(-6.48866, -67.5045)
-texture = ExtResource("5_s41gh")
+texture = ExtResource("5_ptnor")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
 uv = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
@@ -3415,18 +3388,18 @@ modification_stack = SubResource("SkeletonModificationStack2D_ltl2p")
 position = Vector2(17.4904, -55.1357)
 
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
-scale = Vector2(0.999852, 0.999852)
+scale = Vector2(0.999859, 0.999859)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(14.4174, -35.9205)
 rotation = -0.000549317
-scale = Vector2(0.999832, 0.999832)
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
-scale = Vector2(0.999825, 0.999825)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
@@ -3438,17 +3411,17 @@ bone_angle = -175.385
 
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-13.6276, -32.5266)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
 
 [node name="HandR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR"]
 position = Vector2(-12.9382, 7.05693)
-scale = Vector2(0.999959, 0.999959)
+scale = Vector2(0.999963, 0.999963)
 rest = Transform2D(1, 0, 0, 1, -12.9382, 7.05693)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3469,7 +3442,7 @@ remote_path = NodePath("../../../../../../../../Polygons/Itens/Weapon")
 
 [node name="ThighL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(6.96354, 0.668175)
-scale = Vector2(0.999837, 0.999837)
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, 6.96354, 0.668175)
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
@@ -3479,7 +3452,7 @@ rest = Transform2D(1, 0, 0, 1, 3.18919, 27.3548)
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(16.9723, 22.906)
-scale = Vector2(0.999825, 0.999825)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(1, 0, 0, 1, 16.9723, 22.906)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3487,12 +3460,12 @@ bone_angle = 156.923
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-4.70424, 0.420632)
-scale = Vector2(0.999823, 0.999823)
+scale = Vector2(0.999826, 0.999826)
 rest = Transform2D(1, 0, 0, 1, -4.70424, 0.420632)
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-11.3393, 25.1197)
-scale = Vector2(0.999832, 0.999832)
+scale = Vector2(0.999834, 0.999834)
 rest = Transform2D(1, 0, 0, 1, -11.3393, 25.1197)
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
@@ -3513,24 +3486,24 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
-scale = Vector2(0.998165, 0.998165)
+scale = Vector2(0.998168, 0.998168)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
-scale = Vector2(0.99983, 0.99983)
+scale = Vector2(0.999845, 0.999845)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
 rotation = 0.841846
-scale = Vector2(0.999879, 0.999879)
+scale = Vector2(0.999869, 0.999869)
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
 rotation = 0.426852
-scale = Vector2(0.999851, 0.999851)
+scale = Vector2(0.999844, 0.999844)
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
 
 [node name="TipPlume" type="Marker2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5"]
@@ -3571,16 +3544,12 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/OneShot/active = false
 parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
-"parameters/OneShot 2/active" = false
-"parameters/OneShot 2/internal_active" = false
-"parameters/OneShot 2/request" = 0
 parameters/TimeScale/scale = 1.0
 "parameters/TimeScale 2/scale" = 1.8
 "parameters/TimeScale 3/scale" = 1.8
 "parameters/TimeScale 4/scale" = 1.8
 "parameters/TimeScale 5/scale" = 1.0
 "parameters/TimeScale 6/scale" = 1.0
-"parameters/TimeScale 7/scale" = 1.0
 parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""
 parameters/Transition/current_index = 0

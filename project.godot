@@ -14,8 +14,15 @@ config/name="Shields And Swords"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameManager="*res://game_manager.gd"
+Mouse="*res://autoloads/mouse.tscn"
+HUD="*res://autoloads/hud.tscn"
+
 [display]
 
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://cursors/normal_cursor.png"
 
 [input]
@@ -51,6 +58,12 @@ zoom_out_camera={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(237, 15),"global_position":Vector2(240, 47),"factor":1.44167,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
 
 [rendering]
 

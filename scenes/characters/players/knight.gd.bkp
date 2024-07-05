@@ -1,0 +1,155 @@
+extends CharacterBody2D
+
+var speed = 300
+var click_position = Vector2()
+var target_position = Vector2()
+
+@onready var camera: Camera2D = $Camera
+@onready var sprite: Sprite2D = $Sprite2D
+
+@onready var animation_tree: AnimationTree = get_node("AnimationTree")
+
+@onready var tile_map: TileMap = get_tree().get_first_node_in_group("tilemap") #$"../TileMap"
+
+######
+var max_zoom_camera: Vector2 = Vector2(1.3, 1.3)
+var min_zoom_camera: Vector2 = Vector2(0.6, 0.6)
+var lerp_zoom_camera = 0.2
+
+#####
+
+# Navigation Agent Config
+@export var nav_agent: NavigationAgent2D
+var target_node = null
+
+
+#####
+var position_arrived: bool = true
+var is_running: bool = false
+var is_on_attack: bool = false
+
+var last_mouse_pos = null
+
+func _ready():
+	animation_tree.active = true
+	nav_agent.path_desired_distance = 4
+	nav_agent.target_desired_distance = 4
+	print(tile_map)
+
+func _input(event):
+	if (event.is_action_pressed("left_click") or Input.is_action_pressed("left_click")) and !Mouse.is_on_hud:
+		last_mouse_pos = get_global_mouse_position()
+		print(tile_map.is_on_ground())
+
+func _physics_process(delta):
+
+	if Input.is_action_just_pressed("ui_accept"):
+		animation_tree["parameters/PhysicalSkillArea_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
+	if !nav_agent.is_navigation_finished():
+		is_running = true
+	else:
+		is_running = false
+
+	if  GameManager.enemy_selected and Input.is_action_just_pressed("left_click"):
+		is_on_attack = true
+		target_position = GameManager.enemy_selected.global_position
+		print("Is_on_attack!")
+		print("AAAAAAAAAAAAAAAAAA")
+	# Calcula a movimentação do deslocamento ao clicar
+
+	elif !GameManager.enemy_selected and tile_map.is_on_ground() and (Input.is_action_just_pressed("left_click") or Input.is_action_pressed("left_click")):
+	###	print("UUUUUUUUUU")
+		is_on_attack = false
+		click_position = get_global_mouse_position()+Vector2(0, 10)
+###		print("Click_position: "+str(click_position))
+		target_position = click_position
+#		if position.distance_to(click_position) <= 20:
+#			nav_agent.target_position = self.position
+	###print(GameManager.enemy_selected)
+	# Se ele não chegou ainda na posição, o deslocamento ocorre		
+	
+	# Rotaciona o jogador	
+	if velocity.x < 0:
+		$Sprite.scale.x = 1
+	elif velocity.x > 0:
+		$Sprite.scale.x = -1
+
+	if (velocity.x != 0) and (velocity.y != 0):#animation_tree["parameters/Transition/current_state"] != "idle":
+		animation_tree["parameters/Transition/transition_request"] = "run"
+	else:
+		animation_tree["parameters/Transition/transition_request"] = "idle"
+		
+	
+	# Se ele chegar muito próximo do ponto de destino, então ele volta para idle
+
+	
+	recalc_path()
+	var axis = to_local(nav_agent.get_next_path_position()).normalized()
+	velocity = axis * speed
+#	print(axis)
+#	print(speed)
+	if position.distance_to(target_position) <= 30 and !is_on_attack:
+		nav_agent.target_position = self.position
+		velocity = Vector2(0, 0)
+	elif position.distance_to(target_position) <= 80 and is_on_attack:
+		nav_agent.target_position = self.position
+		velocity = Vector2(0, 0)
+	move_and_slide()
+
+
+
+func _inputd(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			pass
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			pass
+
+
+
+func handle_camera(delta):
+	if Input.is_action_just_pressed("zoom_in_camera"):
+		if camera.zoom < max_zoom_camera:
+			camera.zoom = lerp(camera.zoom, camera.zoom+Vector2(0.01,0.01), lerp_zoom_camera*delta)
+	elif Input.is_action_just_pressed("zoom_out_camera"):
+		if camera.zoom > min_zoom_camera:
+			camera.zoom = lerp(camera.zoom, camera.zoom-Vector2(0.01,0.01), lerp_zoom_camera*delta)
+
+
+
+# Vai ativar animação de ataque quando:
+# Estiver em estado "atacando"
+# O HP do ser atacado for >= 0
+func attack() -> void:
+	if is_on_attack:
+		return
+	
+	
+func recalc_path():
+	# Recalcula o caminho, se o alvo existir vai atrás dele, se não, volta para a origem
+
+	nav_agent.target_position = target_position
+	
+func _on_attack_area_2d_body_entered(body):
+	print("OKOKOK") 
+	if body.is_in_group("enemy"):
+		print("INIMIGO INIMIGO")
+		position_arrived = true
+		click_position = position
+		velocity = Vector2(0, 0)
+
+	pass # Replace with function body.
+
+func handle_skill_animations(skill):
+	match skill:
+		0: # Player.physical_skill_area
+			pass
+		1: # Player.physical_skill_direct
+			pass
+		3: # Player.buff_skill
+			pass
+
+
+func _on_recalculate_path_timer_timeout():
+	recalc_path()

@@ -1,19 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk2ylxs75hlfh"]
+[gd_scene load_steps=5 format=3 uid="uid://dk2ylxs75hlfh"]
 
+[ext_resource type="Script" path="res://enemies/zombie/zombie.gd" id="1_so083"]
 [ext_resource type="Texture2D" uid="uid://cuq7q8oevjbs5" path="res://enemies/zombie/zombie_reference.png" id="1_y1gyo"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kofb4"]
-radius = 26.7307
-height = 115.46
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3q1j"]
+radius = 15.7972
 
-[node name="Zombie" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oj8ed"]
+radius = 31.7191
+height = 124.383
+
+[node name="Zombie" type="CharacterBody2D" groups=["enemy", "walking_creature"]]
+collision_layer = 4
+collision_mask = 7
 motion_mode = 1
+script = ExtResource("1_so083")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -57.8178)
-shape = SubResource("CapsuleShape2D_kofb4")
+position = Vector2(0, -2.755)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_q3q1j")
 one_way_collision_margin = 0.0
 
-[node name="ZombieReference" type="Sprite2D" parent="."]
-position = Vector2(-0.0140381, -50.4484)
+[node name="Sprite" type="Node2D" parent="."]
+
+[node name="ZombieReference" type="Sprite2D" parent="Sprite"]
+position = Vector2(-13.8732, -50.4484)
 texture = ExtResource("1_y1gyo")
+
+[node name="ClickableArea2D" type="Area2D" parent="Sprite"]
+position = Vector2(-9.4494, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/ClickableArea2D"]
+position = Vector2(0, -53.191)
+shape = SubResource("CapsuleShape2D_oj8ed")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[connection signal="mouse_entered" from="Sprite/ClickableArea2D" to="." method="_on_clickable_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite/ClickableArea2D" to="." method="_on_clickable_area_2d_mouse_exited"]

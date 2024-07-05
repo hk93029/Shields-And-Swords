@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3lb1u3kfuede"]
+
+[ext_resource type="Script" path="res://autoloads/hud.gd" id="1_b0hil"]
+[ext_resource type="Texture2D" uid="uid://dmjtp5lweg35m" path="res://assets/sprites/ui/hud/skills_bar.png" id="1_li0pd"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_b0hil")
+
+[node name="SkillBar" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -63.0
+offset_right = 171.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = ExtResource("1_li0pd")
+
+[connection signal="mouse_entered" from="SkillBar" to="." method="_on_skill_bar_mouse_entered"]
+[connection signal="mouse_exited" from="SkillBar" to="." method="_on_skill_bar_mouse_exited"]

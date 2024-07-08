@@ -38,6 +38,9 @@ position = Vector2(0, -53.191)
 shape = SubResource("CapsuleShape2D_oj8ed")
 debug_color = Color(0, 1, 0, 0.419608)
 
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -138.477)
+
 [node name="HPBar" parent="." instance=ExtResource("3_tgldv")]
 offset_left = -23.0
 offset_top = -120.0

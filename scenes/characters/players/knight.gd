@@ -162,7 +162,11 @@ func handle_camera(delta):
 		if camera.zoom > min_zoom_camera:
 			camera.zoom = lerp(camera.zoom, camera.zoom-Vector2(0.01,0.01), lerp_zoom_camera*delta)
 
-
+func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o ato de animar o attack dele, automaticamente já faz ele infligir dano ao alvo
+	if not target_body_clicked:
+		return
+		
+	target_body_clicked.damage(player_damage)
 
 # Vai ativar animação de ataque quando:
 # Estiver em estado "atacando"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://db2kklsy85vnm"]
+[gd_scene load_steps=13 format=3 uid="uid://db2kklsy85vnm"]
 
 [ext_resource type="Texture2D" uid="uid://c32h1ti83hnku" path="res://blocks.png" id="1_oy2dk"]
 [ext_resource type="Texture2D" uid="uid://dpee1i6eiar8b" path="res://player_complete_reference.png" id="1_qmg7m"]
@@ -83,31 +83,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-262.771, -157.252, 156
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 
-[sub_resource type="Environment" id="Environment_bcpj1"]
-background_energy_multiplier = 7.71
-ambient_light_source = 2
-
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [57.5511, 58.6022]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-offset_left = -641.0
-offset_top = -375.0
-offset_right = 1481.0
-offset_bottom = 902.0
-mouse_filter = 2
-color = Color(0, 1, 0.270588, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
-offset_left = 791.316
-offset_top = 407.316
-offset_right = 831.316
-offset_bottom = 447.316
-mouse_filter = 2
-color = Color(1, 0, 0, 1)
 
 [node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 z_index = -2
@@ -147,7 +125,6 @@ position = Vector2(911.704, 468.572)
 position = Vector2(736.341, 209.771)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+modulate = Color(0.5, 0.5, 0.51, 1)
+light_mask = 0
 navigation_polygon = SubResource("NavigationPolygon_dsr0k")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bcpj1")

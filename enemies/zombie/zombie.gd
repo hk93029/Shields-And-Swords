@@ -1,10 +1,15 @@
 extends CharacterBody2D
 
 var health: int = 5
+var max_health: int = health
 
 func _ready():
-	pass
+	$HPBar.value = 100
+	
 
+func set_percent_value_int(value: int) -> void:
+	$HPBar.value = value
+	
 
 func play_damage_effect():
 	print(health)
@@ -13,23 +18,19 @@ func play_death_effect():
 	print("Morto!")
 	queue_free()
 
-func take_damage(damage):
-	health = clamp(health-damage, 0, health)
+func damage(damage_count: int) -> void:
+	health = clamp(health-damage_count, 0, health)
+	set_percent_value_int(float(health)/max_health * 100)
 	if health > 0:
 		play_damage_effect()
 	else:
-		play_death_effect()
+		if self == Mouse.target_body:
+			Mouse.reset()
+		queue_free()
 			
 func _on_clickable_area_2d_mouse_entered():
-	print("Entered!")
 	Mouse.change_state(self)
-	GameManager.selector_position = self.global_position
-	GameManager.enemy_selected = self
-	print(GameManager.enemy_selected)
+
 
 func _on_clickable_area_2d_mouse_exited():
 	Mouse.reset()
-	if GameManager.enemy_selected == self:
-		GameManager.enemy_selected = null
-	print("Exited!")
-	print(GameManager.enemy_selected)

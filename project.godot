@@ -23,7 +23,6 @@ HUD="*res://autoloads/hud.tscn"
 [display]
 
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://cursors/normal_cursor.png"
 
 [input]
 

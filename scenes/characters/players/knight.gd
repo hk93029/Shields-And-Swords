@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 enum State { MOVE, ATTACK}
 
+var rng = RandomNumberGenerator.new()
+
+
 var speed: Vector2 = Vector2(300, 300)
 
 var last_mouse_position = null
@@ -39,37 +42,67 @@ var target_node = null
 var position_arrived: bool = true
 var is_running: bool = false
 var is_on_attack: bool = false
+var can_attack: bool = true
 
 var last_mouse_pos = null
 
+var enemies_in_range: Array
+
 func _ready():
 	animation_tree.active = true
-	nav_agent.path_desired_distance = 4
+	nav_agent.path_desired_distance = 20
 	nav_agent.target_desired_distance = 4
-	HUD.player_node = self
+	HUD.player_ref = self
 
 func _input(event):
-	
-	last_mouse_pos = get_global_mouse_position()
-	
-	var movement_condition = !Mouse.is_on_hud and tile_map.is_on_ground(last_mouse_pos)
-	if (event.is_action_pressed("left_click") or Input.is_action_pressed("left_click")) and movement_condition:
+
+	if event is InputEventMouse:
+		last_mouse_pos = get_global_mouse_position()
 		
-		if Mouse.target_body != target_body_clicked:
-			target_body_clicked = Mouse.target_body
-
-		if target_body_clicked != null and target_body_clicked.is_in_group("walking_creature"):
-			recalculate_path_timer.start() # Só há necessidade de utilizar o timer de recalculo quando o alvo desejado se movimentar
-		else:
-			nav_agent.target_position = last_mouse_pos
-			recalculate_path_timer.stop()
-
+		var movement_condition = !Mouse.is_on_hud and tile_map != null and tile_map.is_on_ground(last_mouse_pos)
+		if (event.is_action_pressed("left_click") or Input.is_action_pressed("left_click")) and movement_condition:
 			
+			if Mouse.target_body != target_body_clicked:
+				target_body_clicked = Mouse.target_body
+			
+			if target_body_clicked != null:
+				nav_agent.target_position = target_body_clicked.position
+				
+				if target_body_clicked.is_in_group("walking_creature"):
+					recalculate_path_timer.start() # Só há necessidade de utilizar o timer de recalculo quando o alvo desejado se movimentar
+				else:
+					recalculate_path_timer.stop()
+					
+			elif position.distance_to(last_mouse_pos) >= 50:
+					nav_agent.target_position = last_mouse_pos
+				
 func _physics_process(delta):
 	
 	if (target_body_clicked != null):
-		if (target_body_clicked.is_in_group("enemy") and nav_agent.distance_to_target() <= 80):
-			attack()
+		var direction_to_target = position.direction_to(target_body_clicked.position)
+		var distance_limit
+		
+		if abs(direction_to_target.dot(Vector2(1, 0))) > 0.5:
+			distance_limit = 80 # + weapon_range
+		else:
+			if target_body_clicked.position.y > position.y:
+				distance_limit = 30
+			else:
+				distance_limit = 10
+		
+		if (target_body_clicked.is_in_group("enemy") and nav_agent.distance_to_target() <= distance_limit):
+			#print(nav_agent.distance_to_target())
+			animation_tree["parameters/Transition/transition_request"] = "idle"
+			
+			
+			if target_body_clicked.position.x < position.x:
+				sprite.scale.x = 1
+			elif target_body_clicked.position.x > position.x:
+				sprite.scale.x = -1
+				
+			if can_attack:
+				attack()
+			
 			return
 			
 		if (target_body_clicked.is_in_group("npc") and nav_agent.distance_to_target() <= 50):
@@ -80,27 +113,34 @@ func _physics_process(delta):
 			play_pickup_item_action()
 			return
 			
-	
+	animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	animation_tree["parameters/Attack2_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	can_attack = true
 
-
-	
-	
 	var axis = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = axis * speed
 	
-	if velocity.x < 0:
-		sprite.scale.x = 1
-	elif velocity.x > 0:
-		sprite.scale.x = -1
+
+#	print("Position x:", str(position.x), "Next node position: ", str(nav_agent.get_next_path_position().x))
+
 	
 	if (nav_agent.distance_to_target() <= 30):
 		velocity = Vector2(0, 0)
 		nav_agent.target_position = self.position
 	
 	
-
+	if velocity.x < 0:
+		sprite.scale.x = 1
+	elif velocity.x > 0:
+		sprite.scale.x = -1
 	
-	print(velocity.x)
+
+	if velocity.x != 0 and velocity.y != 0:
+		animation_tree["parameters/Transition/transition_request"] = "run"
+	else:
+		animation_tree["parameters/Transition/transition_request"] = "idle"
+	
+	#print(velocity.x)
 	move_and_slide()
 
 
@@ -128,10 +168,24 @@ func handle_camera(delta):
 # Estiver em estado "atacando"
 # O HP do ser atacado for >= 0
 func attack() -> void:
-	if is_on_attack:
-		return
+	can_attack = false
+	var rand_num = rng.randi_range(0, 1)
+	
+	match rand_num:
+		0:
+			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		1:
+			animation_tree["parameters/Attack2_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		
+# Função que deve ser chamada no final de toda animação de ataque
+func set_can_attack_to_true():
+	can_attack = true
 	
 	
+func on_animation_finished(name: String) -> void:
+	print(name)
+	
+
 func recalc_path(target_body):
 	if target_body_clicked != null:
 		nav_agent.target_position = target_body.position
@@ -164,7 +218,15 @@ func handle_skill_animations(skill):
 		3: # Player.buff_skill
 			pass
 
+func append_enemy(body):
+	if body.is_in_group("enemy"):
+		enemies_in_range.append(body)
+
+func remove_enemy(body):
+	if enemies_in_range.has(body):
+		enemies_in_range.erase(body)
+
 
 func _on_recalculate_path_timer_timeout():
-	print("ué")
+#	print("ué")
 	recalc_path(target_body_clicked)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://scenes/characters/players/sword.png" id="2_jg4lb"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
-[ext_resource type="Texture2D" uid="uid://cdt0j1lfk74mc" path="res://player_sprite.png" id="4_3byib"]
+[ext_resource type="Texture2D" uid="uid://cdt0j1lfk74mc" path="res://player_sprite_base.png" id="4_3byib"]
 [ext_resource type="Texture2D" uid="uid://esyfmi4okvjp" path="res://scenes/characters/players/shield.png" id="5_s41gh"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_sni8r"]

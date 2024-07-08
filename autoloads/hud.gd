@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var player_node: Player = null
+var player_ref: Player = null
 
 func _on_skill_bar_mouse_entered():
 	Mouse.is_on_hud = true

@@ -59,7 +59,7 @@ func _input(event):
 	if event is InputEventMouse:
 		last_mouse_pos = get_global_mouse_position()
 		
-		var movement_condition = !Mouse.is_on_hud and tile_map != null and tile_map.is_on_ground(last_mouse_pos)
+		var movement_condition = !Mouse.is_on_hud and tile_map != null and (tile_map.is_on_ground(last_mouse_pos))
 		if (event.is_action_pressed("left_click") or Input.is_action_pressed("left_click")) and movement_condition:
 			
 			if Mouse.target_body != target_body_clicked:
@@ -73,7 +73,7 @@ func _input(event):
 				else:
 					recalculate_path_timer.stop()
 					
-			elif position.distance_to(last_mouse_pos) >= 50:
+			elif position.distance_to(last_mouse_pos) >= 50: # target_body_clicked == null
 					nav_agent.target_position = last_mouse_pos
 				
 func _physics_process(delta):
@@ -82,7 +82,7 @@ func _physics_process(delta):
 		var direction_to_target = position.direction_to(target_body_clicked.position)
 		var distance_limit
 		
-		if abs(direction_to_target.dot(Vector2(1, 0))) > 0.5:
+		if abs(direction_to_target.dot(Vector2(scale.x, 0))) > 0.7:
 			distance_limit = 80 # + weapon_range
 		else:
 			if target_body_clicked.position.y > position.y:
@@ -123,7 +123,6 @@ func _physics_process(delta):
 
 #	print("Position x:", str(position.x), "Next node position: ", str(nav_agent.get_next_path_position().x))
 
-	
 	if (nav_agent.distance_to_target() <= 30):
 		velocity = Vector2(0, 0)
 		nav_agent.target_position = self.position
@@ -166,7 +165,7 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 	if not target_body_clicked:
 		return
 		
-	target_body_clicked.damage(player_damage)
+	target_body_clicked.damage(%Stats.get_damage())#(player_damage)
 
 # Vai ativar animação de ataque quando:
 # Estiver em estado "atacando"
@@ -174,7 +173,9 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 func attack() -> void:
 	can_attack = false
 	var rand_num = rng.randi_range(0, 1)
-	
+	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.speed_of_attack
+	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.speed_of_attack
+	print("Speed of attack: "+ str(%Stats.speed_of_attack))
 	match rand_num:
 		0:
 			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
@@ -195,14 +196,12 @@ func recalc_path(target_body):
 		nav_agent.target_position = target_body.position
 	
 func _on_attack_area_2d_body_entered(body):
-	print("OKOKOK") 
+
 	if body.is_in_group("enemy"):
-		print("INIMIGO INIMIGO")
 		position_arrived = true
 		click_position = position
 		velocity = Vector2(0, 0)
 
-	pass # Replace with function body.
 
 func play_dialog_action():
 	pass

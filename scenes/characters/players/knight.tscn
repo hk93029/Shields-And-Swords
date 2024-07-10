@@ -1,9 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=59 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
+[ext_resource type="Script" path="res://scenes/characters/players/knight_stats.gd" id="2_02msb"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://scenes/characters/players/sword.png" id="2_jg4lb"]
+[ext_resource type="PackedScene" uid="uid://buqo23f6wc8ns" path="res://scenes/items/weapons/iron_sword.tscn" id="3_ivcqv"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
 [ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://player_sprite.png" id="4_3byib"]
+[ext_resource type="Script" path="res://resources/types/damage.gd" id="4_btfsc"]
 [ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://scenes/characters/players/shield.png" id="5_s41gh"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://scenes/characters/players/soft_light.png" id="6_ymrc8"]
@@ -17,6 +20,53 @@ glow_hdr_luminance_cap = 45.42
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smckf"]
 radius = 66.8012
+
+[sub_resource type="Resource" id="Resource_v8rup"]
+script = ExtResource("4_btfsc")
+physical_damage = 0
+extra_damage = 0
+fire_damage = 0
+cold_damage = 0
+lightning_damage = 0
+dark_damage = 0
+
+[sub_resource type="Animation" id="Animation_yywq8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
+}
+
+[sub_resource type="Animation" id="Animation_4y1tg"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [1.0, 0.8, 0.8, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ll45e"]
+_data = {
+"RESET": SubResource("Animation_yywq8"),
+"default": SubResource("Animation_4y1tg")
+}
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_a1skr"]
 target_nodepath = NodePath("TargetsFeets/TargetFeetR")
@@ -180,7 +230,7 @@ animation = &"physical_skill_area"
 animation = &"run"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hors5"]
-graph_offset = Vector2(-252.308, 147.985)
+graph_offset = Vector2(794.131, 568.909)
 nodes/Attack1_OneShot/node = SubResource("AnimationNodeOneShot_kxr61")
 nodes/Attack1_OneShot/position = Vector2(640, 186.667)
 nodes/Attack1_TimeScale/node = SubResource("AnimationNodeTimeScale_1ssjg")
@@ -3619,12 +3669,16 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent") groups=["knight", "player"]]
-collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_hgjer")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
+
+[node name="Stats" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_02msb")
+critical_chance = 50.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_52cbf")
@@ -3643,12 +3697,14 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Items" type="Node2D" parent="Sprite/Polygons"]
 
-[node name="Weapon" type="Sprite2D" parent="Sprite/Polygons/Items"]
-position = Vector2(-39.8316, -10.5653)
-rotation = -0.324259
-scale = Vector2(0.999462, 0.999462)
-texture = ExtResource("2_jg4lb")
-offset = Vector2(1.43817, -18.5712)
+[node name="Weapon" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
+unique_name_in_owner = true
+position = Vector2(-40.3342, -10.5771)
+rotation = -0.30116
+scale = Vector2(0.999455, 0.999455)
+damage = SubResource("Resource_v8rup")
+physical_damage_min = 4
+physical_damage_max = 8
 
 [node name="Effects" type="Node2D" parent="Sprite/Polygons"]
 
@@ -3892,9 +3948,9 @@ texture = ExtResource("6_ymrc8")
 
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-36.0925, -5.96775)
-rotation = -0.324259
-scale = Vector2(0.25, 0.25)
+position = Vector2(-36.7023, -5.89452)
+rotation = -0.30116
+scale = Vector2(0.249972, 0.249972)
 texture = ExtResource("6_ymrc8")
 
 [node name="SoftLight" type="Sprite2D" parent="Sprite/Polygons/BuffHandREffect"]
@@ -3908,28 +3964,35 @@ texture = ExtResource("6_ymrc8")
 color = Color(1, 0, 0, 1)
 energy = 16.0
 texture = ExtResource("6_ymrc8")
+texture_scale = 0.9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Polygons/BuffHandREffect"]
+libraries = {
+"": SubResource("AnimationLibrary_ll45e")
+}
+autoplay = "default"
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Sprite"]
 modification_stack = SubResource("SkeletonModificationStack2D_ltl2p")
 
 [node name="TargetPlume" type="Marker2D" parent="Sprite/Skeleton2D"]
-position = Vector2(17.0739, -54.9274)
+position = Vector2(15.7656, -54.2733)
 
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
-position = Vector2(0, 0.102408)
+position = Vector2(0, 0.424067)
 scale = Vector2(0.999848, 0.999848)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(14.4174, -35.8312)
-rotation = -0.0185973
+position = Vector2(14.4174, -35.5509)
+rotation = -0.0752855
 scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
-rotation = 0.00596342
-scale = Vector2(0.999828, 0.999828)
+rotation = 0.0246944
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
@@ -3940,20 +4003,20 @@ length = 16.0
 bone_angle = -175.385
 
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(-13.6276, -32.4373)
-rotation = 0.00748378
-scale = Vector2(0.999835, 0.999835)
+position = Vector2(-13.6276, -32.157)
+rotation = 0.0309901
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
-rotation = -0.000129703
+rotation = -0.000537096
 scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
 
 [node name="HandR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR"]
 position = Vector2(-12.9382, 7.05693)
-scale = Vector2(0.999952, 0.999952)
+scale = Vector2(0.999951, 0.999951)
 rest = Transform2D(1, 0, 0, 1, -12.9382, 7.05693)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3974,7 +4037,6 @@ remote_path = NodePath("../../../../../../../../Polygons/Items/Weapon")
 
 [node name="HandBuffEffectRemoteTransform" type="RemoteTransform2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D"]
 position = Vector2(2.0806, 5.55224)
-scale = Vector2(1, 1)
 remote_path = NodePath("../../../../../../../../Polygons/BuffHandREffect")
 update_scale = false
 
@@ -3983,19 +4045,19 @@ position = Vector2(2.07261, 5.53456)
 
 [node name="ThighL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(6.96354, 0.668175)
-rotation = 0.00533694
-scale = Vector2(0.999829, 0.999829)
+rotation = 0.0221001
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, 6.96354, 0.668175)
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
 position = Vector2(3.18919, 27.3548)
-rotation = -0.0118882
-scale = Vector2(0.999828, 0.999828)
+rotation = -0.0492286
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 3.18919, 27.3548)
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(16.9723, 22.906)
-rotation = 0.00654449
+rotation = 0.0271005
 scale = Vector2(1.00049, 1.00049)
 rest = Transform2D(1, 0, 0, 1, 16.9723, 22.906)
 auto_calculate_length_and_angle = false
@@ -4004,19 +4066,19 @@ bone_angle = 156.923
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-4.70424, 0.420632)
-rotation = 0.00531674
-scale = Vector2(0.99983, 0.99983)
+rotation = 0.0220165
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -4.70424, 0.420632)
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-11.3393, 25.1197)
-rotation = -0.010714
-scale = Vector2(0.999834, 0.999834)
+rotation = -0.0443665
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -11.3393, 25.1197)
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
 position = Vector2(6.51951, 24.6459)
-rotation = 0.00536201
+rotation = 0.0222039
 scale = Vector2(1.00035, 1.00035)
 rest = Transform2D(1, 0, 0, 1, 6.51951, 24.6459)
 auto_calculate_length_and_angle = false
@@ -4034,26 +4096,26 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
-rotation = -0.0152704
+rotation = -0.0632344
 scale = Vector2(0.998069, 0.998069)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
-rotation = 0.00356185
-scale = Vector2(0.999824, 0.999824)
+rotation = 0.0147495
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
-rotation = 0.844296
-scale = Vector2(0.999875, 0.999875)
+rotation = 0.851991
+scale = Vector2(0.999877, 0.999877)
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
-rotation = 0.430154
-scale = Vector2(0.999847, 0.999847)
+rotation = 0.440525
+scale = Vector2(0.999849, 0.999849)
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
 
 [node name="TipPlume" type="Marker2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5"]
@@ -4062,10 +4124,10 @@ position = Vector2(17.876, 8.20844)
 [node name="TargetsHands" type="Node2D" parent="Sprite/Skeleton2D"]
 
 [node name="TargetHandR" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(-32.6144, -7.96012)
+position = Vector2(-33.1748, -7.81176)
 
 [node name="TargetHandL" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(16.97, -17.294)
+position = Vector2(17.9897, -17.0625)
 
 [node name="TargetsFeets" type="Node2D" parent="Sprite/Skeleton2D"]
 
@@ -4107,7 +4169,6 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_a023m")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 root_node = NodePath("../..")
 tree_root = SubResource("AnimationNodeBlendTree_hors5")
 anim_player = NodePath("../AnimationPlayer")

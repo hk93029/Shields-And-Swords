@@ -1,18 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://buqo23f6wc8ns"]
+[gd_scene load_steps=8 format=3 uid="uid://buqo23f6wc8ns"]
 
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://scenes/characters/players/sword.png" id="1_0n17a"]
 [ext_resource type="Script" path="res://scenes/items/weapons/weapon_component.gd" id="2_6m6yy"]
 [ext_resource type="Script" path="res://scenes/items/weapons/iron_sword.gd" id="2_ir1yq"]
+[ext_resource type="Script" path="res://resources/types/damage.gd" id="3_dlfga"]
 [ext_resource type="Script" path="res://resources/types/item_adds.gd" id="3_hchj6"]
+
+[sub_resource type="Resource" id="Resource_fbsgu"]
+script = ExtResource("3_dlfga")
+physical_damage = 0
+extra_damage = 0
+fire_damage = 0
+cold_damage = 0
+lightning_damage = 4
+dark_damage = 8
 
 [sub_resource type="Resource" id="Resource_pt1k5"]
 script = ExtResource("3_hchj6")
 STR = 0
 INT = 0
 CONS = 0
-DEX = 20
+DEX = 0
 critical_chance = 0.0
-critical_damage = 33.0
+critical_damage = 0.0
 attack_speed = 0.0
 hp = 0
 mp = 0
@@ -21,6 +31,7 @@ mp = 0
 texture = ExtResource("1_0n17a")
 offset = Vector2(1.43817, -18.5712)
 script = ExtResource("2_ir1yq")
+damage = SubResource("Resource_fbsgu")
 adds = SubResource("Resource_pt1k5")
 
 [node name="WeaponComponent" type="Node" parent="."]

@@ -1,5 +1,7 @@
 extends Node
 
+
+
 @export var HP: int = 100
 @export var MP: int = 30
 @export var strenght: int = 6 # Damage; Regeneration; Use items; 1 str = 2 damage
@@ -19,20 +21,25 @@ var magical_defense: int
 var gold_amount: int
 var essence_amount: int
 
-var damage_base
+var level: int = 1
+var exp_necessary: Array[int] = [0, 100, 230, 400, 620, 920, 1300, 2200, 3200, 4500, 5700, 6900] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
+var current_exp: int = 0
+var level_atribute_points: int = 0
 
 @onready var weapon = %Weapon
 @onready var weapon_damage: Damage = %Weapon.damage
 @onready var weapon_adds: ItemAdds = %Weapon.adds
+
+var damage_base
 var damage: Damage = Damage.new()
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready():
 	recalculate_attributes()
-	recalculate_items_atributes()
+#	recalculate_items_atributes()
 
-func recalculate_attributes(): # Atributos que serão exibidos na interface de atributos(Tecla 'C')
+func recalculate_attributes() -> void: # Atributos que serão exibidos na interface de atributos(Tecla 'C')
 	
 	HP = weapon_adds.hp + (constitution+weapon_adds.CONS)*20
 	MP = weapon_adds.mp + (intelligence+weapon_adds.INT)*24
@@ -42,21 +49,7 @@ func recalculate_attributes(): # Atributos que serão exibidos na interface de a
 	speed_of_attack = (0.6 + (dexterity+weapon_adds.DEX)*0.1) if  (0.6 + (dexterity+weapon_adds.DEX)*0.1) <= 6 else 6
 	
 	damage_base = (weapon_adds.STR+strenght)*2
-#	var HP_base = constitution*20
-#	var MP_base = intelligence*24
-#	var critical_chance_base = dexterity*1.3
-#	var critical_damage_base = 33
-#	var evasion_chance_base = dexterity*1.3
-#	var speed_of_attack_base = (0.6 + dexterity*0.1) if (0.6 + dexterity*0.1) <= 6 else 6
-#	damage_base = strenght * 2
 
-#	HP = HP_base # + Weapon.attributes + Armor.atributes + Ring.atributes + Necklace.atributes
-#	MP = MP_base
-#	critical_chance = critical_chance_base
-#	evasion_chance = evasion_chance_base
-#	speed_of_attack = speed_of_attack_base
-
-#	critical_damage = critical_damage_base
 
 func recalculate_items_atributes():
 	pass
@@ -83,8 +76,26 @@ func get_damage() -> Damage:
 	return damage
 
 
-func is_critical_damage():
+func is_critical_damage() -> bool:
+	
 	var probability = rng.randi_range(0, 100)
 	if probability <= critical_chance:
 		return true
 	return false
+
+
+func level_up():
+	
+	level += 1
+	level_atribute_points += 3
+	HUD.update_experience_bar(exp_necessary[level-1], exp_necessary[level])
+	HUD.update_level_indicator(level, level+1) # (current_level, next_level)
+
+func update_exp(exp: int) -> void:
+	
+	current_exp += exp
+	if (level <= 50 and current_exp >= exp_necessary[level]):
+		level_up()
+	
+	HUD.experience_bar.value = current_exp
+	

@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_gl1s8"]
 
 [sub_resource type="SystemFont" id="SystemFont_61jo3"]
-font_names = PackedStringArray("Franklin Gothic")
+font_names = PackedStringArray("Century Gothic")
 font_italic = true
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyyl6"]
 font = SubResource("SystemFont_61jo3")
 font_size = 23
+outline_size = 8
+outline_color = Color(0.376471, 0, 0.670588, 1)
 
 [sub_resource type="Animation" id="Animation_kieym"]
 length = 0.001
@@ -120,10 +122,10 @@ tracks/2/path = NodePath("Node2D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
-"transitions": PackedFloat32Array(2.63902, -1.03526, 1),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(2.63902, -1.03526, -1.03526, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20.2165), Vector2(0, -46.9737)]
+"values": [Vector2(0, 0), Vector2(0, -24), Vector2(0, -27), Vector2(0, -70)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -132,10 +134,10 @@ tracks/3/path = NodePath("Node2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
-"transitions": PackedFloat32Array(2.63902, -1.03526, 1),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7),
+"transitions": PackedFloat32Array(2.63902, -1.03526, -1.03526, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.6, 1.6), Vector2(0.8, 0.8)]
+"values": [Vector2(1, 1), Vector2(1.6, 1.6), Vector2(1.3, 1.3), Vector2(0.8, 0.8)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -303,12 +305,12 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
 offset_top = -11.4913
-offset_right = 20.0
-offset_bottom = 15.5087
+offset_right = 32.0
+offset_bottom = 17.5087
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-text = "30"
+text = "  30!!"
 label_settings = SubResource("LabelSettings_pyyl6")
 horizontal_alignment = 1
 vertical_alignment = 1

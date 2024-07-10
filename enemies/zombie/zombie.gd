@@ -1,15 +1,19 @@
 extends CharacterBody2D
 
-var health: int = 5000#60
-var max_health: int = health
+@export var health: int = 60
+@export var max_health: int = health
+@export var death_experience_min: int = 30
+@export var death_experience_max: int = 40
+
 var damage_digit_prefab: PackedScene
 var critical_damage_digit_prefab: PackedScene
 var block_damage_digit_prefab: PackedScene
-@onready var damage_digit_maker: Marker2D = $DamageDigitMarker
 
 var armor_defense: Defense = Defense.new()
 var damage_received : int
 	
+@onready var damage_digit_maker: Marker2D = $DamageDigitMarker
+
 func _ready():
 	$HPBar.value = 100
 	damage_digit_prefab = preload("res://misc/damage_digit/damage_digit.tscn")
@@ -58,11 +62,11 @@ func damage(damage: Damage) -> void:
 	if damage.is_critical:
 		damage_digit = critical_damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)+"!!"
-		print("RECEBEU DANO CRÍTICO!!")
-		print(damage_digit.value)
+
 	elif damage.had_blocked:
 		damage_digit = block_damage_digit_prefab.instantiate()
-		damage_digit.value = "Block!!"
+		damage_digit.value = "Blocked!!"
+		
 	else:
 		damage_digit = damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)
@@ -81,30 +85,13 @@ func damage(damage: Damage) -> void:
 	else:
 		if self == Mouse.target_body:
 			Mouse.reset()
-		queue_free()
-	
+		die()
 
-func damage_bkp(damage_count: int) -> void:
-	health = clamp(health-damage_count, 0, health)
-	set_percent_value_int(float(health)/max_health * 100)
-	
-	var damage_digit = damage_digit_prefab.instantiate()
-	damage_digit.value = damage_count
-	
-	
-	if damage_digit_maker != null:
-		damage_digit.global_position = damage_digit_maker.global_position
-	else:
-		damage_digit.global_position = global_position - Vector2(0, 130.218)
-	
-	get_parent().add_child(damage_digit)
-	
-	if health > 0:
-		play_damage_effect()
-	else:
-		if self == Mouse.target_body:
-			Mouse.reset()
-		queue_free()
+
+func die():
+	get_tree().call_group("player_stats", "update_exp", randi_range(death_experience_min, death_experience_max))
+	queue_free()
+	print("XD")
 			
 func _on_clickable_area_2d_mouse_entered():
 	Mouse.change_state(self)

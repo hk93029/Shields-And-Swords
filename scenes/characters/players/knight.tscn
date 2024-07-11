@@ -3699,9 +3699,9 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Weapon" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
 unique_name_in_owner = true
-position = Vector2(-40.0139, -10.5684)
-rotation = -0.315947
-scale = Vector2(0.999448, 0.999448)
+position = Vector2(-40.6182, -10.5892)
+rotation = -0.287813
+scale = Vector2(0.999456, 0.999456)
 physical_damage_min = 4
 physical_damage_max = 8
 damage = SubResource("Resource_v8rup")
@@ -3948,9 +3948,9 @@ texture = ExtResource("6_ymrc8")
 
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-36.3131, -5.94004)
-rotation = -0.315947
-scale = Vector2(0.249983, 0.249983)
+position = Vector2(-37.0491, -5.85852)
+rotation = -0.287813
+scale = Vector2(0.249971, 0.249971)
 texture = ExtResource("6_ymrc8")
 
 [node name="SoftLight" type="Sprite2D" parent="Sprite/Polygons/BuffHandREffect"]
@@ -3976,21 +3976,23 @@ autoplay = "default"
 modification_stack = SubResource("SkeletonModificationStack2D_ltl2p")
 
 [node name="TargetPlume" type="Marker2D" parent="Sprite/Skeleton2D"]
-position = Vector2(17.4904, -55.1357)
+position = Vector2(15.0096, -53.8953)
 
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
+position = Vector2(0, 0.609928)
 scale = Vector2(0.999848, 0.999848)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(14.4174, -35.9205)
-rotation = -0.000549317
-scale = Vector2(0.999831, 0.999831)
+position = Vector2(14.4174, -35.3889)
+rotation = -0.108041
+scale = Vector2(0.999827, 0.999827)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
-scale = Vector2(0.999831, 0.999831)
+rotation = 0.0355175
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
@@ -4001,12 +4003,14 @@ length = 16.0
 bone_angle = -175.385
 
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(-13.6276, -32.5266)
-scale = Vector2(0.999821, 0.999821)
+position = Vector2(-13.6276, -31.995)
+rotation = 0.0445726
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
+rotation = -0.000772496
 scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
 
@@ -4041,16 +4045,19 @@ position = Vector2(2.07261, 5.53456)
 
 [node name="ThighL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(6.96354, 0.668175)
-scale = Vector2(0.999828, 0.999828)
+rotation = 0.0317862
+scale = Vector2(0.999833, 0.999833)
 rest = Transform2D(1, 0, 0, 1, 6.96354, 0.668175)
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
 position = Vector2(3.18919, 27.3548)
-scale = Vector2(0.999825, 0.999825)
+rotation = -0.0708046
+scale = Vector2(0.999834, 0.999834)
 rest = Transform2D(1, 0, 0, 1, 3.18919, 27.3548)
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(16.9723, 22.906)
+rotation = 0.0389782
 scale = Vector2(1.00049, 1.00049)
 rest = Transform2D(1, 0, 0, 1, 16.9723, 22.906)
 auto_calculate_length_and_angle = false
@@ -4059,16 +4066,19 @@ bone_angle = 156.923
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-4.70424, 0.420632)
-scale = Vector2(0.99983, 0.99983)
+rotation = 0.0316659
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -4.70424, 0.420632)
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-11.3393, 25.1197)
-scale = Vector2(0.999832, 0.999832)
+rotation = -0.0638116
+scale = Vector2(0.999824, 0.999824)
 rest = Transform2D(1, 0, 0, 1, -11.3393, 25.1197)
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
 position = Vector2(6.51951, 24.6459)
+rotation = 0.0319355
 scale = Vector2(1.00035, 1.00035)
 rest = Transform2D(1, 0, 0, 1, 6.51951, 24.6459)
 auto_calculate_length_and_angle = false
@@ -4086,24 +4096,26 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
-scale = Vector2(0.998068, 0.998068)
+rotation = -0.0909489
+scale = Vector2(0.998072, 0.998072)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
-scale = Vector2(0.999824, 0.999824)
+rotation = 0.0212139
+scale = Vector2(0.999821, 0.999821)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
-rotation = 0.841846
-scale = Vector2(0.999876, 0.999876)
+rotation = 0.856437
+scale = Vector2(0.99988, 0.99988)
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
-rotation = 0.426852
-scale = Vector2(0.999848, 0.999848)
+rotation = 0.446517
+scale = Vector2(0.999846, 0.999846)
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
 
 [node name="TipPlume" type="Marker2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5"]
@@ -4112,10 +4124,10 @@ position = Vector2(17.876, 8.20844)
 [node name="TargetsHands" type="Node2D" parent="Sprite/Skeleton2D"]
 
 [node name="TargetHandR" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(-43.6161, -3.90525)
+position = Vector2(-33.4986, -7.72603)
 
 [node name="TargetHandL" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(16.6454, -17.3677)
+position = Vector2(18.5788, -16.9287)
 
 [node name="TargetsFeets" type="Node2D" parent="Sprite/Skeleton2D"]
 

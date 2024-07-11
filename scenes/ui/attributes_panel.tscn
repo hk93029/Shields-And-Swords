@@ -1,0 +1,286 @@
+[gd_scene load_steps=25 format=3 uid="uid://b0ehjv1q7t2in"]
+
+[ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="1_6flkp"]
+[ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="2_ffigb"]
+[ext_resource type="Texture2D" uid="uid://0ftojlqok0ym" path="res://assets/sprites/ui/attributes_panel/spacing_7x15.png" id="2_hqfem"]
+[ext_resource type="Texture2D" uid="uid://2exkpv7j7r2u" path="res://assets/sprites/ui/attributes_panel/attributes_panel_v2.png" id="2_oxdbo"]
+[ext_resource type="Texture2D" uid="uid://ipeal7nny7jt" path="res://assets/sprites/ui/attributes_panel/add_attribute_button.png" id="3_j4c65"]
+[ext_resource type="Texture2D" uid="uid://3gmd625yh3bs" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button_pressed.png" id="3_w5sgp"]
+[ext_resource type="Texture2D" uid="uid://u5qr2s16q1kn" path="res://assets/sprites/ui/attributes_panel/add_attribute_button_pressed.png" id="6_nibjp"]
+[ext_resource type="Texture2D" uid="uid://dke5lp80cv725" path="res://assets/sprites/ui/attributes_panel/distribution_points_bg.png" id="7_fsamo"]
+[ext_resource type="Texture2D" uid="uid://dtv2yng1wq2la" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button.png" id="8_jy1j2"]
+[ext_resource type="Texture2D" uid="uid://ckf4q7l662025" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button_pressed.png" id="9_q6b7h"]
+[ext_resource type="Texture2D" uid="uid://cfncbpy4qclg2" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button.png" id="10_pscgr"]
+[ext_resource type="Texture2D" uid="uid://b4tf46xlad6hl" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button_pressed.png" id="11_d1itd"]
+
+[sub_resource type="SystemFont" id="SystemFont_026vk"]
+font_names = PackedStringArray("Old English Text MT")
+hinting = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqyfn"]
+font = SubResource("SystemFont_026vk")
+font_size = 23
+
+[sub_resource type="SystemFont" id="SystemFont_kmqni"]
+font_names = PackedStringArray("Franklin Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3o25s"]
+font = SubResource("SystemFont_kmqni")
+
+[sub_resource type="SystemFont" id="SystemFont_8rir0"]
+font_names = PackedStringArray("Franklin Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yds0n"]
+font = SubResource("SystemFont_8rir0")
+font_size = 18
+
+[sub_resource type="SystemFont" id="SystemFont_5q781"]
+font_names = PackedStringArray("Franklin Gothic")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcbxc"]
+font = SubResource("SystemFont_5q781")
+
+[sub_resource type="SystemFont" id="SystemFont_naqs5"]
+font_names = PackedStringArray("Franklin Gothic Book")
+
+[sub_resource type="LabelSettings" id="LabelSettings_buug4"]
+font = SubResource("SystemFont_naqs5")
+
+[sub_resource type="SystemFont" id="SystemFont_14qjq"]
+font_names = PackedStringArray("Franklin Gothic Book")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xebo4"]
+font = SubResource("SystemFont_14qjq")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="AttributesPanel" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_6flkp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_oxdbo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.2435
+offset_top = 21.4057
+offset_right = 57.2435
+offset_bottom = 61.4057
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 13.37
+offset_right = 177.0
+offset_bottom = 160.37
+alignment = 1
+
+[node name="PanelTitle" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Attributes
+"
+label_settings = SubResource("LabelSettings_rqyfn")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 7
+
+[node name="StrIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="STR" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "STR"
+label_settings = SubResource("LabelSettings_3o25s")
+
+[node name="StrSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="STR_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yds0n")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StrSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="SubStrButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ffigb")
+texture_pressed = ExtResource("3_w5sgp")
+stretch_mode = 3
+
+[node name="AddStrButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_j4c65")
+texture_pressed = ExtResource("6_nibjp")
+stretch_mode = 3
+
+[node name="ConsIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="CONS" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "CONS"
+label_settings = SubResource("LabelSettings_bcbxc")
+
+[node name="ConsSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="CONS_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yds0n")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ConsSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="SubConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ffigb")
+texture_pressed = ExtResource("3_w5sgp")
+stretch_mode = 3
+
+[node name="AddConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_j4c65")
+texture_pressed = ExtResource("6_nibjp")
+stretch_mode = 3
+
+[node name="DexIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="DEX" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "DEX
+"
+label_settings = SubResource("LabelSettings_bcbxc")
+
+[node name="DexSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="DEX_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yds0n")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DexSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="SubDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ffigb")
+texture_pressed = ExtResource("3_w5sgp")
+stretch_mode = 3
+
+[node name="AddDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_j4c65")
+texture_pressed = ExtResource("6_nibjp")
+stretch_mode = 3
+
+[node name="IntIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="INT" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "INT
+"
+label_settings = SubResource("LabelSettings_bcbxc")
+
+[node name="IntSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="INT_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yds0n")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="IntSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_hqfem")
+
+[node name="SubIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_ffigb")
+texture_pressed = ExtResource("3_w5sgp")
+stretch_mode = 3
+
+[node name="AddIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_j4c65")
+texture_pressed = ExtResource("6_nibjp")
+stretch_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+columns = 4
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+text = "Points:"
+label_settings = SubResource("LabelSettings_buug4")
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_fsamo")
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer2/GridContainer/TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 19.0
+text = "0"
+label_settings = SubResource("LabelSettings_xebo4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("8_jy1j2")
+texture_pressed = ExtResource("9_q6b7h")
+
+[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("10_pscgr")
+texture_pressed = ExtResource("11_d1itd")

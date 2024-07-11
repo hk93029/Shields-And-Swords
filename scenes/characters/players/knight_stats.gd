@@ -22,7 +22,7 @@ var gold_amount: int
 var essence_amount: int
 
 var level: int = 1
-var exp_necessary: Array[int] = [0, 100, 230, 400, 620, 920, 1300, 2200, 3200, 4500, 5700, 6900] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
+var exp_necessary: Array[int] = [0, 100, 530, 970, 1900, 4800, 6500, 9000, 13000, 17800, 25000, 40000] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
 var current_exp: int = 0
 var level_atribute_points: int = 0
 

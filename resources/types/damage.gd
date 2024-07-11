@@ -9,3 +9,4 @@ extends Resource
 @export var dark_damage: int = 0
 var is_critical: bool = false
 var had_blocked: bool = false
+var is_evaded: bool = false

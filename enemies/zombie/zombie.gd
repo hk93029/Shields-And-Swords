@@ -7,18 +7,49 @@ extends CharacterBody2D
 
 var damage_digit_prefab: PackedScene
 var critical_damage_digit_prefab: PackedScene
-var block_damage_digit_prefab: PackedScene
+var blocked_damage_digit_prefab: PackedScene
+var evaded_damage_digit_prefab: PackedScene
+
+var character_attributes: CharacterAttributes = CharacterAttributes.new()
 
 var armor_defense: Defense = Defense.new()
 var damage_received : int
+var damage_base: int
 	
+
 @onready var damage_digit_maker: Marker2D = $DamageDigitMarker
 
+@onready var weapon = %Weapon
+@onready var weapon_damage: Damage = %Weapon.damage
+@onready var weapon_adds: ItemAdds = %Weapon.adds
+@export var attributes: CharacterAttributes = CharacterAttributes.new()
+
 func _ready():
+	
+	add_to_group("character", true)
+	add_to_group("enemy", true)
+	add_to_group("walking_creature", true)
+	
 	$HPBar.value = 100
 	damage_digit_prefab = preload("res://misc/damage_digit/damage_digit.tscn")
 	critical_damage_digit_prefab = preload("res://misc/damage_digit/critical_damage_digit.tscn")
-	block_damage_digit_prefab = preload("res://misc/damage_digit/block_damage_digit.tscn")
+	blocked_damage_digit_prefab = preload("res://misc/damage_digit/blocked_damage_digit.tscn")
+	evaded_damage_digit_prefab =  preload("res://misc/damage_digit/evaded_damage_digit.tscn")
+	#character_attributes.teste()
+	recalculate_attributes()
+
+func recalculate_attributes() -> void: # Atributos que serão exibidos na interface de atributos(Tecla 'C')
+	
+	attributes.HP = weapon_adds.hp + (attributes.constitution+weapon_adds.CONS)*20
+	attributes.MP = weapon_adds.mp + (attributes.intelligence+weapon_adds.INT)*24
+	attributes.critical_chance = weapon_adds.critical_chance + (attributes.dexterity+weapon_adds.DEX)*1.3
+	attributes.critical_damage = weapon_adds.critical_damage + (attributes.strenght+weapon_adds.STR)*3
+	attributes.evasion = (attributes.dexterity+weapon_adds.DEX)*1.3
+	print("EVASION: "+str(attributes.evasion))
+	attributes.speed_of_attack = (0.6 + (attributes.dexterity+weapon_adds.DEX)*0.1) if  (0.6 + (attributes.dexterity+weapon_adds.DEX)*0.1) <= 6 else 6
+	
+	damage_base = (weapon_adds.STR+attributes.strenght)*2
+
 
 func set_percent_value_int(value: int) -> void:
 	$HPBar.value = value
@@ -27,6 +58,7 @@ func set_percent_value_int(value: int) -> void:
 func play_damage_effect():
 	#print(health)
 	pass
+	
 func play_death_effect():
 	print("Morto!")
 	queue_free()
@@ -51,25 +83,29 @@ func damage(damage: Damage) -> void:
 	contained_damage = damage.dark_damage - armor_defense.dark_defense
 	damage_received += contained_damage if contained_damage >= 0 else 0
 	
-	
-	
-	# Lose HP logic:
-	health = clamp(health-damage_received, 0, health)
-	set_percent_value_int(float(health)/max_health * 100)
-	
+
 	var damage_digit 
 	
-	if damage.is_critical:
+	if damage.is_evaded:
+		damage_digit = evaded_damage_digit_prefab.instantiate()
+		damage_digit.value = "MISS!!"	
+		damage_received = 0
+
+	elif damage.is_critical:
 		damage_digit = critical_damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)+"!!"
 
 	elif damage.had_blocked:
-		damage_digit = block_damage_digit_prefab.instantiate()
-		damage_digit.value = "Blocked!!"
-		
+		damage_digit = blocked_damage_digit_prefab.instantiate()
+		damage_digit.value = "BLOCKED!!"
+
 	else:
 		damage_digit = damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)
+	
+	# Lose HP logic:
+	health = clamp(health-damage_received, 0, health)
+	set_percent_value_int(float(health)/max_health * 100)
 	
 	
 	if damage_digit_maker != null:

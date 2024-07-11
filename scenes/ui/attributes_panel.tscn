@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0ehjv1q7t2in"]
+[gd_scene load_steps=31 format=3 uid="uid://b0ehjv1q7t2in"]
 
 [ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="1_6flkp"]
 [ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="2_ffigb"]
@@ -52,6 +52,126 @@ font_names = PackedStringArray("Franklin Gothic Book")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xebo4"]
 font = SubResource("SystemFont_14qjq")
+
+[sub_resource type="FontFile" id="FontFile_6lw7d"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/15/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/14/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/13/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/13/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8k47n"]
+font = SubResource("FontFile_6lw7d")
+font_size = 13
+
+[sub_resource type="FontFile" id="FontFile_3fapc"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/15/0/ascent = 0.0
+cache/0/15/0/descent = 0.0
+cache/0/15/0/underline_position = 0.0
+cache/0/15/0/underline_thickness = 0.0
+cache/0/15/0/scale = 1.0
+cache/0/15/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/15/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+cache/0/14/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/14/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/13/0/ascent = 0.0
+cache/0/13/0/descent = 0.0
+cache/0/13/0/underline_position = 0.0
+cache/0/13/0/underline_thickness = 0.0
+cache/0/13/0/scale = 1.0
+cache/0/13/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/13/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/11/0 = Vector2(0, 0)
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/11/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/15/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/14/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/13/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/11/0/kerning_overrides/11/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ertm"]
+font = SubResource("FontFile_3fapc")
+font_size = 11
+
+[sub_resource type="SystemFont" id="SystemFont_h4x6y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_onfsd"]
+font = SubResource("SystemFont_h4x6y")
+font_size = 12
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -284,3 +404,73 @@ layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("10_pscgr")
 texture_pressed = ExtResource("11_d1itd")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "crítico:"
+label_settings = SubResource("LabelSettings_8k47n")
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "33.5%"
+label_settings = SubResource("LabelSettings_1ertm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label5" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label6" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label7" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label5" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label6" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")
+
+[node name="Label7" type="Label" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "dsadasd"
+label_settings = SubResource("LabelSettings_onfsd")

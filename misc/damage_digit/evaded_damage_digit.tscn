@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://k7sfm6wc1ea2"]
+[gd_scene load_steps=7 format=3 uid="uid://ydm4fxbm41nr"]
 
-[ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_orkr7"]
+[ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_2t3p2"]
 
 [sub_resource type="SystemFont" id="SystemFont_61jo3"]
-font_names = PackedStringArray("Franklin Gothic")
+font_names = PackedStringArray("Century Gothic")
+font_italic = true
 multichannel_signed_distance_field = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyyl6"]
 font = SubResource("SystemFont_61jo3")
 font_size = 23
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+font_color = Color(0.845009, 0.185683, 0.834995, 1)
+outline_size = 8
+outline_color = Color(0.376471, 0, 0.670588, 1)
 
 [sub_resource type="Animation" id="Animation_kieym"]
 length = 0.001
@@ -24,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20, -13.5)]
+"values": [Vector2(-20, -11.4913)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -86,9 +88,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Label:label_settings:outline_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.376471, 0, 0.670588, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_ljdcy"]
-resource_name = "normal_damage"
+[sub_resource type="Animation" id="Animation_aogdd"]
+resource_name = "evaded_damage_digit"
 length = 1.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -112,7 +126,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -155,24 +169,48 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/Label:position")
+tracks/5/path = NodePath("Node2D/Label:label_settings:outline_color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-20, -13.5)]
+"values": [Color(0.376471, 0, 0.670588, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Label:label_settings:font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.845009, 0.185683, 0.834995, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/Label:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, -14.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6lmia"]
 _data = {
 "RESET": SubResource("Animation_kieym"),
-"normal_damage": SubResource("Animation_ljdcy")
+"evaded_damage_digit": SubResource("Animation_aogdd")
 }
 
 [node name="DamageDigit" type="Node2D"]
-script = ExtResource("1_orkr7")
+script = ExtResource("1_2t3p2")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -184,13 +222,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -13.5
-offset_right = 20.0
-offset_bottom = 13.5
+offset_top = -11.4913
+offset_right = 43.0
+offset_bottom = 17.5087
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
-text = "13"
+text = "MISS!!"
 label_settings = SubResource("LabelSettings_pyyl6")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -199,4 +237,4 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_6lmia")
 }
-autoplay = "normal_damage"
+autoplay = "evaded_damage_digit"

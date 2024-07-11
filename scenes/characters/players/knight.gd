@@ -54,6 +54,9 @@ func _ready():
 	nav_agent.target_desired_distance = 4
 	HUD.player_ref = self
 
+func get_target_body():
+	return target_body_clicked
+
 func _input(event):
 
 	if event is InputEventMouse:
@@ -175,7 +178,7 @@ func attack() -> void:
 	var rand_num = rng.randi_range(0, 1)
 	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.speed_of_attack
 	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.speed_of_attack
-	print("Speed of attack: "+ str(%Stats.speed_of_attack))
+	#print("Speed of attack: "+ str(%Stats.speed_of_attack))
 	match rand_num:
 		0:
 			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

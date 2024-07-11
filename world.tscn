@@ -137,36 +137,6 @@ position = Vector2(1261.83, 375.047)
 [node name="Zombie9" parent="." instance=ExtResource("5_6wnla")]
 position = Vector2(1181.32, 430.139)
 
-[node name="Zombie10" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1075.37, 472.518)
-
-[node name="Zombie11" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1079.61, 307.242)
-
-[node name="Zombie12" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1181.32, 171.63)
-
-[node name="Zombie13" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1071.13, 603.891)
-
-[node name="Zombie14" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(833.812, 603.891)
-
-[node name="Zombie15" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1215.22, 565.751)
-
-[node name="Zombie16" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1304.21, 205.533)
-
-[node name="Zombie17" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1024.51, 27.5433)
-
-[node name="Zombie18" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(943.996, 709.838)
-
-[node name="Zombie19" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1172.84, 701.362)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 z_index = -2
 navigation_polygon = SubResource("NavigationPolygon_nb37o")

@@ -10,7 +10,7 @@ extends Node
 @export var intelligence: int = 2 # Longest times in buffs; Spells do more damage; Magical defense; Use items; 1 int = 12 MP; 1 int = 2 magical_damage
 
 @export var critical_chance: float = 2
-var evasion_chance: float = 2
+var evasion: float = 2
 var critical_damage: float = 3
 var min_damage: int = 1# dano natural + dano de arma, arma possui dano máximo e mínimo, a cada ataque é recalculado aleatóriamente
 var max_damage: int = 1
@@ -26,9 +26,21 @@ var exp_necessary: Array[int] = [0, 100, 530, 970, 1900, 4800, 6500, 9000, 13000
 var current_exp: int = 0
 var level_atribute_points: int = 0
 
+var player: Player
+
 @onready var weapon = %Weapon
 @onready var weapon_damage: Damage = %Weapon.damage
 @onready var weapon_adds: ItemAdds = %Weapon.adds
+
+@onready var armor = %Armor
+@onready var armor_defense: Defense = %Armor.defense
+@onready var armor_adds: ItemAdds = %Armor.adds
+
+@onready var ring = %Ring
+@onready var ring_adds: ItemAdds = %Ring.adds
+
+@onready var amulet = %Amulet
+@onready var amulet_adds: ItemAdds = %Amulet.adds
 
 var damage_base
 var damage: Damage = Damage.new()
@@ -36,6 +48,7 @@ var damage: Damage = Damage.new()
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready():
+	player = get_parent()
 	recalculate_attributes()
 #	recalculate_items_atributes()
 
@@ -44,8 +57,8 @@ func recalculate_attributes() -> void: # Atributos que serão exibidos na interf
 	HP = weapon_adds.hp + (constitution+weapon_adds.CONS)*20
 	MP = weapon_adds.mp + (intelligence+weapon_adds.INT)*24
 	critical_chance = weapon_adds.critical_chance + (dexterity+weapon_adds.DEX)*1.3
-	critical_damage = weapon_adds.critical_damage + (dexterity+weapon_adds.DEX)*3
-	evasion_chance = (dexterity+weapon_adds.DEX)*1.3
+	critical_damage = weapon_adds.critical_damage + (strenght+weapon_adds.STR)*3
+	evasion = (dexterity+weapon_adds.DEX)*1.3
 	speed_of_attack = (0.6 + (dexterity+weapon_adds.DEX)*0.1) if  (0.6 + (dexterity+weapon_adds.DEX)*0.1) <= 6 else 6
 	
 	damage_base = (weapon_adds.STR+strenght)*2
@@ -66,6 +79,11 @@ func get_damage() -> Damage:
 	else:
 		damage.is_critical = false
 	
+	if is_evaded_hit():
+		damage.is_evaded = true
+	else:
+		damage.is_evaded = false
+	
 	damage.physical_damage = physical_damage
 	damage.extra_damage = weapon_damage.extra_damage
 	damage.fire_damage = weapon_damage.fire_damage
@@ -83,6 +101,13 @@ func is_critical_damage() -> bool:
 		return true
 	return false
 
+func is_evaded_hit() -> bool:
+	
+	var probability = rng.randi_range(0, 100)
+	var target_body = player.get_target_body()
+	if target_body != null and target_body.is_in_group("character") and probability <= (target_body.attributes.evasion - (dexterity*1.3)):
+		return  true	
+	return false
 
 func level_up():
 	

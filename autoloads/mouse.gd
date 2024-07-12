@@ -8,9 +8,10 @@ var dialog_cursor = load("res://assets/sprites/cursor/dialog_cursor.png")
 
 var target_body = null
 var can_player_move: bool = true
-var is_on_hud: bool = false
+var is_on_ui: bool = false
+var is_dragging: bool = false
 
-var group = {"enemy" : Input.CURSOR_POINTING_HAND, "pickup_item": Input.CURSOR_DRAG, "npc": Input.CURSOR_HELP}
+var group = {"enemy" : Input.CURSOR_POINTING_HAND, "draggable": Input.CURSOR_DRAG, "npc": Input.CURSOR_HELP}
 
 func _ready():
 
@@ -27,8 +28,9 @@ func change_state(body):
 			Input.set_default_cursor_shape(group["enemy"])
 			return
 			
-		if body.is_in_group("pickup_item"):
-			Input.set_default_cursor_shape(group["pickup_item"])
+		if body.is_in_group("draggable"):
+			print("IS DRAGGABLE!")
+			Input.set_default_cursor_shape(group["draggable"])
 			return
 			
 		if body.is_in_group("npc"):
@@ -47,7 +49,9 @@ func is_on_npc():
 func is_on_item():
 	return Input.get_current_cursor_shape() == group["pickup_item"]
 
-
+func is_draggable():
+	return Input.get_current_cursor_shape() == group["draggable"]
+	
 func reset():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	target_body = null

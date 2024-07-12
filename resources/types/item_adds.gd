@@ -9,6 +9,7 @@ extends Resource
 @export var critical_chance: float = 0.0
 @export var critical_damage: float = 0.0
 @export var attack_speed: float = 0.0
+@export var evasion: float = 0.0
 
 @export var hp: int = 0
 @export var mp: int = 0

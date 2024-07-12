@@ -1,31 +1,33 @@
-extends CharacterBody2D
+extends Character
 
-@export var health: int = 60
-@export var max_health: int = health
-@export var death_experience_min: int = 30
-@export var death_experience_max: int = 40
+#@export var health: int = 60
+#@export var max_health: int = health
+@export var death_experience_min: int = 30 #Enemy
+@export var death_experience_max: int = 40 #Enemy
 
-var damage_digit_prefab: PackedScene
-var critical_damage_digit_prefab: PackedScene
-var blocked_damage_digit_prefab: PackedScene
-var evaded_damage_digit_prefab: PackedScene
+#var damage_digit_prefab: PackedScene #Character
+#var critical_damage_digit_prefab: PackedScene
+#var blocked_damage_digit_prefab: PackedScene
+#var evaded_damage_digit_prefab: PackedScene
 
-var character_attributes: CharacterAttributes = CharacterAttributes.new()
+var character_attributes: CharacterAttributes # = CharacterAttributes.new() # Character
 
-var armor_defense: Defense = Defense.new()
-var damage_received : int
+#@export var armor_defense: Defense = Defense.new() # Zombie
+#var damage_received : int
 var damage_base: int
 	
 
-@onready var damage_digit_maker: Marker2D = $DamageDigitMarker
+#@onready var damage_digit_maker: Marker2D = %DamageDigitMarker # Character
 
-@onready var weapon = %Weapon
-@onready var weapon_damage: Damage = %Weapon.damage
-@onready var weapon_adds: ItemAdds = %Weapon.adds
-@export var attributes: CharacterAttributes = CharacterAttributes.new()
+#@onready var weapon = %Weapon
+#@onready var weapon_damage: Damage = %Weapon.damage
+#@onready var weapon_adds: ItemAdds = %Weapon.adds
+#@export var attributes: CharacterAttributes = CharacterAttributes.new()
+var blocking_chance: int = 30
 
 func _ready():
-	
+#	attributes = CharacterAttributes.new()
+	attributes.blocking_chance = 30
 	add_to_group("character", true)
 	add_to_group("enemy", true)
 	add_to_group("walking_creature", true)
@@ -83,21 +85,22 @@ func damage(damage: Damage) -> void:
 	contained_damage = damage.dark_damage - armor_defense.dark_defense
 	damage_received += contained_damage if contained_damage >= 0 else 0
 	
-
+	
 	var damage_digit 
 	
 	if damage.is_evaded:
 		damage_digit = evaded_damage_digit_prefab.instantiate()
-		damage_digit.value = "MISS!!"	
+		damage_digit.value = "Miss!!"	
+		damage_received = 0
+		
+	elif damage.is_blocked:
+		damage_digit = blocked_damage_digit_prefab.instantiate()
+		damage_digit.value = "Blocked!!"
 		damage_received = 0
 
 	elif damage.is_critical:
 		damage_digit = critical_damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)+"!!"
-
-	elif damage.had_blocked:
-		damage_digit = blocked_damage_digit_prefab.instantiate()
-		damage_digit.value = "BLOCKED!!"
 
 	else:
 		damage_digit = damage_digit_prefab.instantiate()

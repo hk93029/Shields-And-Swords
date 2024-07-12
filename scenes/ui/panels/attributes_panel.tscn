@@ -1,21 +1,25 @@
-[gd_scene load_steps=31 format=3 uid="uid://b0ehjv1q7t2in"]
+[gd_scene load_steps=34 format=3 uid="uid://btywxst6npsju"]
 
-[ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="1_6flkp"]
-[ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="2_ffigb"]
-[ext_resource type="Texture2D" uid="uid://0ftojlqok0ym" path="res://assets/sprites/ui/attributes_panel/spacing_7x15.png" id="2_hqfem"]
-[ext_resource type="Texture2D" uid="uid://2exkpv7j7r2u" path="res://assets/sprites/ui/attributes_panel/attributes_panel_v2.png" id="2_oxdbo"]
-[ext_resource type="Texture2D" uid="uid://ipeal7nny7jt" path="res://assets/sprites/ui/attributes_panel/add_attribute_button.png" id="3_j4c65"]
-[ext_resource type="Texture2D" uid="uid://3gmd625yh3bs" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button_pressed.png" id="3_w5sgp"]
-[ext_resource type="Texture2D" uid="uid://u5qr2s16q1kn" path="res://assets/sprites/ui/attributes_panel/add_attribute_button_pressed.png" id="6_nibjp"]
-[ext_resource type="Texture2D" uid="uid://dke5lp80cv725" path="res://assets/sprites/ui/attributes_panel/distribution_points_bg.png" id="7_fsamo"]
-[ext_resource type="Texture2D" uid="uid://dtv2yng1wq2la" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button.png" id="8_jy1j2"]
-[ext_resource type="Texture2D" uid="uid://ckf4q7l662025" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button_pressed.png" id="9_q6b7h"]
-[ext_resource type="Texture2D" uid="uid://cfncbpy4qclg2" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button.png" id="10_pscgr"]
-[ext_resource type="Texture2D" uid="uid://b4tf46xlad6hl" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button_pressed.png" id="11_d1itd"]
+[ext_resource type="Script" path="res://scenes/ui/panel.gd" id="1_idn41"]
+[ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="2_n7x4x"]
+[ext_resource type="Texture2D" uid="uid://2exkpv7j7r2u" path="res://assets/sprites/ui/attributes_panel/attributes_panel_v2.png" id="3_1qaom"]
+[ext_resource type="Texture2D" uid="uid://v2mlbocqy1pk" path="res://assets/sprites/ui/close_button.png" id="4_gqmv1"]
+[ext_resource type="Texture2D" uid="uid://co1jna8u1urfn" path="res://assets/sprites/ui/close_button_pressed.png" id="5_ef61c"]
+[ext_resource type="Texture2D" uid="uid://0ftojlqok0ym" path="res://assets/sprites/ui/attributes_panel/spacing_7x15.png" id="6_la6v6"]
+[ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="7_b2mlm"]
+[ext_resource type="Texture2D" uid="uid://3gmd625yh3bs" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button_pressed.png" id="8_rd1nw"]
+[ext_resource type="Texture2D" uid="uid://ipeal7nny7jt" path="res://assets/sprites/ui/attributes_panel/add_attribute_button.png" id="9_yu7qe"]
+[ext_resource type="Texture2D" uid="uid://u5qr2s16q1kn" path="res://assets/sprites/ui/attributes_panel/add_attribute_button_pressed.png" id="10_3ctwm"]
+[ext_resource type="Texture2D" uid="uid://dke5lp80cv725" path="res://assets/sprites/ui/attributes_panel/distribution_points_bg.png" id="11_niw5s"]
+[ext_resource type="Texture2D" uid="uid://dtv2yng1wq2la" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button.png" id="12_y6xtf"]
+[ext_resource type="Texture2D" uid="uid://ckf4q7l662025" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button_pressed.png" id="13_q8a4u"]
+[ext_resource type="Texture2D" uid="uid://cfncbpy4qclg2" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button.png" id="14_6ugnk"]
+[ext_resource type="Texture2D" uid="uid://b4tf46xlad6hl" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button_pressed.png" id="15_gk0m4"]
 
 [sub_resource type="SystemFont" id="SystemFont_026vk"]
 font_names = PackedStringArray("Old English Text MT")
 hinting = 2
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqyfn"]
 font = SubResource("SystemFont_026vk")
@@ -23,6 +27,7 @@ font_size = 23
 
 [sub_resource type="SystemFont" id="SystemFont_kmqni"]
 font_names = PackedStringArray("Franklin Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_3o25s"]
 font = SubResource("SystemFont_kmqni")
@@ -37,23 +42,29 @@ font_size = 18
 
 [sub_resource type="SystemFont" id="SystemFont_5q781"]
 font_names = PackedStringArray("Franklin Gothic")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcbxc"]
 font = SubResource("SystemFont_5q781")
 
 [sub_resource type="SystemFont" id="SystemFont_naqs5"]
 font_names = PackedStringArray("Franklin Gothic Book")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_buug4"]
 font = SubResource("SystemFont_naqs5")
 
 [sub_resource type="SystemFont" id="SystemFont_14qjq"]
 font_names = PackedStringArray("Franklin Gothic Book")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_xebo4"]
 font = SubResource("SystemFont_14qjq")
 
 [sub_resource type="FontFile" id="FontFile_6lw7d"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -96,6 +107,9 @@ font = SubResource("FontFile_6lw7d")
 font_size = 13
 
 [sub_resource type="FontFile" id="FontFile_3fapc"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -168,21 +182,28 @@ font = SubResource("FontFile_3fapc")
 font_size = 11
 
 [sub_resource type="SystemFont" id="SystemFont_h4x6y"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_onfsd"]
 font = SubResource("SystemFont_h4x6y")
 font_size = 12
 
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="AttributesPanel" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_6flkp")
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="AttributesPanel" type="Control" groups=["draggable"]]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_oxdbo")
+script = ExtResource("1_idn41")
+
+[node name="AttributesPanelBase" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_n7x4x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 223.0
+offset_bottom = 305.0
+texture = ExtResource("3_1qaom")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -191,6 +212,20 @@ offset_left = 17.2435
 offset_top = 21.4057
 offset_right = 57.2435
 offset_bottom = 61.4057
+mouse_filter = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 188.0
+offset_bottom = 13.0
+
+[node name="CloseButton" type="TextureButton" parent="Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 1
+texture_normal = ExtResource("4_gqmv1")
+texture_pressed = ExtResource("5_ef61c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 0
@@ -202,6 +237,7 @@ alignment = 1
 
 [node name="PanelTitle" type="Label" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "Attributes
 "
 label_settings = SubResource("LabelSettings_rqyfn")
@@ -209,6 +245,7 @@ horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -221,7 +258,7 @@ columns = 7
 
 [node name="StrIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="STR" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -230,10 +267,11 @@ label_settings = SubResource("LabelSettings_3o25s")
 
 [node name="StrSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="STR_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "0"
 label_settings = SubResource("LabelSettings_yds0n")
 horizontal_alignment = 2
@@ -241,23 +279,25 @@ vertical_alignment = 1
 
 [node name="StrSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="SubStrButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_ffigb")
-texture_pressed = ExtResource("3_w5sgp")
+mouse_filter = 1
+texture_normal = ExtResource("7_b2mlm")
+texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddStrButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_j4c65")
-texture_pressed = ExtResource("6_nibjp")
+mouse_filter = 1
+texture_normal = ExtResource("9_yu7qe")
+texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
 
 [node name="ConsIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="CONS" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -266,10 +306,11 @@ label_settings = SubResource("LabelSettings_bcbxc")
 
 [node name="ConsSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="CONS_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "0"
 label_settings = SubResource("LabelSettings_yds0n")
 horizontal_alignment = 2
@@ -277,23 +318,23 @@ vertical_alignment = 1
 
 [node name="ConsSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="SubConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_ffigb")
-texture_pressed = ExtResource("3_w5sgp")
+texture_normal = ExtResource("7_b2mlm")
+texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_j4c65")
-texture_pressed = ExtResource("6_nibjp")
+texture_normal = ExtResource("9_yu7qe")
+texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
 
 [node name="DexIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="DEX" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -303,10 +344,11 @@ label_settings = SubResource("LabelSettings_bcbxc")
 
 [node name="DexSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="DEX_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "0"
 label_settings = SubResource("LabelSettings_yds0n")
 horizontal_alignment = 2
@@ -314,23 +356,23 @@ vertical_alignment = 1
 
 [node name="DexSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="SubDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_ffigb")
-texture_pressed = ExtResource("3_w5sgp")
+texture_normal = ExtResource("7_b2mlm")
+texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_j4c65")
-texture_pressed = ExtResource("6_nibjp")
+texture_normal = ExtResource("9_yu7qe")
+texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
 
 [node name="IntIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="INT" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -340,10 +382,11 @@ label_settings = SubResource("LabelSettings_bcbxc")
 
 [node name="IntSeparator1" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="INT_VALUE" type="Label" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "0"
 label_settings = SubResource("LabelSettings_yds0n")
 horizontal_alignment = 2
@@ -351,22 +394,23 @@ vertical_alignment = 1
 
 [node name="IntSeparator2" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("2_hqfem")
+texture = ExtResource("6_la6v6")
 
 [node name="SubIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_ffigb")
-texture_pressed = ExtResource("3_w5sgp")
+texture_normal = ExtResource("7_b2mlm")
+texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_j4c65")
-texture_pressed = ExtResource("6_nibjp")
+texture_normal = ExtResource("9_yu7qe")
+texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
 
 [node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -382,12 +426,13 @@ label_settings = SubResource("LabelSettings_buug4")
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
 layout_mode = 2
-texture = ExtResource("7_fsamo")
+texture = ExtResource("11_niw5s")
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer2/GridContainer/TextureRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 19.0
+mouse_filter = 1
 text = "0"
 label_settings = SubResource("LabelSettings_xebo4")
 horizontal_alignment = 1
@@ -396,14 +441,14 @@ vertical_alignment = 1
 [node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("8_jy1j2")
-texture_pressed = ExtResource("9_q6b7h")
+texture_normal = ExtResource("12_y6xtf")
+texture_pressed = ExtResource("13_q8a4u")
 
 [node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("10_pscgr")
-texture_pressed = ExtResource("11_d1itd")
+texture_normal = ExtResource("14_6ugnk")
+texture_pressed = ExtResource("15_gk0m4")
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -474,3 +519,6 @@ label_settings = SubResource("LabelSettings_onfsd")
 layout_mode = 2
 text = "dsadasd"
 label_settings = SubResource("LabelSettings_onfsd")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="Control/VBoxContainer2/CloseButton" to="." method="on_close_button_pressed"]

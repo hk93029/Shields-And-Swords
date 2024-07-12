@@ -1,20 +1,30 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk2ylxs75hlfh"]
+[gd_scene load_steps=15 format=3 uid="uid://dk2ylxs75hlfh"]
 
 [ext_resource type="Script" path="res://enemies/zombie/zombie.gd" id="1_so083"]
 [ext_resource type="Texture2D" uid="uid://cuq7q8oevjbs5" path="res://enemies/zombie/zombie_reference.png" id="1_y1gyo"]
 [ext_resource type="Script" path="res://enemies/zombie/stats.gd" id="2_j5nsw"]
+[ext_resource type="Script" path="res://resources/types/defense.gd" id="2_qy6kj"]
 [ext_resource type="Script" path="res://resources/types/character_attributes.gd" id="3_g0mbc"]
 [ext_resource type="Script" path="res://enemies/zombie/weapon.gd" id="3_hkilk"]
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="3_tgldv"]
 [ext_resource type="Script" path="res://resources/types/item_adds.gd" id="6_5mvqf"]
 
-[sub_resource type="Resource" id="Resource_1m2ah"]
+[sub_resource type="Resource" id="Resource_c3s1c"]
+script = ExtResource("2_qy6kj")
+physical_defense = 3
+extra_defense = 0
+fire_defense = 0
+cold_defense = 0
+lightning_defense = 0
+dark_defense = 0
+
+[sub_resource type="Resource" id="Resource_28jmd"]
 script = ExtResource("3_g0mbc")
 HP = 100
 MP = 30
 strenght = 6
 constitution = 6
-dexterity = 4
+dexterity = 8
 intelligence = 2
 
 [sub_resource type="Resource" id="Resource_fv5yd"]
@@ -46,13 +56,16 @@ mp = 0
 radius = 31.7191
 height = 124.383
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("hp_bar") groups=["character", "enemy", "walking_creature"]]
+[node name="Zombie" type="CharacterBody2D" groups=["character", "enemy", "walking_creature"]]
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_so083")
-hp_bar = NodePath("HPBar")
-attributes = SubResource("Resource_1m2ah")
+health = null
+death_experience_min = null
+death_experience_max = null
+armor_defense = SubResource("Resource_c3s1c")
+attributes = SubResource("Resource_28jmd")
 
 [node name="Stats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -74,7 +87,7 @@ texture = ExtResource("1_y1gyo")
 
 [node name="Items" type="Node2D" parent="Sprite"]
 
-[node name="Weapon" type="Sprite2D" parent="Sprite/Items" groups=["weapon"]]
+[node name="Weapon" type="Node2D" parent="Sprite/Items"]
 unique_name_in_owner = true
 script = ExtResource("3_hkilk")
 physical_damage_min = 7

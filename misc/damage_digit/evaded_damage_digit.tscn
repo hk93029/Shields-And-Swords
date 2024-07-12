@@ -216,6 +216,7 @@ script = ExtResource("1_2t3p2")
 
 [node name="Label" type="Label" parent="Node2D"]
 unique_name_in_owner = true
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -52,7 +52,7 @@ func _ready():
 	animation_tree.active = true
 	nav_agent.path_desired_distance = 20
 	nav_agent.target_desired_distance = 4
-	HUD.player_ref = self
+	UI.player_ref = self
 
 func get_target_body():
 	return target_body_clicked
@@ -62,7 +62,7 @@ func _input(event):
 	if event is InputEventMouse:
 		last_mouse_pos = get_global_mouse_position()
 		
-		var movement_condition = !Mouse.is_on_hud and tile_map != null and (tile_map.is_on_ground(last_mouse_pos))
+		var movement_condition = !Mouse.is_on_ui and !Mouse.is_dragging and tile_map != null and (tile_map.is_on_ground(last_mouse_pos))
 		if (event.is_action_pressed("left_click") or Input.is_action_pressed("left_click")) and movement_condition:
 			
 			if Mouse.target_body != target_body_clicked:
@@ -176,9 +176,9 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 func attack() -> void:
 	can_attack = false
 	var rand_num = rng.randi_range(0, 1)
-	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.speed_of_attack
-	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.speed_of_attack
-	#print("Speed of attack: "+ str(%Stats.speed_of_attack))
+	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.attack_speed
+	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.attack_speed
+	print("Speed of attack: "+ str(%Stats.attack_speed))
 	match rand_num:
 		0:
 			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
@@ -188,8 +188,7 @@ func attack() -> void:
 # Função que deve ser chamada no final de toda animação de ataque
 func set_can_attack_to_true():
 	can_attack = true
-	
-	
+
 func on_animation_finished(name: String) -> void:
 	print(name)
 	

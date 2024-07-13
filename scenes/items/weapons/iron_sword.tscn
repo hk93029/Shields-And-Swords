@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://buqo23f6wc8ns"]
 
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://scenes/characters/players/sword.png" id="1_0n17a"]
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="1_a5qef"]
 [ext_resource type="Script" path="res://scenes/items/weapons/weapon_component.gd" id="2_6m6yy"]
 [ext_resource type="Script" path="res://scenes/items/weapons/iron_sword.gd" id="2_ir1yq"]
 [ext_resource type="Script" path="res://resources/types/damage.gd" id="3_dlfga"]
@@ -29,7 +29,7 @@ hp = 0
 mp = 0
 
 [node name="Weapon" type="Sprite2D"]
-texture = ExtResource("1_0n17a")
+texture = ExtResource("1_a5qef")
 offset = Vector2(1.43817, -18.5712)
 script = ExtResource("2_ir1yq")
 damage = SubResource("Resource_fbsgu")

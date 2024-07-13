@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm86aivqnpnbj"
-path="res://.godot/imported/sword.png-6cb9b4f70089eb523734a5a493f699ca.ctex"
+uid="uid://ck3hsxbeijey7"
+path="res://.godot/imported/mace.png-08969a342573f0df307907c05cea4549.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/characters/players/sword.png"
-dest_files=["res://.godot/imported/sword.png-6cb9b4f70089eb523734a5a493f699ca.ctex"]
+source_file="res://assets/sprites/items/weapons/mace.png"
+dest_files=["res://.godot/imported/mace.png-08969a342573f0df307907c05cea4549.ctex"]
 
 [params]
 

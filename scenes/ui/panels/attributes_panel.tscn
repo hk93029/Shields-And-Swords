@@ -322,12 +322,14 @@ texture = ExtResource("6_la6v6")
 
 [node name="SubConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_b2mlm")
 texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddConsButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("9_yu7qe")
 texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
@@ -360,12 +362,14 @@ texture = ExtResource("6_la6v6")
 
 [node name="SubDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_b2mlm")
 texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddDexButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("9_yu7qe")
 texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
@@ -398,12 +402,14 @@ texture = ExtResource("6_la6v6")
 
 [node name="SubIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_b2mlm")
 texture_pressed = ExtResource("8_rd1nw")
 stretch_mode = 3
 
 [node name="AddIntButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("9_yu7qe")
 texture_pressed = ExtResource("10_3ctwm")
 stretch_mode = 3
@@ -438,15 +444,17 @@ label_settings = SubResource("LabelSettings_xebo4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+[node name="ConfirmDistributionButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 1
 texture_normal = ExtResource("12_y6xtf")
 texture_pressed = ExtResource("13_q8a4u")
 
-[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
+[node name="CancelDistributionButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer2/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 1
 texture_normal = ExtResource("14_6ugnk")
 texture_pressed = ExtResource("15_gk0m4")
 

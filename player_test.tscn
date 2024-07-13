@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://4eqb6gr024y2"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_lw3um"]
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://scenes/characters/players/sword.png" id="2_b44xx"]
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="2_b44xx"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_e54by"]
 [ext_resource type="Texture2D" uid="uid://cdt0j1lfk74mc" path="res://player_sprite_base.png" id="4_7ljtm"]
 [ext_resource type="Texture2D" uid="uid://esyfmi4okvjp" path="res://scenes/characters/players/shield_base.png" id="5_ptnor"]

@@ -106,6 +106,7 @@ func is_critical_damage() -> bool:
 	
 	var probability = rng.randi_range(0, 100)
 	if probability <= critical_chance:
+		print("CRITICAL"+str(critical_chance))
 		return true
 	return false
 

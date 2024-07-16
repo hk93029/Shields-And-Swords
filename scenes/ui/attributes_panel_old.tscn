@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://btywxst6npsju" path="res://scenes/ui/panels/attributes_panel.tscn" id="2_ms7t2"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-visible = false
 
 [node name="Panels" type="Control" parent="."]
 layout_mode = 3

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 GameManager="*res://game_manager.gd"
 Mouse="*res://autoloads/mouse.tscn"
 UI="*res://autoloads/ui.tscn"
+Events="*res://autoloads/events.gd"
 
 [display]
 
@@ -72,5 +73,4 @@ open_attributes_panel={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 viewport/hdr_2d=true

@@ -1,4 +1,4 @@
-extends Node
+extends Character
 
 
 @export var HP: int = 100
@@ -28,7 +28,7 @@ var level_atribute_points: int = 0
 var player: Player
 
 @onready var weapon = %Weapon
-@onready var weapon_damage: Damage = %Weapon.damage
+#@onready var weapon_damage: Damage = %Weapon.damage
 @onready var weapon_adds: ItemAdds = %Weapon.adds
 
 @onready var armor = %Armor
@@ -53,6 +53,7 @@ func _ready():
 
 func recalculate_attributes() -> void: # Atributos que serão exibidos na interface de atributos(Tecla 'C')
 	
+
 	HP = weapon_adds.hp + (constitution+weapon_adds.CONS)*20
 	MP = weapon_adds.mp + (intelligence+weapon_adds.INT)*24
 	critical_chance = weapon_adds.critical_chance + (dexterity+weapon_adds.DEX)*1.3
@@ -93,6 +94,8 @@ func get_damage() -> Damage:
 		damage.is_blocked = false
 	
 	damage.physical_damage = physical_damage
+	
+#	for adddd in weapon.damage_add
 	damage.extra_damage = weapon_damage.extra_damage
 	damage.fire_damage = weapon_damage.fire_damage
 	damage.cold_damage = weapon_damage.cold_damage

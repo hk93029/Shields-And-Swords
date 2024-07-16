@@ -1,4 +1,4 @@
-class_name Character
+class_name Characterbkp
 extends CharacterBody2D
 
 @export var health: int = 60
@@ -45,8 +45,8 @@ func _ready():
 	if amulet != null:
 		items_adds[AMULET_ADDS] = amulet.adds
 	if weapon != null:
-		items_adds[WEAPON_ADDS] = weapon.adds
-		weapon_adds = weapon.adds
+	#	items_adds[WEAPON_ADDS] = weapon.adds
+	#	weapon_adds = weapon.adds
 		weapon_damage = weapon.damage
 	
 	damage_digit_prefab = preload("res://misc/damage_digit/damage_digit.tscn")

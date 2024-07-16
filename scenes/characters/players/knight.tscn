@@ -1,19 +1,29 @@
-[gd_scene load_steps=64 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=68 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
-[ext_resource type="Script" path="res://scenes/characters/players/knight_stats.gd" id="2_02msb"]
+[ext_resource type="Script" path="res://resources/templates/characters/player_stats/player_stats.gd" id="2_7vfg6"]
+[ext_resource type="Script" path="res://resources/templates/items/weapon.gd" id="3_10bed"]
+[ext_resource type="Script" path="res://resources/types/character_attributes.gd" id="3_863qd"]
 [ext_resource type="PackedScene" uid="uid://buqo23f6wc8ns" path="res://scenes/items/weapons/iron_sword.tscn" id="3_ivcqv"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
 [ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://player_sprite.png" id="4_3byib"]
-[ext_resource type="Script" path="res://resources/types/damage.gd" id="4_btfsc"]
-[ext_resource type="Script" path="res://scenes/characters/items/armor.gd" id="5_4wp1p"]
-[ext_resource type="Script" path="res://resources/types/item_adds.gd" id="5_madgk"]
+[ext_resource type="Script" path="res://resources/templates/items/armor.gd" id="5_4wp1p"]
 [ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://scenes/characters/players/shield.png" id="5_s41gh"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://scenes/characters/players/soft_light.png" id="6_ymrc8"]
-[ext_resource type="Script" path="res://scenes/characters/items/ring.gd" id="7_uwyaq"]
-[ext_resource type="Script" path="res://scenes/characters/items/amulet.gd" id="8_sinit"]
+[ext_resource type="Script" path="res://resources/templates/items/ring.gd" id="7_uwyaq"]
+[ext_resource type="Script" path="res://resources/types/defense.gd" id="8_2x63g"]
+[ext_resource type="Script" path="res://resources/templates/items/amulet.gd" id="8_sinit"]
+[ext_resource type="Script" path="res://resources/types/additionals/damage_add.gd" id="10_28enr"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="11_h0srg"]
+[ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="14_lxko3"]
+
+[sub_resource type="Resource" id="Resource_ukrv8"]
+script = ExtResource("3_863qd")
+STR = 30
+CONS = 0
+DEX = 27
+INT = 0
 
 [sub_resource type="Environment" id="Environment_52cbf"]
 background_mode = 3
@@ -25,27 +35,19 @@ glow_hdr_luminance_cap = 45.42
 [sub_resource type="CircleShape2D" id="CircleShape2D_smckf"]
 radius = 66.8012
 
-[sub_resource type="Resource" id="Resource_v8rup"]
-script = ExtResource("4_btfsc")
-physical_damage = 0
-extra_damage = 0
-fire_damage = 0
-cold_damage = 0
-lightning_damage = 0
-dark_damage = 0
+[sub_resource type="Resource" id="Resource_jnk3v"]
+script = ExtResource("8_2x63g")
+physical_defense = 7
+extra_defense = 0
+fire_defense = 0
+cold_defense = 0
+lightning_defense = 0
+dark_defense = 0
 
-[sub_resource type="Resource" id="Resource_huvi8"]
-script = ExtResource("5_madgk")
-STR = 0
-INT = 0
-CONS = 0
-DEX = 0
-critical_chance = 0.0
-critical_damage = 0.0
-attack_speed = 0.0
-evasion = 0.0
-hp = 0
-mp = 0
+[sub_resource type="Resource" id="Resource_vqct5"]
+script = ExtResource("10_28enr")
+improvment = 1
+value = 10
 
 [sub_resource type="Animation" id="Animation_yywq8"]
 length = 0.001
@@ -3692,11 +3694,17 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_hgjer")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 
-[node name="Stats" type="Node" parent="." groups=["player_stats"]]
+[node name="Stats" type="CharacterBody2D" parent="." node_paths=PackedStringArray("damage_digit_maker", "hp_bar", "armor", "ring", "amulet", "weapon") groups=["player_stats"]]
 unique_name_in_owner = true
-script = ExtResource("2_02msb")
-dexterity = 0
-critical_chance = 100.0
+visible = false
+script = ExtResource("2_7vfg6")
+char_attributes = SubResource("Resource_ukrv8")
+damage_digit_maker = NodePath("../DamageDigitMaker")
+hp_bar = NodePath("../HPBar")
+armor = NodePath("../Sprite/Polygons/Items/Armor")
+ring = NodePath("../Sprite/Polygons/Items/Ring")
+amulet = NodePath("../Sprite/Polygons/Items/Amulet")
+weapon = NodePath("../Sprite/Polygons/Items/Weapon")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_52cbf")
@@ -3715,26 +3723,32 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Items" type="Node2D" parent="Sprite/Polygons"]
 
-[node name="Weapon" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
+[node name="Weapon" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-position = Vector2(-40.1901, -10.5723)
-rotation = -0.589941
-scale = Vector2(0.999425, 0.999425)
-physical_damage_min = 4
-physical_damage_max = 8
-damage = SubResource("Resource_v8rup")
-adds = SubResource("Resource_huvi8")
+script = ExtResource("3_10bed")
+base_physical_damage_min = 6
+base_physical_damage_max = 8
 
-[node name="Armor" type="Node2D" parent="Sprite/Polygons/Items"]
+[node name="Weapond" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
+unique_name_in_owner = true
+position = Vector2(-39.668, -10.564)
+rotation = -0.613725
+scale = Vector2(0.999424, 0.999424)
+script = null
+
+[node name="Armor" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
 script = ExtResource("5_4wp1p")
 sprite = ExtResource("4_3byib")
+defense = SubResource("Resource_jnk3v")
 
-[node name="Ring" type="Node2D" parent="Sprite/Polygons/Items"]
+[node name="Ring" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
 script = ExtResource("7_uwyaq")
+adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_vqct5")])
+item_name = "Adventurer Ring"
 
-[node name="Amulet" type="Node2D" parent="Sprite/Polygons/Items"]
+[node name="Amulet" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
 script = ExtResource("8_sinit")
 
@@ -3745,7 +3759,7 @@ visible = false
 position = Vector2(-49.1603, 60.3969)
 texture = ExtResource("3_w460m")
 vframes = 9
-frame = 8
+frame = 1
 
 [node name="WeaponF" type="Polygon2D" parent="Sprite/Polygons"]
 visible = false
@@ -3980,8 +3994,8 @@ texture = ExtResource("6_ymrc8")
 
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-35.3752, -7.11803)
-rotation = -0.589941
+position = Vector2(-34.7723, -7.22515)
+rotation = -0.613725
 scale = Vector2(0.249988, 0.249988)
 texture = ExtResource("6_ymrc8")
 
@@ -4008,22 +4022,20 @@ autoplay = "default"
 modification_stack = SubResource("SkeletonModificationStack2D_ltl2p")
 
 [node name="TargetPlume" type="Marker2D" parent="Sprite/Skeleton2D"]
-position = Vector2(16.1433, -54.4621)
+position = Vector2(17.4904, -55.1357)
 
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
-position = Vector2(0, 0.331205)
 scale = Vector2(0.99984, 0.99984)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(14.4174, -35.6318)
-rotation = -0.0589197
-scale = Vector2(0.999829, 0.999829)
+position = Vector2(14.4174, -35.9205)
+rotation = -0.000549317
+scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
-rotation = 0.0192868
 scale = Vector2(0.999828, 0.999828)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
 
@@ -4035,14 +4047,12 @@ length = 16.0
 bone_angle = -175.385
 
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
-position = Vector2(-13.6276, -32.2379)
-rotation = 0.0242039
+position = Vector2(-13.6276, -32.5266)
 scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
-rotation = -0.000419482
 scale = Vector2(0.999827, 0.999827)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
 
@@ -4065,7 +4075,7 @@ length = 44.0
 bone_angle = -90.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D"]
-remote_path = NodePath("../../../../../../../../Polygons/Items/Weapon")
+remote_path = NodePath("../../../../../../../../Polygons/Items/Weapond")
 
 [node name="HandBuffEffectRemoteTransform" type="RemoteTransform2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D"]
 position = Vector2(2.0806, 5.55224)
@@ -4077,19 +4087,16 @@ position = Vector2(2.07261, 5.53456)
 
 [node name="ThighL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(6.96354, 0.668175)
-rotation = 0.0172606
 scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, 6.96354, 0.668175)
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
 position = Vector2(3.18919, 27.3548)
-rotation = -0.0384485
 scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 3.18919, 27.3548)
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(16.9723, 22.906)
-rotation = 0.0211661
 scale = Vector2(1.00049, 1.00049)
 rest = Transform2D(1, 0, 0, 1, 16.9723, 22.906)
 auto_calculate_length_and_angle = false
@@ -4098,19 +4105,16 @@ bone_angle = 156.923
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-4.70424, 0.420632)
-rotation = 0.0171953
 scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, -4.70424, 0.420632)
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-11.3393, 25.1197)
-rotation = -0.0346511
 scale = Vector2(0.99984, 0.99984)
 rest = Transform2D(1, 0, 0, 1, -11.3393, 25.1197)
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
 position = Vector2(6.51951, 24.6459)
-rotation = 0.0173417
 scale = Vector2(1.00035, 1.00035)
 rest = Transform2D(1, 0, 0, 1, 6.51951, 24.6459)
 auto_calculate_length_and_angle = false
@@ -4128,25 +4132,23 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
-rotation = -0.0493873
 scale = Vector2(0.99807, 0.99807)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
-rotation = 0.0115196
 scale = Vector2(0.99982, 0.99982)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
-rotation = 0.849769
+rotation = 0.841846
 scale = Vector2(0.999878, 0.999878)
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
-rotation = 0.437531
+rotation = 0.426852
 scale = Vector2(0.999848, 0.999848)
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
 
@@ -4156,10 +4158,10 @@ position = Vector2(17.876, 8.20844)
 [node name="TargetsHands" type="Node2D" parent="Sprite/Skeleton2D"]
 
 [node name="TargetHandR" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(-33.013, -7.85459)
+position = Vector2(-43.6161, -3.90525)
 
 [node name="TargetHandL" type="Marker2D" parent="Sprite/Skeleton2D/TargetsHands"]
-position = Vector2(17.6953, -17.1293)
+position = Vector2(16.6454, -17.3677)
 
 [node name="TargetsFeets" type="Node2D" parent="Sprite/Skeleton2D"]
 
@@ -4257,6 +4259,16 @@ script = ExtResource("6_k7dkl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(94.1804, -124.453)
+
+[node name="HPBar" parent="." instance=ExtResource("14_lxko3")]
+unique_name_in_owner = true
+offset_left = -23.0
+offset_top = -144.0
+offset_right = 23.0
+offset_bottom = -140.0
+
+[node name="DamageDigitMaker" type="Marker2D" parent="."]
+position = Vector2(0, -155)
 
 [connection signal="body_entered" from="Sprite/AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
 [connection signal="timeout" from="Navigation/RecalculatePathTimer" to="." method="_on_recalculate_path_timer_timeout"]

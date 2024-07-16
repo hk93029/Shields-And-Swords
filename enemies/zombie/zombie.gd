@@ -127,7 +127,7 @@ func damage(damage: Damage) -> void:
 		die()
 
 
-func die():
+func _die():
 	get_tree().call_group("player_stats", "update_exp", randi_range(death_experience_min, death_experience_max))
 	queue_free()
 	print("XD")

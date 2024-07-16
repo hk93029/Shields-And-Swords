@@ -1,14 +1,16 @@
 class_name Armor
-extends Node2D
+extends Item
 
-@export var icon: Texture2D
 @export var sprite: Texture2D
 
 @export_category("Armor Defense")
 @export var defense: Defense = Defense.new()
 
+#@export_category("Armor Adds")
+#@export var adds: ItemAdds = ItemAdds.new()
+
 @export_category("Armor Adds")
-@export var adds: ItemAdds = ItemAdds.new()
+@export var adds: Array[Add]
 
 
 func on_armor_changed(): # quando sinal for emitido
@@ -21,5 +23,5 @@ func update_armor():
 func set_armor_defense(defense: Defense) -> void:
 	self.defense = defense
 	
-func set_armor_adds(adds: ItemAdds) -> void:
+func set_armor_adds(adds: Array[Add]) -> void:
 	self.adds = adds

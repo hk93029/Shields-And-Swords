@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2e3r13lgvi7y"]
+
+[ext_resource type="Script" path="res://scenes/characters/behaviors/combat_behavior.gd" id="1_yyekw"]
+
+[node name="CombatBehavior" type="Node2D"]
+script = ExtResource("1_yyekw")

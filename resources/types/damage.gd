@@ -6,7 +6,7 @@ extends Resource
 @export var fire_damage: int = 0
 @export var cold_damage: int = 0
 @export var lightning_damage: int = 0
-@export var dark_damage: int = 0
+@export var darkness_damage: int = 0
 var is_critical: bool = false
 var is_blocked: bool = false
 var is_evaded: bool = false

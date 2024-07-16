@@ -23,6 +23,7 @@ offset_bottom = 240.0
 script = ExtResource("8_h1jgx")
 
 [node name="AttributesPanel" parent="Panels" instance=ExtResource("9_hu8he")]
+unique_name_in_owner = true
 
 [connection signal="mouse_entered" from="HUD" to="." method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="HUD" to="." method="_on_ui_mouse_exited"]

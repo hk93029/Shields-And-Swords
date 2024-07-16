@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://buqo23f6wc8ns"]
+
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="1_a5qef"]
+[ext_resource type="Script" path="res://resources/templates/items/weapon.gd" id="2_v7q5p"]
+[ext_resource type="Script" path="res://resources/types/additionals/damage_add.gd" id="3_ca11b"]
+
+[sub_resource type="Resource" id="Resource_yri5m"]
+script = ExtResource("3_ca11b")
+improvment = 0
+value = 0
+
+[node name="Weapon" type="Sprite2D"]
+texture = ExtResource("1_a5qef")
+offset = Vector2(1.43817, -18.5712)
+script = ExtResource("2_v7q5p")
+adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_yri5m")])

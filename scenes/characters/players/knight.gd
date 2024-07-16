@@ -176,9 +176,9 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 func attack() -> void:
 	can_attack = false
 	var rand_num = rng.randi_range(0, 1)
-	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.attack_speed
-	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.attack_speed
-	print("Speed of attack: "+ str(%Stats.attack_speed))
+	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.get_attack_speed()
+	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.get_attack_speed()
+	print("Speed of attack: "+ str(%Stats.get_attack_speed()))
 	match rand_num:
 		0:
 			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

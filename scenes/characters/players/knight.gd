@@ -1,10 +1,7 @@
 class_name Player
-extends CharacterBody2D
+extends Character
 
 enum State { MOVE, ATTACK}
-
-var rng = RandomNumberGenerator.new()
-
 
 var speed: Vector2 = Vector2(300, 300)
 
@@ -49,6 +46,7 @@ var last_mouse_pos = null
 var enemies_in_range: Array
 
 func _ready():
+	ready_character()
 	animation_tree.active = true
 	nav_agent.path_desired_distance = 20
 	nav_agent.target_desired_distance = 4
@@ -103,7 +101,7 @@ func _physics_process(delta):
 			elif target_body_clicked.position.x > position.x:
 				sprite.scale.x = -1
 				
-			if can_attack:
+			if can_attack and !target_body_clicked.is_dead:
 				attack()
 			
 			return
@@ -158,7 +156,11 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 	if not target_body_clicked:
 		return
 		
-	target_body_clicked.damage(%Stats.get_damage())#(player_damage)
+	target_body_clicked.hurt(get_damage())#(player_damage)
+	if target_body_clicked.is_dead:
+		target_body_clicked = null
+		nav_agent.target_position = self.position
+		
 
 # Vai ativar animação de ataque quando:
 # Estiver em estado "atacando"
@@ -166,8 +168,8 @@ func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o 
 func attack() -> void:
 	can_attack = false
 	var rand_num = rng.randi_range(0, 1)
-	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.get_attack_speed()
-	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.get_attack_speed()
+	animation_tree["parameters/Attack1_TimeScale/scale"] = get_attack_speed()
+	animation_tree["parameters/Attack2_TimeScale/scale"] = get_attack_speed()
 	#print("Speed of attack: "+ str(%Stats.get_attack_speed()))
 	match rand_num:
 		0:
@@ -221,6 +223,8 @@ func remove_enemy(body):
 	if enemies_in_range.has(body):
 		enemies_in_range.erase(body)
 
+func _get_target_body():
+	return target_body_clicked
 
 func _on_recalculate_path_timer_timeout():
 #	print("ué")

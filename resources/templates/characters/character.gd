@@ -34,7 +34,7 @@ var equips_adds: EquipmentsAdditionals # Amount of all equips adds togheter
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var damage_received : int
 
-func _ready():
+func ready_character():
 	add_to_group("character", true)
 	char_stats = CharacterStatus.new()
 	equips_adds = EquipmentsAdditionals.new()
@@ -371,16 +371,16 @@ func set_percent_value_int(value: int) -> void:
 	$HPBar.value = value
 	
 
-func play_damage_effect():
+func _play_damage_effect():
 	#print(health)
 	pass
 	
-func play_death_effect():
+func _play_death_effect():
 	print("Morto!")
 	queue_free()
 
-func damage(damage: Damage) -> void:
-	print("EVASION: "+str(char_stats.evasion))
+func hurt(damage: Damage) -> void:
+
 	var contained_damage
 	contained_damage = damage.physical_damage - char_stats.physical_defense
 	damage_received = contained_damage if contained_damage >= 0 else 0
@@ -435,10 +435,8 @@ func damage(damage: Damage) -> void:
 	
 	print(damage_received)
 	if health > 0:
-		play_damage_effect()
+		_play_damage_effect()
 	else:
-		if self == Mouse.target_body:
-			Mouse.reset()
 		_die()
 
 
@@ -448,9 +446,9 @@ func _die():
 	#print("XD")
 	pass
 			
-func _on_clickable_area_2d_mouse_entered():
-	Mouse.change_state(self)
+#func _on_clickable_area_2d_mouse_entered():
+#	Mouse.change_state(self)
 
 
-func _on_clickable_area_2d_mouse_exited():
-	Mouse.reset()
+#func _on_clickable_area_2d_mouse_exited():
+#	Mouse.reset()

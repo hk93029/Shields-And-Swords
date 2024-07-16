@@ -1,4 +1,4 @@
-extends Character
+extends Node
 
 var level: int = 1
 var exp_necessary: Array[int] = [0, 100, 530, 970, 1900, 4800, 6500, 9000, 13000, 17800, 25000, 40000, 90000, 200000, 600000, 1300000, 3000000] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
@@ -7,37 +7,14 @@ var level_atribute_points: int = 0
 var player: Player
 
 func _ready():
-	player = get_parent()
-	add_to_group("character", true)
 	Events.connect("attributes_changed", on_attributes_changed)
-	
-	char_stats = CharacterStatus.new()
-	equips_adds = EquipmentsAdditionals.new()
-
-	hp_bar.max_value = max_health
-	hp_bar.value = health
-	
-	if armor != null:
-		equip_item(armor)
-#		armor_adds = armor.adds
-	if ring != null:
-		equip_item(ring)
-		#ring_adds = ring.adds
-	if amulet != null:
-		equip_item(amulet)
-		#amulet_adds = amulet.adds
-	if weapon != null:
-		equip_item(weapon)
-		#weapon_adds = weapon.adds
-
-	recalculate_status()
-	
+	player = get_parent()
 	post_current_status()
 	post_current_attributes()
 
 
-func _get_target_body():
-	return player.get_target_body()
+#func _get_target_body():
+#	return player.get_target_body()
 
 func level_up(): # player
 	
@@ -57,11 +34,11 @@ func update_exp(exp: int) -> void: # player
 	UI.HUD.experience_bar.value = current_exp
 
 func on_attributes_changed(new_attributes):
-	char_attributes = new_attributes
-	recalculate_status()
+	player.char_attributes = new_attributes
+	player.recalculate_status()
 
 func post_current_status():
-	Events.emit_signal("post_current_status", char_stats)
+	Events.emit_signal("post_current_status", player.char_stats)
 	
 func post_current_attributes():
-	Events.emit_signal("post_current_attributes", char_attributes)
+	Events.emit_signal("post_current_attributes", player.char_attributes)

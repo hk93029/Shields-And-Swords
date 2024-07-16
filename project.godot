@@ -16,7 +16,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://game_manager.gd"
 Mouse="*res://autoloads/mouse.tscn"
 UI="*res://autoloads/ui.tscn"
 Events="*res://autoloads/events.gd"

@@ -260,6 +260,7 @@ font_size = 13
 
 [sub_resource type="SystemFont" id="SystemFont_0tp32"]
 font_names = PackedStringArray("Franklin Gothic Book")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_1ertm"]
 font = SubResource("SystemFont_0tp32")
@@ -380,6 +381,7 @@ offset_left = -4.14804
 offset_top = -2.56915
 offset_right = 35.852
 offset_bottom = 94.4309
+mouse_filter = 2
 texture = ExtResource("6_767k3")
 
 [node name="AddStrButton" type="TextureButton" parent="Control/VBoxContainer/MarginContainer/GridContainer"]

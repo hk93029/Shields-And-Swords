@@ -5,6 +5,7 @@ extends Character
 
 var damage_base: int
 var blocking_chance: int = 30
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	add_to_group("character", true)
@@ -44,11 +45,11 @@ func play_damage_effect():
 
 func play_death_effect():
 	print("Morto!")
-	queue_free()
+	animation_player.play("die")
 
 func _die():
 	get_tree().call_group("player_stats", "update_exp", randi_range(death_experience_min, death_experience_max))
-	queue_free()
+	play_death_effect()
 	print("XD")
 			
 func _on_clickable_area_2d_mouse_entered():

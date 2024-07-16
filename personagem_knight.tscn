@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://resources/templates/items/amulet.gd" id="7_qwttw"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="8_0k00y"]
 [ext_resource type="Script" path="res://resources/types/additionals/damage_add.gd" id="8_6ubl8"]
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="9_ohn34"]
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="9_ohn34"]
 [ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://scenes/characters/players/shield.png" id="10_d52n6"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://scenes/characters/players/soft_light.png" id="11_s86r0"]
 [ext_resource type="Script" path="res://camera.gd" id="12_4t8du"]

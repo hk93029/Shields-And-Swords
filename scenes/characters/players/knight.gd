@@ -80,7 +80,7 @@ func _input(event):
 					nav_agent.target_position = last_mouse_pos
 				
 func _physics_process(delta):
-	
+
 	if (target_body_clicked != null):
 		var direction_to_target = position.direction_to(target_body_clicked.position)
 		var distance_limit
@@ -146,16 +146,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
-func _inputd(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			pass
-		elif event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			pass
-
-
-
 func handle_camera(delta):
 	if Input.is_action_just_pressed("zoom_in_camera"):
 		if camera.zoom < max_zoom_camera:
@@ -178,7 +168,7 @@ func attack() -> void:
 	var rand_num = rng.randi_range(0, 1)
 	animation_tree["parameters/Attack1_TimeScale/scale"] = %Stats.get_attack_speed()
 	animation_tree["parameters/Attack2_TimeScale/scale"] = %Stats.get_attack_speed()
-	print("Speed of attack: "+ str(%Stats.get_attack_speed()))
+	#print("Speed of attack: "+ str(%Stats.get_attack_speed()))
 	match rand_num:
 		0:
 			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

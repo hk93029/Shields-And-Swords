@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://buqo23f6wc8ns"]
 
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword.png" id="1_a5qef"]
+[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="1_25382"]
 [ext_resource type="Script" path="res://scenes/items/weapons/iron_sword.gd" id="2_gkb1t"]
 
 [node name="IronSword" type="Sprite2D"]
-texture = ExtResource("1_a5qef")
+texture = ExtResource("1_25382")
 offset = Vector2(1.43817, -18.5712)
 script = ExtResource("2_gkb1t")
 base_physical_damage_min = 6

@@ -1,7 +1,7 @@
 extends Character
 
 var level: int = 1
-var exp_necessary: Array[int] = [0, 100, 530, 970, 1900, 4800, 6500, 9000, 13000, 17800, 25000, 40000] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
+var exp_necessary: Array[int] = [0, 100, 530, 970, 1900, 4800, 6500, 9000, 13000, 17800, 25000, 40000, 90000, 200000, 600000, 1300000, 3000000] # para lvl 1 precisa de 100xp para lvl 2 precisa de 130...
 var current_exp: int = 0
 var level_atribute_points: int = 0
 var player: Player

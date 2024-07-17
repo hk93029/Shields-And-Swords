@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dk2ylxs75hlfh"]
+[gd_scene load_steps=28 format=3 uid="uid://dk2ylxs75hlfh"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/zombie.gd" id="1_eqtij"]
 [ext_resource type="Script" path="res://resources/types/character_attributes.gd" id="2_sfqmy"]
@@ -22,6 +22,12 @@ radius = 15.7972
 script = ExtResource("5_eo5oh")
 improvment = 4
 value = 33.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcr74"]
+radius = 387.562
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6x8d"]
+radius = 551.343
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oj8ed"]
 radius = 31.7191
@@ -1948,6 +1954,35 @@ base_physical_damage_max = 6
 quality = 7
 adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_jhggi")])
 
+[node name="Navigation" type="Node2D" parent="Sprite"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Sprite/Navigation"]
+unique_name_in_owner = true
+avoidance_enabled = true
+
+[node name="RecalculateTimer" type="Timer" parent="Sprite/Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Aggro" type="Node2D" parent="Sprite"]
+
+[node name="AggroRange" type="Area2D" parent="Sprite/Aggro"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Aggro/AggroRange"]
+position = Vector2(-13.2142, -49.3318)
+shape = SubResource("CircleShape2D_lcr74")
+
+[node name="DeAgroRange" type="Area2D" parent="Sprite/Aggro"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Aggro/DeAgroRange"]
+position = Vector2(-13.214, -49.332)
+shape = SubResource("CircleShape2D_w6x8d")
+debug_color = Color(0.955847, 0.128115, 0.425765, 0.42)
+
 [node name="ClickableArea2D" type="Area2D" parent="Sprite"]
 position = Vector2(-9.4494, 0)
 
@@ -2110,14 +2145,12 @@ position = Vector2(1.12373, -26.0331)
 rotation = -0.175011
 scale = Vector2(0.999838, 0.999838)
 rest = Transform2D(1, 0, 0, 1, 1.12373, -26.0331)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(-19.6754, 14.7191)
 rotation = 0.483153
 scale = Vector2(0.999854, 0.999854)
 rest = Transform2D(1, 0, 0, 1, -19.6754, 14.7191)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
 position = Vector2(-9.84393, 4.18675)
@@ -2131,14 +2164,12 @@ position = Vector2(-8.99049, -27.3612)
 rotation = -0.211639
 scale = Vector2(0.999853, 0.999853)
 rest = Transform2D(1, 0, 0, 1, -8.99049, -27.3612)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-18.3422, 5.96225)
 rotation = 0.212552
 scale = Vector2(0.999854, 0.999854)
 rest = Transform2D(1, 0, 0, 1, -18.3422, 5.96225)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="HandR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR"]
 position = Vector2(-19.4676, -3.04596)
@@ -2152,38 +2183,33 @@ position = Vector2(1.53455, 0.479259)
 rotation = -0.00693274
 scale = Vector2(0.999838, 0.999838)
 rest = Transform2D(1, 0, 0, 1, 1.53455, 0.479259)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
 position = Vector2(16.0337, 27.8625)
 rotation = 0.0100969
 scale = Vector2(0.999841, 0.999841)
 rest = Transform2D(1, 0, 0, 1, 16.0337, 27.8625)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(19.9748, 23.5465)
 rotation = 0.00374595
-scale = Vector2(0.999945, 0.999945)
+scale = Vector2(0.999943, 0.999943)
 rest = Transform2D(1, 0, 0, 1, 19.9516, 23.5571)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 57.6
-metadata/_local_pose_override_enabled_ = true
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-1.32582, 3.18198)
 rotation = -0.000615716
 scale = Vector2(0.999841, 0.999841)
 rest = Transform2D(1, 0, 0, 1, -1.32582, 3.18198)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-6.23629, 25.1679)
 rotation = 0.000982968
 scale = Vector2(0.99984, 0.99984)
 rest = Transform2D(1, 0, 0, 1, -6.23629, 25.1679)
-metadata/_local_pose_override_enabled_ = true
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
 position = Vector2(2.33763, 25.3549)
@@ -2193,7 +2219,6 @@ rest = Transform2D(1, 0, 0, 1, 2.33763, 25.3549)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 158.4
-metadata/_local_pose_override_enabled_ = true
 
 [node name="Neck" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-8.24081, -28.5088)
@@ -2246,5 +2271,8 @@ libraries = {
 }
 autoplay = "idle"
 
+[connection signal="timeout" from="Sprite/Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
+[connection signal="area_entered" from="Sprite/Aggro/AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="Sprite/Aggro/DeAgroRange" to="." method="_on_de_agro_range_area_exited"]
 [connection signal="mouse_entered" from="Sprite/ClickableArea2D" to="." method="_on_clickable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/ClickableArea2D" to="." method="_on_clickable_area_2d_mouse_exited"]

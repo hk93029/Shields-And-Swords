@@ -189,6 +189,7 @@ func recalc_path(target_body):
 	if target_body_clicked != null:
 		nav_agent.target_position = target_body.position
 	
+	
 func _on_attack_area_2d_body_entered(body):
 
 	if body.is_in_group("enemy"):

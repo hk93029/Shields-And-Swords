@@ -4262,6 +4262,7 @@ position = Vector2(94.1804, -124.453)
 
 [node name="HPBar" parent="." instance=ExtResource("14_lxko3")]
 unique_name_in_owner = true
+visible = false
 offset_left = -23.0
 offset_top = -144.0
 offset_right = 23.0

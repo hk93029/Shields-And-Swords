@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=72 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Script" path="res://resources/templates/characters/player_stats/player_stats.gd" id="2_7vfg6"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://buqo23f6wc8ns" path="res://scenes/items/weapons/iron_sword.tscn" id="3_ivcqv"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
 [ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://player_sprite.png" id="4_3byib"]
+[ext_resource type="Texture2D" uid="uid://bqbyoml2o1pj1" path="res://assets/sprites/misc/shadow.png" id="4_i2epj"]
 [ext_resource type="Script" path="res://resources/templates/items/armor.gd" id="5_4wp1p"]
 [ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://scenes/characters/players/shield.png" id="5_s41gh"]
+[ext_resource type="Script" path="res://resources/types/additionals/combat_performace_adds.gd" id="5_ukyfc"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://scenes/characters/players/soft_light.png" id="6_ymrc8"]
 [ext_resource type="Script" path="res://resources/templates/items/ring.gd" id="7_uwyaq"]
@@ -23,7 +25,7 @@
 script = ExtResource("2_fphqr")
 STR = 10
 CONS = 0
-DEX = 7
+DEX = 2
 INT = 0
 
 [sub_resource type="Environment" id="Environment_52cbf"]
@@ -35,6 +37,11 @@ glow_hdr_luminance_cap = 45.42
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_smckf"]
 radius = 66.8012
+
+[sub_resource type="Resource" id="Resource_vlv0c"]
+script = ExtResource("5_ukyfc")
+improvment = 1
+value = 33.0
 
 [sub_resource type="Resource" id="Resource_jnk3v"]
 script = ExtResource("8_2x63g")
@@ -3688,7 +3695,7 @@ _data = {
 "run": SubResource("Animation_74gnb")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "damage_digit_maker", "hp_bar", "weapon") groups=["knight", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "damage_digit_maker", "hp_bar", "armor", "weapon") groups=["character", "knight", "player"]]
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -3697,6 +3704,7 @@ nav_agent = NodePath("Navigation/NavigationAgent2D")
 char_attributes = SubResource("Resource_d5a2t")
 damage_digit_maker = NodePath("DamageDigitMaker")
 hp_bar = NodePath("HPBar")
+armor = NodePath("Sprite/Polygons/Items/Armor")
 weapon = NodePath("Sprite/Polygons/Items/Weapon")
 
 [node name="CharacterEvolutionSettings" type="Node" parent="." groups=["player_stats"]]
@@ -3708,6 +3716,11 @@ environment = SubResource("Environment_52cbf")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0.0112829, -57.5291)
+
+[node name="Shadow" type="Sprite2D" parent="Sprite"]
+modulate = Color(0, 0, 0, 0.721569)
+position = Vector2(0, 57.7407)
+texture = ExtResource("4_i2epj")
 
 [node name="AttackArea2D" type="Area2D" parent="Sprite"]
 position = Vector2(-0.0112829, 57.5291)
@@ -3727,6 +3740,7 @@ unique_name_in_owner = true
 script = ExtResource("3_10bed")
 base_physical_damage_min = 6
 base_physical_damage_max = 8
+adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_vlv0c")])
 
 [node name="Weapond" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
 unique_name_in_owner = true

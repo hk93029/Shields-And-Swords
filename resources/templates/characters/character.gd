@@ -4,6 +4,8 @@ extends CharacterBody2D
 
 enum AttributeType { STR, DEX, CONS, INT}
 
+const MAX_BLOCKING_CHANCE: int = 33
+
 @export var char_attributes: CharacterAttributes
 
 var health: int
@@ -33,6 +35,11 @@ var equips_adds: EquipmentsAdditionals # Amount of all equips adds togheter
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var damage_received : int
+
+signal critical_damage_received
+signal blocked_damage_received
+signal evaded_damage_received
+
 
 func ready_character():
 	add_to_group("character", true)
@@ -90,7 +97,8 @@ func update_critical_chance() -> void:
 	char_stats.critical_chance = equips_adds.critical_chance + (char_attributes.DEX+equips_adds.DEX)*1.3
 
 func update_blocking_chance() -> void:
-	char_stats.blocking_chance = equips_adds.blocking_chance
+	char_stats.blocking_chance = clamp(equips_adds.blocking_chance, 0,  MAX_BLOCKING_CHANCE)
+
 
 func update_critical_damage() -> void:
 	char_stats.critical_damage = equips_adds.critical_damage + (char_attributes.STR+equips_adds.STR)*3
@@ -237,6 +245,7 @@ func apply_item_add_effect(add, command):
 
 			CombatPerformaceAdd.Improvment.BLOCKING_CHANCE:
 				equips_adds.blocking_chance += add.value*remove_or_add
+				update_blocking_chance()
 
 			CombatPerformaceAdd.Improvment.CRITICAL_DAMAGE:
 				equips_adds.critical_damage += add.value*remove_or_add
@@ -315,6 +324,7 @@ func get_damage() -> Damage:
 	
 	if is_critical_damage():
 	#	physical_damage = physical_damage + (float(physical_damage)/100)*attributes.critical_damage
+		_get_target_body().emit_signal("critical_damage_received")
 		damage.physical_damage = damage.physical_damage + (float(damage.physical_damage)/100)*char_stats.critical_damage
 		damage.is_critical = true
 	else:
@@ -404,16 +414,19 @@ func hurt(damage: Damage) -> void:
 	var damage_digit 
 	
 	if damage.is_evaded:
+		emit_signal("evaded_damage_received")
 		damage_digit = evaded_damage_digit_prefab.instantiate()
 		damage_digit.value = "Miss!!"	
 		damage_received = 0
 		
 	elif damage.is_blocked:
+		emit_signal("blocked_damage_received")
 		damage_digit = blocked_damage_digit_prefab.instantiate()
 		damage_digit.value = "Blocked!!"
 		damage_received = 0
 
 	elif damage.is_critical:
+
 		damage_digit = critical_damage_digit_prefab.instantiate()
 		damage_digit.value = str(damage_received)+"!!"
 

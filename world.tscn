@@ -272,3 +272,12 @@ navigation_polygon = SubResource("NavigationPolygon_nb37o")
 
 [node name="Zombie" parent="." instance=ExtResource("5_6wnla")]
 position = Vector2(963.343, 299.168)
+
+[node name="Zombie2" parent="." instance=ExtResource("5_6wnla")]
+position = Vector2(1024.91, 110.081)
+
+[node name="Zombie3" parent="." instance=ExtResource("5_6wnla")]
+position = Vector2(1083.46, 523.399)
+
+[node name="Zombie4" parent="." instance=ExtResource("5_6wnla")]
+position = Vector2(744.05, 393.291)

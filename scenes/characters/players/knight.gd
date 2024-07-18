@@ -39,6 +39,7 @@ var target_node = null
 var position_arrived: bool = true
 var is_running: bool = false
 var is_on_attack: bool = false
+var is_dead: bool = false
 var can_attack: bool = true
 
 var last_mouse_pos = null

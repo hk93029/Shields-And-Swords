@@ -266,33 +266,9 @@ offset = Vector2(-4, -14)
 [node name="Player" parent="." instance=ExtResource("2_eo0yr")]
 position = Vector2(478.695, 305.38)
 
-[node name="Zombie" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(754.726, 393.619)
-
-[node name="Zombie2" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(942.817, 338.465)
-
-[node name="Zombie3" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(760.383, 247.955)
-
-[node name="Zombie4" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(911.704, 468.572)
-
-[node name="Zombie5" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(736.341, 209.771)
-
-[node name="Zombie6" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(910.093, 146.203)
-
-[node name="Zombie7" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1088.08, 188.582)
-
-[node name="Zombie8" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1261.83, 375.047)
-
-[node name="Zombie9" parent="." instance=ExtResource("5_6wnla")]
-position = Vector2(1181.32, 430.139)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 z_index = -2
 navigation_polygon = SubResource("NavigationPolygon_nb37o")
+
+[node name="Zombie" parent="." instance=ExtResource("5_6wnla")]
+position = Vector2(963.343, 299.168)

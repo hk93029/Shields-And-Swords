@@ -8,32 +8,93 @@ class_name Zombie
 var damage_base: int
 var blocking_chance: int = 30
 var is_dead: bool = false
+var can_attack: bool = true
 var target_body = null
 var start_position: Vector2 = Vector2.ZERO
 
+var impulse: float = 1
+
 @onready var nav_agent: NavigationAgent2D = %NavigationAgent2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 func _ready():
 	ready_character()
 	hp_bar.max_value = max_health
 	hp_bar.value = max_health
 
+	animation_tree.active = true
+	
 	start_position = global_position
-	nav_agent.path_desired_distance = 4
+	nav_agent.path_desired_distance = 20
 	nav_agent.target_desired_distance = 4
 	
 
 func _physics_process(delta):
-	if nav_agent.is_navigation_finished():
+	if is_dead:
 		return
 	
+	if (target_body != null):
+		print("TESTE 232323")
+		var direction_to_target = position.direction_to(target_body.position)
+		var distance_limit
+		
+		if abs(direction_to_target.dot(Vector2(scale.x, 0))) > 0.7:
+			distance_limit = 80 # + weapon_range
+		else:
+			if target_body.position.y > position.y:
+				distance_limit = 30
+			else:
+				distance_limit = 10
+		
+		if (nav_agent.distance_to_target() <= distance_limit):
+			print("AAAAAAAAAAAA")
+			#print(nav_agent.distance_to_target())
+			animation_tree["parameters/Transition/transition_request"] = "idle"
+			
+			
+			if target_body.position.x < position.x:
+				$Sprite.scale.x = 1
+			elif target_body.position.x > position.x:
+				$Sprite.scale.x = -1
+				
+			if can_attack :#and !target_body.is_dead:
+				attack()
+				print("TESTE ATAQUE")
+			return
+
+			
+	
+	
+	
+#	impulse = lerp(impulse, 0.0, 0.08)
+	animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	animation_tree["parameters/Attack2_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	can_attack = true
+
 	var axis = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = axis * speed
 	
-	if velocity.x != 0 or velocity.y != 0:
-		animation_player.play("walk")
+
+#	print("Position x:", str(position.x), "Next node position: ", str(nav_agent.get_next_path_position().x))
+
+	if (nav_agent.distance_to_target() <= 30):
+		velocity = Vector2(0, 0)
+		nav_agent.target_position = self.position
 	
+	
+	if velocity.x < 0:
+		$Sprite.scale.x = 1
+	elif velocity.x > 0:
+		$Sprite.scale.x = -1
+	
+
+	if velocity.x != 0 or velocity.y != 0:
+		animation_tree["parameters/Transition/transition_request"] = "walk"
+	else:
+		animation_tree["parameters/Transition/transition_request"] = "idle"
+	
+	#print(velocity.x)
 	move_and_slide()
 	
 func _play_damage_effect():
@@ -42,7 +103,7 @@ func _play_damage_effect():
 
 func _play_death_effect():
 	print("Morto!")
-	animation_player.play("die")
+	animation_tree["parameters/Transition/transition_request"] = "die"
 	if self == Mouse.target_body:
 		Mouse.reset()
 
@@ -59,6 +120,34 @@ func recalc_path():
 	else:
 		nav_agent.target_position = start_position
 
+
+func set_can_attack_to_true():
+	can_attack = true
+
+
+func hit(): # hit está sendo chamado diretamente da animação, ou seja, só o ato de animar o attack dele, automaticamente já faz ele infligir dano ao alvo
+	if not target_body:
+		return
+		
+	target_body.hurt(get_damage())
+	if target_body.is_dead:
+		target_body = null
+		nav_agent.target_position = self.position
+		
+
+
+func attack():
+	can_attack = false
+	var rand_num = rng.randi_range(0, 1)
+	animation_tree["parameters/Attack1_TimeScale/scale"] = get_attack_speed()
+	animation_tree["parameters/Attack2_TimeScale/scale"] = get_attack_speed()
+	#print("Speed of attack: "+ str(%Stats.get_attack_speed()))
+	match rand_num:
+		0:
+			animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		1:
+			animation_tree["parameters/Attack2_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		
 
 func _on_clickable_area_2d_mouse_entered():
 	Mouse.change_state(self)
@@ -83,3 +172,6 @@ func _on_de_agro_range_area_exited(area):
 
 func _on_recalculate_timer_timeout():
 	recalc_path()
+
+func on_impulse_applied(value):
+	impulse = value

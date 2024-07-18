@@ -250,7 +250,7 @@ animation = &"physical_skill_area"
 animation = &"run"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hors5"]
-graph_offset = Vector2(111.326, 33.1872)
+graph_offset = Vector2(769.701, 409.473)
 nodes/Attack1_OneShot/node = SubResource("AnimationNodeOneShot_kxr61")
 nodes/Attack1_OneShot/position = Vector2(640, 186.667)
 nodes/Attack1_TimeScale/node = SubResource("AnimationNodeTimeScale_1ssjg")
@@ -4182,6 +4182,7 @@ position = Vector2(-14.7249, 6.27496)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 path_max_distance = 300.0
 avoidance_enabled = true
+radius = 13.0
 avoidance_mask = 7
 debug_enabled = true
 
@@ -4262,7 +4263,6 @@ position = Vector2(94.1804, -124.453)
 
 [node name="HPBar" parent="." instance=ExtResource("14_lxko3")]
 unique_name_in_owner = true
-visible = false
 offset_left = -23.0
 offset_top = -144.0
 offset_right = 23.0

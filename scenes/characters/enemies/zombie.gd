@@ -3,7 +3,7 @@ class_name Zombie
 
 @export var death_experience_min: int = 30 #Enemy
 @export var death_experience_max: int = 40 #Enemy
-@export var speed: int = 50
+@export var speed: int = 10
 
 var damage_base: int
 var blocking_chance: int = 30
@@ -73,7 +73,8 @@ func _physics_process(delta):
 	can_attack = true
 
 	var axis = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = axis * speed
+	impulse = lerp(impulse, 0.0, 0.08)
+	velocity = axis * speed * impulse
 	
 
 #	print("Position x:", str(position.x), "Next node position: ", str(nav_agent.get_next_path_position().x))

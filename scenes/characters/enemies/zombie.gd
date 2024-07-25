@@ -22,6 +22,9 @@ var impulse: float = 1
 
 
 func _ready():
+	weapon = Weapon.new()
+	weapon.physical_damage_min = 10
+	weapon.physical_damage_max = 20
 	ready_character()
 
 	connect("critical_damage_received", on_critical_damage_received)

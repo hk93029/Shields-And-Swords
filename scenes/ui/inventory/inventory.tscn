@@ -1,0 +1,265 @@
+[gd_scene load_steps=16 format=3 uid="uid://dq7gim7icgkiq"]
+
+[ext_resource type="Texture2D" uid="uid://b2qf5fvpsim4f" path="res://assets/sprites/ui/inventory/inventory_edge.png" id="1_vo6br"]
+[ext_resource type="Texture2D" uid="uid://dry6q7ma82fvb" path="res://assets/sprites/ui/inventory/inventory_title_background.png" id="2_n10hq"]
+[ext_resource type="Texture2D" uid="uid://drc5c46775nw7" path="res://assets/sprites/ui/inventory/inventory_reference.png" id="2_piejc"]
+[ext_resource type="Texture2D" uid="uid://c60mq78ecfbax" path="res://assets/sprites/ui/inventory/inventory_container.png" id="3_7dy46"]
+[ext_resource type="Texture2D" uid="uid://v2mlbocqy1pk" path="res://assets/sprites/ui/close_button.png" id="4_3utce"]
+[ext_resource type="Texture2D" uid="uid://csspupffumkov" path="res://assets/sprites/ui/inventory/inventory_grid_background.png" id="4_yilev"]
+[ext_resource type="Texture2D" uid="uid://co1jna8u1urfn" path="res://assets/sprites/ui/close_button_pressed.png" id="5_fp2lr"]
+[ext_resource type="Texture2D" uid="uid://dxd8nd2qlmxar" path="res://assets/sprites/ui/inventory/coin_background.png" id="6_yfi3o"]
+[ext_resource type="Texture2D" uid="uid://dhq8dsid6floe" path="res://assets/sprites/ui/inventory/gold_icon.png" id="7_2mste"]
+[ext_resource type="PackedScene" uid="uid://8op6hl0tha0x" path="res://classes/inventory/inventory_slot.tscn" id="7_6i4ln"]
+[ext_resource type="Texture2D" uid="uid://dfh1m2b52aru3" path="res://assets/sprites/icons/items/iron_sword.png" id="8_gyd3f"]
+[ext_resource type="Texture2D" uid="uid://qc7phattdius" path="res://assets/sprites/ui/inventory/essence_background.png" id="8_hil0q"]
+[ext_resource type="Texture2D" uid="uid://vesoqiq6qi6i" path="res://assets/sprites/ui/inventory/essence_icon.png" id="9_goyl0"]
+
+[sub_resource type="SystemFont" id="SystemFont_y3501"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qa861"]
+font = SubResource("SystemFont_y3501")
+font_size = 20
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryEdge" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vo6br")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 23.9774
+offset_top = 14.5194
+offset_right = 271.977
+offset_bottom = 217.519
+
+[node name="InventoryTitle" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_n10hq")
+
+[node name="Label" type="Label" parent="VBoxContainer/InventoryTitle"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.2009
+offset_top = -1.10402
+offset_right = 63.7991
+offset_bottom = 31.896
+grow_horizontal = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_qa861")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="InventoryContainerBG" type="TextureRect" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_7dy46")
+
+[node name="CloseButton" type="TextureButton" parent="VBoxContainer/CenterContainer/InventoryContainerBG"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -13.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 13.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("4_3utce")
+texture_pressed = ExtResource("5_fp2lr")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+
+[node name="InventoryGridBG" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_yilev")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="SlotGridContainer" type="GridContainer" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 6
+
+[node name="InventorySlot" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="ItemIcon" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot" index="0"]
+texture = ExtResource("8_gyd3f")
+
+[node name="InventorySlot2" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 6
+
+[node name="GoldBG" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_yfi3o")
+
+[node name="GoldIcon" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/GoldBG"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 1.0
+texture = ExtResource("7_2mste")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/GoldBG"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -11.5
+offset_right = -3.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "20"
+horizontal_alignment = 2
+
+[node name="EssenceBG" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_hil0q")
+
+[node name="EssenceIcon" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/EssenceBG"]
+layout_mode = 0
+offset_left = 0.75
+offset_top = 0.75
+offset_right = 0.75
+offset_bottom = 0.75
+texture = ExtResource("9_goyl0")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="EssenceLabel" type="Label" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/EssenceBG"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -11.5
+offset_right = -3.0
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="Reference" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.619608)
+layout_mode = 0
+offset_right = 296.0
+offset_bottom = 235.0
+texture = ExtResource("2_piejc")
+
+[editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot"]

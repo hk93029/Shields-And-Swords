@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://8op6hl0tha0x"]
+
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory_slot.gd" id="1_caqln"]
+[ext_resource type="Texture2D" uid="uid://5ht6wcth56nk" path="res://assets/sprites/ui/inventory/inventory_slot.png" id="2_fojku"]
+[ext_resource type="Script" path="res://classes/inventory/item_icon.gd" id="3_f54u7"]
+
+[node name="InventorySlot" type="TextureRect"]
+texture = ExtResource("2_fojku")
+script = ExtResource("1_caqln")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 34.0
+offset_bottom = 34.0
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("3_f54u7")

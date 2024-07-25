@@ -1,28 +1,28 @@
 [gd_scene load_steps=72 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
-[ext_resource type="Script" path="res://resources/templates/characters/player_stats/player_stats.gd" id="2_7vfg6"]
-[ext_resource type="Script" path="res://resources/types/character_attributes.gd" id="2_fphqr"]
-[ext_resource type="Script" path="res://resources/templates/items/weapon.gd" id="3_10bed"]
-[ext_resource type="PackedScene" uid="uid://buqo23f6wc8ns" path="res://scenes/items/weapons/iron_sword.tscn" id="3_ivcqv"]
+[ext_resource type="Resource" uid="uid://c2qnc21pp4qvy" path="res://classes/inventory/player_inventory.tres" id="2_5722x"]
+[ext_resource type="PackedScene" uid="uid://bcgg85k2kioj" path="res://scenes/items/weapons/swoord.tscn" id="3_ivcqv"]
+[ext_resource type="Script" path="res://resources_scripts/types/character_attributes.gd" id="3_tovbt"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
-[ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://player_sprite.png" id="4_3byib"]
+[ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://assets/sprites/items/armors/steel_armor.png" id="4_3byib"]
 [ext_resource type="Texture2D" uid="uid://bqbyoml2o1pj1" path="res://assets/sprites/misc/shadow.png" id="4_i2epj"]
-[ext_resource type="Script" path="res://resources/templates/items/armor.gd" id="5_4wp1p"]
-[ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://scenes/characters/players/shield.png" id="5_s41gh"]
-[ext_resource type="Script" path="res://resources/types/additionals/combat_performace_adds.gd" id="5_ukyfc"]
+[ext_resource type="Script" path="res://scenes/characters/players/player_stats.gd" id="4_pyk7g"]
+[ext_resource type="Texture2D" uid="uid://bxbnmcf5vsv78" path="res://assets/sprites/items/shields/shield.png" id="5_s41gh"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
-[ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://scenes/characters/players/soft_light.png" id="6_ymrc8"]
-[ext_resource type="Script" path="res://resources/templates/items/ring.gd" id="7_uwyaq"]
-[ext_resource type="Script" path="res://resources/types/defense.gd" id="8_2x63g"]
-[ext_resource type="Script" path="res://resources/templates/items/amulet.gd" id="8_sinit"]
-[ext_resource type="Script" path="res://resources/types/additionals/damage_add.gd" id="10_28enr"]
-[ext_resource type="Texture2D" uid="uid://dks1wcwjjubat" path="res://assets/sprites/items/weapons/sword.png" id="11_h0srg"]
+[ext_resource type="Script" path="res://resources_scripts/templates/items/weapon.gd" id="6_uc0ka"]
+[ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://assets/sprites/misc/soft_light.png" id="6_ymrc8"]
+[ext_resource type="Script" path="res://classes/additionals/combat_performace_adds.gd" id="7_c3w58"]
+[ext_resource type="Script" path="res://resources_scripts/templates/items/armor.gd" id="10_ueb4k"]
+[ext_resource type="Script" path="res://resources_scripts/types/defense.gd" id="12_npl2x"]
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="13_u80wy"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="14_367bt"]
+[ext_resource type="Script" path="res://classes/additionals/damage_add.gd" id="14_ads8f"]
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="14_lxko3"]
+[ext_resource type="Script" path="res://classes/items/amulet.gd" id="15_dpncw"]
 
 [sub_resource type="Resource" id="Resource_d5a2t"]
-script = ExtResource("2_fphqr")
+script = ExtResource("3_tovbt")
 STR = 10
 CONS = 0
 DEX = 2
@@ -39,12 +39,12 @@ glow_hdr_luminance_cap = 45.42
 radius = 66.8012
 
 [sub_resource type="Resource" id="Resource_vlv0c"]
-script = ExtResource("5_ukyfc")
+script = ExtResource("7_c3w58")
 improvment = 1
 value = 33.0
 
 [sub_resource type="Resource" id="Resource_jnk3v"]
-script = ExtResource("8_2x63g")
+script = ExtResource("12_npl2x")
 physical_defense = 7
 extra_defense = 0
 fire_defense = 0
@@ -53,7 +53,7 @@ lightning_defense = 0
 dark_defense = 0
 
 [sub_resource type="Resource" id="Resource_vqct5"]
-script = ExtResource("10_28enr")
+script = ExtResource("14_ads8f")
 improvment = 1
 value = 10
 
@@ -3695,21 +3695,22 @@ _data = {
 "run": SubResource("Animation_74gnb")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "damage_digit_maker", "hp_bar", "armor", "weapon") groups=["character", "knight", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "damage_digit_maker", "hp_bar") groups=["character", "knight", "player"]]
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_hgjer")
+inventory = ExtResource("2_5722x")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 char_attributes = SubResource("Resource_d5a2t")
 damage_digit_maker = NodePath("DamageDigitMaker")
 hp_bar = NodePath("HPBar")
-armor = NodePath("Sprite/Polygons/Items/Armor")
-weapon = NodePath("Sprite/Polygons/Items/Weapon")
+weapon = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":null,"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":ExtResource("6_uc0ka"),"base_physical_damage_min":6,"base_physical_damage_max":8,"quality":0,"adds":Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_vlv0c")]),"refining":0,"item_name":"","description":"","icon":null,"price":0)
+
 
 [node name="CharacterEvolutionSettings" type="Node" parent="." groups=["player_stats"]]
 unique_name_in_owner = true
-script = ExtResource("2_7vfg6")
+script = ExtResource("4_pyk7g")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_52cbf")
@@ -3737,34 +3738,32 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Weapon" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-script = ExtResource("3_10bed")
+script = ExtResource("6_uc0ka")
 base_physical_damage_min = 6
 base_physical_damage_max = 8
-adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_vlv0c")])
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_vlv0c")])
 
 [node name="Weapond" parent="Sprite/Polygons/Items" instance=ExtResource("3_ivcqv")]
 unique_name_in_owner = true
 position = Vector2(-39.668, -10.564)
 rotation = -0.613725
 scale = Vector2(0.99942, 0.99942)
-texture = ExtResource("11_h0srg")
-script = null
 
 [node name="Armor" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-script = ExtResource("5_4wp1p")
+script = ExtResource("10_ueb4k")
 sprite = ExtResource("4_3byib")
 defense = SubResource("Resource_jnk3v")
 
 [node name="Ring" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-script = ExtResource("7_uwyaq")
-adds = Array[Resource("res://resources/types/additionals/add.gd")]([SubResource("Resource_vqct5")])
+script = ExtResource("13_u80wy")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_vqct5")])
 item_name = "Adventurer Ring"
 
 [node name="Amulet" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-script = ExtResource("8_sinit")
+script = ExtResource("15_dpncw")
 
 [node name="Effects" type="Node2D" parent="Sprite/Polygons"]
 

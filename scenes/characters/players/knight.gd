@@ -3,6 +3,8 @@ extends Character
 
 enum State { MOVE, ATTACK}
 
+@export var inventory: Inventory
+
 var speed: Vector2 = Vector2(300, 300)
 
 var last_mouse_position = null

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Armor" load_steps=6 format=3 uid="uid://dfyo5pt6tso6r"]
+
+[ext_resource type="Script" path="res://classes/items/armor.gd" id="1_lm2p4"]
+[ext_resource type="Script" path="res://resources_scripts/types/defense.gd" id="1_ywv3s"]
+[ext_resource type="Texture2D" uid="uid://bwrntqfoq45ni" path="res://assets/sprites/icons/items/steel_armor_icon.png" id="2_grk8t"]
+[ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://assets/sprites/items/armors/steel_armor.png" id="4_warv7"]
+
+[sub_resource type="Resource" id="Resource_fo3xf"]
+script = ExtResource("1_ywv3s")
+physical_defense = 10
+extra_defense = 0
+fire_defense = 0
+cold_defense = 0
+lightning_defense = 0
+dark_defense = 0
+
+[resource]
+script = ExtResource("1_lm2p4")
+sprite = ExtResource("4_warv7")
+defense = SubResource("Resource_fo3xf")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+item_name = "Steel Armor"
+description = "Steel Armor
+"
+icon = ExtResource("2_grk8t")
+price = 320

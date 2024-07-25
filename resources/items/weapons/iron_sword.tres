@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://cg6xxqgtspci1"]
+
+[ext_resource type="Script" path="res://classes/items/weapon.gd" id="1_dwic6"]
+
+[resource]
+script = ExtResource("1_dwic6")
+base_physical_damage_min = 6
+base_physical_damage_max = 8
+quality = 0
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 0
+item_name = "Iron Sword"
+description = "Iron Sword"
+price = 70

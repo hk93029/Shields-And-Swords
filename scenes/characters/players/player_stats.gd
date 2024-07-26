@@ -11,7 +11,7 @@ func _ready():
 	player = get_parent()
 	post_current_status()
 	post_current_attributes()
-
+	post_current_level()
 
 #func _get_target_body():
 #	return player.get_target_body()
@@ -23,6 +23,7 @@ func level_up(): # player
 	UI.HUD.update_experience_bar(exp_necessary[level-1], exp_necessary[level])
 	UI.HUD.update_level_indicator(level, level+1) # (current_level, next_level)
 	Events.emit_signal("level_upped", 3)
+	post_current_level()
 	level_atribute_points = 0
 	
 func update_exp(exp: int) -> void: # player
@@ -42,3 +43,6 @@ func post_current_status():
 	
 func post_current_attributes():
 	Events.emit_signal("post_current_attributes", player.char_attributes)
+
+func post_current_level():
+	Events.emit_signal("post_current_level", level)

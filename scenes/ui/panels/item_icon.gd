@@ -1,6 +1,7 @@
 extends TextureRect
 
 var item: Item
+var origin_slot: String = "Armor"
 
 func _get_drag_data(at_position): # Dado que será retornado quando clicar duas vezes e arrastar. NÃO é o dado visual, é o dado real que será ARMAZENADO na área de DROP
 	if texture != null:

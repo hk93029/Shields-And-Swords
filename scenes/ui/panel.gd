@@ -49,9 +49,15 @@ func _on_gui_input(event):
 func _change_panel_visibility():
 	visible = !visible
 	global_position = original_position
+	if visible == false:
+		Mouse.is_dragging = false
+		drag_position = null
+
 
 func _on_close_button_pressed():
 	visible = false
+	Mouse.is_dragging = false
+	drag_position = null
 
 
 func change_attribute_pressed(attribute, operation):

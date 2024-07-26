@@ -29,6 +29,10 @@ refining = 0
 item_name = ""
 description = ""
 price = 0
+necessary_level = 1
+necessary_str = 1
+necessary_dex = 1
+necessary_int = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcr74"]
 radius = 224.114
@@ -2579,6 +2583,8 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_eqtij")
+death_experience_min = 300
+death_experience_max = 400
 char_attributes = SubResource("Resource_hi32o")
 damage_digit_maker = NodePath("DamageDigitMarker")
 hp_bar = NodePath("HPBar")
@@ -2613,6 +2619,7 @@ unique_name_in_owner = true
 avoidance_enabled = true
 avoidance_layers = 2
 avoidance_mask = 7
+debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Sprite/Navigation"]
 wait_time = 0.1

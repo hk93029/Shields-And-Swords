@@ -11,3 +11,9 @@ var quantity: int = 1
 var item_type: ItemType
 var is_stackable: bool = false
 var is_consumable: bool = false
+
+@export var necessary_level: int = 1
+@export var necessary_str: int = 1
+@export var necessary_dex: int = 1
+@export var necessary_int: int = 1
+#var necessary_class: ClassType

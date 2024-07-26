@@ -14,3 +14,7 @@ description = "Steel Armor
 "
 icon = ExtResource("2_grk8t")
 price = 320
+necessary_level = 3
+necessary_str = 5
+necessary_dex = 2
+necessary_int = 0

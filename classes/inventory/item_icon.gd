@@ -9,6 +9,8 @@ extends TextureRect
 		#	%QuantityLabel.visible = false
 		#
 		#texture = value.icon
+var origin_slot: String = "Inventory"
+
 func _ready():
 	if item != null:
 		if item.is_stackable:

@@ -16,3 +16,7 @@ item_name = "Iron Sword"
 description = "Iron Sword"
 icon = ExtResource("1_7u03o")
 price = 70
+necessary_level = 1
+necessary_str = 1
+necessary_dex = 1
+necessary_int = 1

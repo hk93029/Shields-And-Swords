@@ -83,9 +83,8 @@ func _physics_process(delta):
 		can_attack = true
 
 	var axis = to_local(nav_agent.get_next_path_position()).normalized()
-	impulse = lerp(impulse, 0.0, 0.08)
+	impulse = lerp(impulse, 0.0001, 0.08)
 	velocity = axis * speed * impulse
-	
 
 #	print("Position x:", str(position.x), "Next node position: ", str(nav_agent.get_next_path_position().x))
 

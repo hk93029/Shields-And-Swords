@@ -18,6 +18,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_y3501"]
 font_names = PackedStringArray("Fantasy")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qa861"]
 font = SubResource("SystemFont_y3501")
@@ -91,6 +92,7 @@ offset_bottom = 13.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 1
 texture_normal = ExtResource("4_3utce")
 texture_pressed = ExtResource("5_fp2lr")
 

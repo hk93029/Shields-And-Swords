@@ -1,10 +1,11 @@
 class_name Weapon
 extends Item
 
-@export var sprite: Texture2D
+@export var texture: Texture2D
 
-@export var base_physical_damage_min: int
 @export var  base_physical_damage_max: int
+@export var base_physical_damage_min: int
+
 
 var physical_damage_min: int = base_physical_damage_min
 var physical_damage_max: int = base_physical_damage_max
@@ -21,11 +22,14 @@ var level: int = 1
 @export_category("Weapon Refining")
 @export var refining = 0
 
+
 func _init():
 	item_type = ItemType.WEAPON
-	
+
 
 func _ready():
+	physical_damage_min = base_physical_damage_min
+	physical_damage_max = base_physical_damage_max
 	set_max_possible_adds(quality)
 	init_weapon_adds_slots()
 	update_weapon_physical_damge(base_physical_damage_min, base_physical_damage_max)
@@ -94,7 +98,8 @@ func get_weapon_damage():
 				DamageAdd.Improvment.DARKNESS:
 					damage.darkness_damage = adds[index].value
 					break;
-		
+	
+	print("Min: %s; Max: %s", [base_physical_damage_min, base_physical_damage_max])	
 	damage.physical_damage = randi_range(physical_damage_min, physical_damage_max)
 	
 	return damage

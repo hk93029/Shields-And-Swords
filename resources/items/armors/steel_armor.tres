@@ -16,7 +16,7 @@ dark_defense = 0
 
 [resource]
 script = ExtResource("1_lm2p4")
-sprite = ExtResource("4_warv7")
+texture = ExtResource("4_warv7")
 defense = SubResource("Resource_fo3xf")
 adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
 item_name = "Steel Armor"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://dk2ylxs75hlfh"]
+[gd_scene load_steps=47 format=3 uid="uid://dk2ylxs75hlfh"]
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/zombie.gd" id="1_eqtij"]
 [ext_resource type="Script" path="res://resources_scripts/types/character_attributes.gd" id="2_sfqmy"]
-[ext_resource type="Script" path="res://scenes/items/weapons/zombie_weapon.gd" id="3_30kcr"]
 [ext_resource type="Texture2D" uid="uid://bqbyoml2o1pj1" path="res://assets/sprites/misc/shadow.png" id="3_qnafd"]
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="3_tgldv"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/item_manager.gd" id="4_tbcnc"]
+[ext_resource type="Script" path="res://classes/items/weapon.gd" id="5_2t3r1"]
 [ext_resource type="Texture2D" uid="uid://cv8usgti8hf4b" path="res://assets/sprites/enemies/zombie_sprite.png" id="6_avvpi"]
 [ext_resource type="Texture2D" uid="uid://c8jdrdr0f31se" path="res://assets/sprites/enemies/zombie_reference.png" id="7_jioqs"]
 
@@ -17,6 +18,17 @@ INT = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3q1j"]
 radius = 15.7972
+
+[sub_resource type="Resource" id="Resource_w3r4k"]
+script = ExtResource("5_2t3r1")
+base_physical_damage_max = 3
+base_physical_damage_min = 2
+quality = 0
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 0
+item_name = ""
+description = ""
+price = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcr74"]
 radius = 224.114
@@ -2562,7 +2574,7 @@ nodes/walk/node = SubResource("AnimationNodeAnimation_1n6an")
 nodes/walk/position = Vector2(-320, 240)
 node_connections = [&"Attack1_OneShot", 0, &"CriticalDamage1_OneShot", &"Attack1_OneShot", 1, &"Attack1_TimeScale", &"Attack1_TimeScale", 0, &"attack_1", &"Attack2_OneShot", 0, &"Attack1_OneShot", &"Attack2_OneShot", 1, &"Attack2_TimeScale", &"Attack2_TimeScale", 0, &"attack_2", &"CriticalDamage1_OneShot", 0, &"Transition", &"CriticalDamage1_OneShot", 1, &"TimeScale", &"Idle_TimeScale", 0, &"idle", &"TimeScale", 0, &"Animation", &"Transition", 0, &"Idle_TimeScale", &"Transition", 1, &"Walk_TImeScale", &"Transition", 2, &"die", &"Walk_TImeScale", 0, &"walk", &"output", 0, &"Attack2_OneShot"]
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("damage_digit_maker", "hp_bar") groups=["character", "enemy", "walking_creature"]]
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("damage_digit_maker", "hp_bar", "items") groups=["character", "enemy", "walking_creature"]]
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
@@ -2572,6 +2584,7 @@ death_experience_max = 3000
 char_attributes = SubResource("Resource_hi32o")
 damage_digit_maker = NodePath("DamageDigitMarker")
 hp_bar = NodePath("HPBar")
+items = NodePath("Sprite/Items")
 
 [node name="Stats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -2591,13 +2604,8 @@ texture = ExtResource("3_qnafd")
 
 [node name="Items" type="Node2D" parent="Sprite"]
 position = Vector2(14.4771, 0)
-
-[node name="Weapon" type="Sprite2D" parent="Sprite/Items" groups=["weapon"]]
-unique_name_in_owner = true
-script = ExtResource("3_30kcr")
-base_physical_damage_min = 3
-base_physical_damage_max = 6
-quality = 7
+script = ExtResource("4_tbcnc")
+weapon = SubResource("Resource_w3r4k")
 
 [node name="Navigation" type="Node2D" parent="Sprite"]
 position = Vector2(14.4771, 0)
@@ -2844,7 +2852,7 @@ rest = Transform2D(1, 0, 0, 1, 16.0337, 27.8625)
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(19.9748, 23.5465)
 rotation = 0.00374595
-scale = Vector2(0.999835, 0.999835)
+scale = Vector2(0.999834, 0.999834)
 rest = Transform2D(1, 0, 0, 1, 19.9516, 23.5571)
 auto_calculate_length_and_angle = false
 length = 16.0

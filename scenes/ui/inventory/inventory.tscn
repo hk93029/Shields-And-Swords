@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dq7gim7icgkiq"]
+[gd_scene load_steps=19 format=3 uid="uid://dq7gim7icgkiq"]
 
 [ext_resource type="Texture2D" uid="uid://b2qf5fvpsim4f" path="res://assets/sprites/ui/inventory/inventory_edge.png" id="1_vo6br"]
 [ext_resource type="Texture2D" uid="uid://dry6q7ma82fvb" path="res://assets/sprites/ui/inventory/inventory_title_background.png" id="2_n10hq"]
@@ -10,8 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dxd8nd2qlmxar" path="res://assets/sprites/ui/inventory/coin_background.png" id="6_yfi3o"]
 [ext_resource type="Texture2D" uid="uid://dhq8dsid6floe" path="res://assets/sprites/ui/inventory/gold_icon.png" id="7_2mste"]
 [ext_resource type="PackedScene" uid="uid://8op6hl0tha0x" path="res://classes/inventory/inventory_slot.tscn" id="7_6i4ln"]
-[ext_resource type="Texture2D" uid="uid://dfh1m2b52aru3" path="res://assets/sprites/icons/items/iron_sword.png" id="8_gyd3f"]
 [ext_resource type="Texture2D" uid="uid://qc7phattdius" path="res://assets/sprites/ui/inventory/essence_background.png" id="8_hil0q"]
+[ext_resource type="Resource" uid="uid://cg6xxqgtspci1" path="res://resources/items/weapons/iron_sword.tres" id="8_m3df7"]
+[ext_resource type="Resource" uid="uid://dfyo5pt6tso6r" path="res://resources/items/armors/steel_armor.tres" id="9_4gp0g"]
 [ext_resource type="Texture2D" uid="uid://vesoqiq6qi6i" path="res://assets/sprites/ui/inventory/essence_icon.png" id="9_goyl0"]
 
 [sub_resource type="SystemFont" id="SystemFont_y3501"]
@@ -20,6 +21,12 @@ font_names = PackedStringArray("Fantasy")
 [sub_resource type="LabelSettings" id="LabelSettings_qa861"]
 font = SubResource("SystemFont_y3501")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_uti03"]
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sdk3h"]
+font_color = Color(0, 0.741176, 1, 1)
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -116,13 +123,16 @@ columns = 6
 layout_mode = 2
 
 [node name="ItemIcon" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot" index="0"]
-texture = ExtResource("8_gyd3f")
+item = ExtResource("8_m3df7")
 
 [node name="InventorySlot2" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
 layout_mode = 2
 
 [node name="InventorySlot3" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
 layout_mode = 2
+
+[node name="ItemIcon" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot3" index="0"]
+item = ExtResource("9_4gp0g")
 
 [node name="InventorySlot4" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
 layout_mode = 2
@@ -222,6 +232,7 @@ offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "20"
+label_settings = SubResource("LabelSettings_uti03")
 horizontal_alignment = 2
 
 [node name="EssenceBG" type="TextureRect" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -252,6 +263,7 @@ offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "0"
+label_settings = SubResource("LabelSettings_sdk3h")
 horizontal_alignment = 2
 
 [node name="Reference" type="TextureRect" parent="."]
@@ -263,3 +275,4 @@ offset_bottom = 235.0
 texture = ExtResource("2_piejc")
 
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot"]
+[editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot3"]

@@ -14,10 +14,13 @@ var max_health: int
 @export var base_mp: int = 20
 @export var damage_digit_maker: Marker2D
 @export var hp_bar: HPBar
+
+
+@export var items: Node2D
 @export var armor: Armor # = %Armor
 @export var ring: Ring # = %Ring
 @export var amulet: Amulet # = %Amulet
-@export var weapon: Item#Weapon
+@export var weapon: Weapon #Weapon
 
 var weapon_adds: Array[Add]
 var armor_adds: Array[Add]
@@ -47,16 +50,21 @@ func ready_character():
 	equips_adds = EquipmentsAdditionals.new()
 #	char_attributes = CharacterAttributes.new()
 
-	if armor != null:
+	if items.armor != null:
+		armor = items.armor
 		equip_item(armor)
 #		armor_adds = armor.adds
-	if ring != null:
+	if items.ring != null:
+		ring = items.ring
 		equip_item(ring)
 		#ring_adds = ring.adds
-	if amulet != null:
+	if items.amulet != null:
+		amulet = items.amulet
 		equip_item(amulet)
 		#amulet_adds = amulet.adds
-	if weapon != null:
+	if items.weapon != null:
+		weapon = items.weapon
+		weapon._ready()
 		equip_item(weapon)
 		#weapon_adds = weapon.adds
 
@@ -320,6 +328,7 @@ func get_damage() -> Damage:
 	var damage: Damage = Damage.new()
 #	var physical_damage = char_status.damage_base + weapon_damage.extra_damage +rng.randi_range(weapon.physical_damage_min, weapon.physical_damage_max)
 	damage = weapon.get_weapon_damage()
+	print("DAMAGE: "+str(damage.physical_damage))
 	damage.physical_damage += char_stats.base_damage
 	
 	if is_critical_damage():

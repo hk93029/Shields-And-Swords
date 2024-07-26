@@ -49,6 +49,7 @@ var last_mouse_pos = null
 var enemies_in_range: Array
 
 func _ready():
+	#armor = %Armor
 	ready_character()
 	animation_tree.active = true
 	nav_agent.path_desired_distance = 20

@@ -8,6 +8,9 @@ extends Node2D
 @onready var player: Player = $Player
 
 
+func _ready():
+	update_armor_texture()
+
 func on_weapon_changed(new_weapon: Weapon):
 	player.unequip_item(weapon)
 	weapon = new_weapon

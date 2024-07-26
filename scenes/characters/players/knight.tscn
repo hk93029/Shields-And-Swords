@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scenes/characters/players/item_manager.gd" id="6_5jqbh"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://assets/sprites/misc/soft_light.png" id="6_ymrc8"]
-[ext_resource type="Resource" uid="uid://dfyo5pt6tso6r" path="res://resources/items/armors/steel_armor.tres" id="7_kvwyj"]
+[ext_resource type="Resource" uid="uid://on7j3g3h1wpe" path="res://resources/items/armors/default_armor.tres" id="7_m2hfh"]
 [ext_resource type="Resource" uid="uid://cg6xxqgtspci1" path="res://resources/items/weapons/iron_sword.tres" id="8_qg6df"]
 [ext_resource type="Texture2D" uid="uid://dks1wcwjjubat" path="res://assets/sprites/items/weapons/sword.png" id="8_u5jha"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="14_367bt"]
@@ -3713,7 +3713,7 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Items" type="Node2D" parent="Sprite/Polygons"]
 script = ExtResource("6_5jqbh")
-armor = ExtResource("7_kvwyj")
+armor = ExtResource("7_m2hfh")
 weapon = ExtResource("8_qg6df")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Sprite/Polygons/Items"]

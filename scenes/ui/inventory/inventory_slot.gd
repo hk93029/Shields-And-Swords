@@ -12,7 +12,11 @@ func _can_drop_data(at_position, data): # Define se o dado pode ser dropado aqui
 	
 
 func _drop_data(at_position, data):
-	var temp = item_icon.texture
+	Mouse.is_dragging = false
+	var texture_temp = item_icon.texture
+	var item_temp = item
 	item_icon.texture = data.texture # texture_rect.texture do destino recebe texture_rect.texture da origem, aqui ele é representado por "data", mas é exatamente texture_rect
-	data.texture = temp
+	item = data.item
+	data.texture = texture_temp
+	data.item = item_temp
 

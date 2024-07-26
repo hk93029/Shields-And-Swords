@@ -1,24 +1,6 @@
 extends TextureRect
 
-@export var item: Item #: 
-	#set(value):
-		#if value.is_stackable:
-		#	%QuantityLabel.visible = true
-		#	%QuantityLabel.text = str(value.quantity)
-		#else:
-		#	%QuantityLabel.visible = false
-		#
-		#texture = value.icon
-func _ready():
-	if item != null:
-		if item.is_stackable:
-			%QuantityLabel.visible = true
-			%QuantityLabel.text = str(item.quantity)
-		else:
-			%QuantityLabel.visible = false
-			
-		texture = item.icon
-
+var item: Item
 
 func _get_drag_data(at_position): # Dado que será retornado quando clicar duas vezes e arrastar. NÃO é o dado visual, é o dado real que será ARMAZENADO na área de DROP
 	if texture != null:

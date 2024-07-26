@@ -6,10 +6,11 @@ extends Node2D
 @export var ring: Ring
 @export var amulet: Amulet
 
-@onready var player: Player = $Player
+var player: Player
 
 
 func _ready():
+	player = get_parent().get_parent().get_parent()
 	Events.connect("armor_equiped", on_armor_equiped)
 	update_armor_texture()
 	update_weapon_texture()
@@ -36,8 +37,11 @@ func update_weapon_texture():
 	get_node("WeaponSprite").texture = weapon.texture
 
 func on_armor_equiped(new_armor: Armor): # quando sinal for emitido
+	if new_armor == null:
+		new_armor = load("res://resources/items/armors/default_armor.tres")
 	player.unequip_item(armor)
 	armor = new_armor
+#	print("DEFESA: "+str(armor.defense.physical_defense))
 	player.equip_item(armor)
 	update_armor_texture()
 	

@@ -21,8 +21,8 @@ radius = 15.7972
 
 [sub_resource type="Resource" id="Resource_w3r4k"]
 script = ExtResource("5_2t3r1")
-base_physical_damage_max = 3
-base_physical_damage_min = 2
+base_physical_damage_max = 8
+base_physical_damage_min = 10
 quality = 0
 adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
 refining = 0
@@ -2579,8 +2579,6 @@ collision_layer = 4
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_eqtij")
-death_experience_min = 2000
-death_experience_max = 3000
 char_attributes = SubResource("Resource_hi32o")
 damage_digit_maker = NodePath("DamageDigitMarker")
 hp_bar = NodePath("HPBar")

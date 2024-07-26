@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb0hf4o221x56"]
+[gd_scene load_steps=15 format=3 uid="uid://cb0hf4o221x56"]
 
 [ext_resource type="Texture2D" uid="uid://dca0h17v4k6ti" path="res://assets/sprites/ui/character_panel/character_edge.png" id="1_accij"]
 [ext_resource type="Script" path="res://scenes/ui/panels/character_panel.gd" id="1_x8t5m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b1m45jtxynek" path="res://assets/sprites/ui/character_panel/shield_slot.png" id="5_gx144"]
 [ext_resource type="Texture2D" uid="uid://d77e64wjgw8j" path="res://assets/sprites/ui/character_panel/ring_slot.png" id="6_s25i8"]
 [ext_resource type="Texture2D" uid="uid://fmo3okhg8807" path="res://assets/sprites/ui/character_panel/amulet_slot.png" id="7_m3hrd"]
+[ext_resource type="Script" path="res://scenes/ui/panels/item_icon.gd" id="8_r75f3"]
 
 [sub_resource type="SystemFont" id="SystemFont_kd5uy"]
 font_names = PackedStringArray("Fantasy")
@@ -38,6 +39,7 @@ texture = ExtResource("1_accij")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 9
 
@@ -53,11 +55,9 @@ label_settings = SubResource("LabelSettings_8h723")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 2
 
 [node name="CharacterContainerBG" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-mouse_filter = 2
 texture = ExtResource("2_4bkj8")
 
 [node name="CloseButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CenterContainer/CharacterContainerBG"]
@@ -75,6 +75,7 @@ texture_pressed = ExtResource("5_7epa4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ArmorSlot" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,8 +86,26 @@ expand_mode = 1
 stretch_mode = 3
 script = ExtResource("4_3wq2u")
 
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ArmorSlot"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("8_r75f3")
+
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 21
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer"]

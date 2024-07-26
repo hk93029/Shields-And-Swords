@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq7gim7icgkiq"]
+[gd_scene load_steps=20 format=3 uid="uid://dq7gim7icgkiq"]
 
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory.gd" id="1_kyntr"]
 [ext_resource type="Texture2D" uid="uid://b2qf5fvpsim4f" path="res://assets/sprites/ui/inventory/inventory_edge.png" id="1_vo6br"]
 [ext_resource type="Texture2D" uid="uid://dry6q7ma82fvb" path="res://assets/sprites/ui/inventory/inventory_title_background.png" id="2_n10hq"]
 [ext_resource type="Texture2D" uid="uid://drc5c46775nw7" path="res://assets/sprites/ui/inventory/inventory_reference.png" id="2_piejc"]
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kyntr")
 
 [node name="InventoryEdge" type="TextureRect" parent="."]
 layout_mode = 0
@@ -48,10 +50,12 @@ offset_left = 23.9774
 offset_top = 14.5194
 offset_right = 271.977
 offset_bottom = 217.519
+mouse_filter = 2
 
 [node name="InventoryTitle" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 texture = ExtResource("2_n10hq")
 
 [node name="Label" type="Label" parent="VBoxContainer/InventoryTitle"]
@@ -273,6 +277,11 @@ layout_mode = 0
 offset_right = 296.0
 offset_bottom = 235.0
 texture = ExtResource("2_piejc")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="InventoryEdge" to="." method="_on_inventory_edge_mouse_entered"]
+[connection signal="mouse_exited" from="InventoryEdge" to="." method="_on_inventory_edge_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/InventoryContainerBG/CloseButton" to="." method="_on_close_button_pressed"]
 
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot"]
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot3"]

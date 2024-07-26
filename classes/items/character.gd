@@ -21,6 +21,7 @@ var max_health: int
 @export var ring: Ring # = %Ring
 @export var amulet: Amulet # = %Amulet
 @export var weapon: Weapon #Weapon
+@export var shield: Shield
 
 var weapon_adds: Array[Add]
 var armor_adds: Array[Add]

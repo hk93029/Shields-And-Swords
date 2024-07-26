@@ -13,7 +13,7 @@ extends TextureRect
 
 func _get_drag_data(at_position): # Dado que será retornado quando clicar duas vezes e arrastar. NÃO é o dado visual, é o dado real que será ARMAZENADO na área de DROP
 	if texture != null:
-		print("OOOK")
+
 		set_drag_preview(get_preview()) # set_drag_preview adiciona o item gerado como filho do nó Control que esteja mais no topo, ou seja, o nó Control mais elevado, que está acima de todos
 		return self # Esse vai ser o data
 	

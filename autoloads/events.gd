@@ -5,3 +5,5 @@ signal attributes_changed(new_attributes)
 
 signal post_current_status(current_character_status)
 signal post_current_attributes(current_character_attributes)
+
+signal armor_equiped(armor)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Shield" load_steps=4 format=3 uid="uid://d22eiq1ynxnh7"]
+
+[ext_resource type="Texture2D" uid="uid://bg4d2e0o4dhj0" path="res://assets/sprites/icons/items/wood_shield_icon.png" id="1_khx6l"]
+[ext_resource type="Script" path="res://classes/items/shield.gd" id="1_xjovh"]
+[ext_resource type="Texture2D" uid="uid://sihebb8t5lox" path="res://assets/sprites/items/shields/wood_shield.png" id="2_qit3n"]
+
+[resource]
+script = ExtResource("1_xjovh")
+texture = ExtResource("2_qit3n")
+base_physical_defense = 0
+quality = 0
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 0
+item_name = "Wood Shield"
+description = ""
+icon = ExtResource("1_khx6l")
+price = 0

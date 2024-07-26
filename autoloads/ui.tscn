@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3lb1u3kfuede"]
+[gd_scene load_steps=8 format=3 uid="uid://d3lb1u3kfuede"]
 
 [ext_resource type="Script" path="res://autoloads/ui.gd" id="1_e6k7u"]
 [ext_resource type="PackedScene" uid="uid://dal0ib8ju1u5t" path="res://scenes/ui/hud/hud.tscn" id="2_18lcd"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="3_io5fl"]
-[ext_resource type="PackedScene" uid="uid://ka75b60w4lw3" path="res://scenes/ui/inventory/iventory.tscn" id="6_05y3p"]
+[ext_resource type="PackedScene" uid="uid://dq7gim7icgkiq" path="res://scenes/ui/inventory/inventory.tscn" id="6_5pexb"]
+[ext_resource type="PackedScene" uid="uid://cb0hf4o221x56" path="res://scenes/ui/panels/character_panel.tscn" id="7_t1xq7"]
 [ext_resource type="Script" path="res://scenes/ui/panels/panels.gd" id="8_h1jgx"]
 [ext_resource type="PackedScene" uid="uid://btywxst6npsju" path="res://scenes/ui/panels/attributes_panel.tscn" id="9_hu8he"]
 
@@ -26,8 +27,19 @@ script = ExtResource("8_h1jgx")
 [node name="AttributesPanel" parent="Panels" instance=ExtResource("9_hu8he")]
 unique_name_in_owner = true
 
-[node name="Inventory" parent="Panels" instance=ExtResource("6_05y3p")]
+[node name="Inventory" parent="Panels" instance=ExtResource("6_5pexb")]
 layout_mode = 1
+offset_left = 356.0
+offset_top = 22.0
+offset_right = 356.0
+offset_bottom = 22.0
+
+[node name="CharacterPanel" parent="Panels" instance=ExtResource("7_t1xq7")]
+layout_mode = 1
+offset_left = 690.0
+offset_top = 22.0
+offset_right = 690.0
+offset_bottom = 22.0
 
 [connection signal="mouse_entered" from="HUD" to="." method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="HUD" to="." method="_on_ui_mouse_exited"]

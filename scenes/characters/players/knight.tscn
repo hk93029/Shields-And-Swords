@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=66 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Resource" uid="uid://c2qnc21pp4qvy" path="res://classes/inventory/player_inventory.tres" id="2_5722x"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://on7j3g3h1wpe" path="res://resources/items/armors/default_armor.tres" id="7_m2hfh"]
 [ext_resource type="Resource" uid="uid://cg6xxqgtspci1" path="res://resources/items/weapons/iron_sword.tres" id="8_qg6df"]
 [ext_resource type="Texture2D" uid="uid://dks1wcwjjubat" path="res://assets/sprites/items/weapons/sword.png" id="8_u5jha"]
+[ext_resource type="Resource" uid="uid://d22eiq1ynxnh7" path="res://resources/items/shields/wood_shield.tres" id="9_kr01x"]
 [ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="14_367bt"]
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="14_lxko3"]
 
@@ -3715,6 +3716,7 @@ shape = SubResource("CircleShape2D_smckf")
 script = ExtResource("6_5jqbh")
 armor = ExtResource("7_m2hfh")
 weapon = ExtResource("8_qg6df")
+shield = ExtResource("9_kr01x")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
@@ -3949,6 +3951,7 @@ uv = PackedVector2Array(100, 100, 150, 100, 150, 150, 150, 150, 100, 150)
 bones = ["Hip", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL/ForearmL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmL/ForearmL/HandL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR/ForearmR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ArmR/ForearmR/HandR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighL", PackedFloat32Array(1, 1, 1, 1, 1), "Hip/ThighL/LegL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighL/LegL/FeetL", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR/LegR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/ThighR/LegR/FeetR", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4", PackedFloat32Array(0, 0, 0, 0, 0), "Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5", PackedFloat32Array(0, 0, 0, 0, 0)]
 
 [node name="Shield" type="Polygon2D" parent="Sprite/Polygons"]
+unique_name_in_owner = true
 modulate = Color(1.5, 1.5, 1.5, 1)
 position = Vector2(-6.48866, -67.5045)
 texture = ExtResource("5_s41gh")

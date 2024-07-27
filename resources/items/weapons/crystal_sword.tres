@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://t77p6y0c5ic6"]
+
+[ext_resource type="Script" path="res://classes/items/weapon.gd" id="1_dgkhd"]
+[ext_resource type="Texture2D" uid="uid://n22243261a75" path="res://assets/sprites/icons/items/crystal_sword_icon.png" id="1_ewlfy"]
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_qellt"]
+[ext_resource type="Texture2D" uid="uid://jqw7rwn4rgi8" path="res://assets/sprites/items/weapons/crystal_sword.png" id="3_m4j2f"]
+
+[sub_resource type="Resource" id="Resource_7ccu8"]
+script = ExtResource("1_qellt")
+improvment = 3
+value = 5
+
+[resource]
+script = ExtResource("1_dgkhd")
+texture = ExtResource("3_m4j2f")
+base_physical_damage_max = 33
+base_physical_damage_min = 30
+quality = 4
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_7ccu8")])
+refining = 0
+item_name = "Crystal Sword"
+description = ""
+icon = ExtResource("1_ewlfy")
+price = 750
+necessary_level = 0
+necessary_str = 1
+necessary_dex = 0
+necessary_int = 0

@@ -1,21 +1,42 @@
-[gd_resource type="Resource" script_class="Shield" load_steps=4 format=3 uid="uid://cl32lifrl1yv0"]
+[gd_resource type="Resource" script_class="Shield" load_steps=9 format=3 uid="uid://cl32lifrl1yv0"]
 
 [ext_resource type="Script" path="res://classes/items/shield.gd" id="1_ece8j"]
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_sse80"]
 [ext_resource type="Texture2D" uid="uid://c3yw6vnhgo02n" path="res://assets/sprites/icons/items/silver_shield_icon.png" id="1_x6rmu"]
 [ext_resource type="Texture2D" uid="uid://c26mawqrbrmml" path="res://assets/sprites/items/shields/silver_shield.png" id="3_rscb1"]
+
+[sub_resource type="Resource" id="Resource_ubnb1"]
+script = ExtResource("1_sse80")
+improvment = 0
+value = 5
+
+[sub_resource type="Resource" id="Resource_skfaq"]
+script = ExtResource("1_sse80")
+improvment = 1
+value = 5
+
+[sub_resource type="Resource" id="Resource_fmk45"]
+script = ExtResource("1_sse80")
+improvment = 2
+value = 5
+
+[sub_resource type="Resource" id="Resource_5nmxi"]
+script = ExtResource("1_sse80")
+improvment = 3
+value = 5
 
 [resource]
 script = ExtResource("1_ece8j")
 texture = ExtResource("3_rscb1")
 base_physical_defense = 13
 quality = 0
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_ubnb1"), SubResource("Resource_skfaq"), SubResource("Resource_fmk45"), SubResource("Resource_5nmxi")])
 refining = 0
 item_name = "Silver Shield"
 description = ""
 icon = ExtResource("1_x6rmu")
 price = 340
 necessary_level = 1
-necessary_str = 4
+necessary_str = 1
 necessary_dex = 0
 necessary_int = 0

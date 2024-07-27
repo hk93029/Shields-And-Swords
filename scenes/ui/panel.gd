@@ -14,6 +14,17 @@ var current_cons: int = 0
 var current_dex: int = 0
 var current_int: int = 0
 
+var str_add: int = 0
+var cons_add: int = 0
+var dex_add: int = 0
+var int_add: int = 0
+
+var str_default_color: Color = Color.WHITE
+var cons_default_color: Color = Color.WHITE
+var dex_default_color: Color = Color.WHITE
+var int_default_color: Color = Color.WHITE
+
+
 var character_status: CharacterStatus = CharacterStatus.new()
 var character_attributes: CharacterAttributes = CharacterAttributes.new()
 
@@ -24,7 +35,8 @@ func _ready():
 	original_position = global_position
 	Events.connect("level_upped", on_level_upped)
 	Events.connect("post_current_status", update_status)
-	Events.connect("post_current_attributes", update_attributes)
+	Events.connect("post_current_attributes", update_char_attributes)
+	Events.connect("post_equips_attributes_adds", on_post_equips_attributes_adds)
 
 
 func _input(event):
@@ -101,47 +113,55 @@ func change_attribute_pressed(attribute, operation):
 	if(new_str != 0):
 		%STR_VALUE.label_settings.font_color = Color.BLUE
 	else:
-		%STR_VALUE.label_settings.font_color = Color.WHITE
+		str_default_color = Color.WHITE if str_add == 0 else Color.hex(0x28d9ffff)
+		%STR_VALUE.label_settings.font_color = str_default_color
 	if(new_cons != 0):
 		%CONS_VALUE.label_settings.font_color = Color.BLUE
 	else:
-		%CONS_VALUE.label_settings.font_color = Color.WHITE	
+		cons_default_color = Color.WHITE if cons_add == 0 else Color.hex(0x28d9ffff)
+		%CONS_VALUE.label_settings.font_color = cons_default_color	
 	if(new_dex != 0):
 		%DEX_VALUE.label_settings.font_color = Color.BLUE
 	else:
-		%DEX_VALUE.label_settings.font_color = Color.WHITE	
+		dex_default_color = Color.WHITE if dex_add == 0 else Color.hex(0x28d9ffff)
+		%DEX_VALUE.label_settings.font_color = dex_default_color
 	if(new_int != 0):
 		%INT_VALUE.label_settings.font_color = Color.BLUE
 	else:
-		%INT_VALUE.label_settings.font_color = Color.WHITE
+		int_default_color = Color.WHITE if int_add == 0 else Color.hex(0x28d9ffff)
+		%INT_VALUE.label_settings.font_color = int_default_color
 		
-	%STR_VALUE.text = str(current_str+new_str)
-	%CONS_VALUE.text = str(current_cons+new_cons)
-	%DEX_VALUE.text = str(current_dex+new_dex)
-	%INT_VALUE.text = str(current_int+new_int)
+	%STR_VALUE.text = str(current_str+new_str+str_add)
+	%CONS_VALUE.text = str(current_cons+new_cons+cons_add)
+	%DEX_VALUE.text = str(current_dex+new_dex+dex_add)
+	%INT_VALUE.text = str(current_int+new_int+int_add)
 	
 		
 func confirm_changes_pressed():
 	
-	current_str = int(%STR_VALUE.text)
+	current_str = int(%STR_VALUE.text)-str_add
 	new_str = 0
 	character_attributes.STR = current_str
-	%STR_VALUE.label_settings.font_color = Color.WHITE
+	str_default_color = Color.hex(0x28d9ffff) if str_add != 0 else Color.WHITE
+	%STR_VALUE.label_settings.font_color = str_default_color
 	
-	current_cons = int(%CONS_VALUE.text)
+	current_cons = int(%CONS_VALUE.text)-cons_add
 	new_cons = 0
 	character_attributes.CONS = current_cons
-	%CONS_VALUE.label_settings.font_color = Color.WHITE
+	cons_default_color = Color.hex(0x28d9ffff) if cons_add != 0 else Color.WHITE
+	%CONS_VALUE.label_settings.font_color = cons_default_color
 	
-	current_dex = int(%DEX_VALUE.text)
+	current_dex = int(%DEX_VALUE.text)-dex_add
 	new_dex = 0
 	character_attributes.DEX = current_dex
-	%DEX_VALUE.label_settings.font_color = Color.WHITE
+	dex_default_color = Color.hex(0x28d9ffff) if dex_add != 0 else Color.WHITE
+	%DEX_VALUE.label_settings.font_color = dex_default_color
 	
-	current_int = int(%INT_VALUE.text)
+	current_int = int(%INT_VALUE.text)-int_add
 	new_int = 0
 	character_attributes.INT = current_int
-	%INT_VALUE.label_settings.font_color = Color.WHITE
+	int_default_color = Color.hex(0x28d9ffff) if int_add != 0 else Color.WHITE
+	%INT_VALUE.label_settings.font_color = int_default_color
 	
 	Events.emit_signal("attributes_changed", character_attributes)
 
@@ -161,10 +181,10 @@ func cancel_changes_pressed():
 	%DEX_VALUE.text = str(current_dex)
 	%INT_VALUE.text = str(current_int)
 	
-	%STR_VALUE.label_settings.font_color = Color.WHITE
-	%CONS_VALUE.label_settings.font_color = Color.WHITE
-	%DEX_VALUE.label_settings.font_color = Color.WHITE
-	%INT_VALUE.label_settings.font_color = Color.WHITE
+	%STR_VALUE.label_settings.font_color = str_default_color
+	%CONS_VALUE.label_settings.font_color = cons_default_color
+	%DEX_VALUE.label_settings.font_color = dex_default_color
+	%INT_VALUE.label_settings.font_color = int_default_color
 	
 	%AttributePointsValue.text = str(attribute_points)
 	
@@ -178,15 +198,51 @@ func update_status(new_char_status):
 	character_status = new_char_status
 	
 
-func update_attributes(new_char_attributes):
+func update_char_attributes(new_char_attributes):
 	character_attributes = new_char_attributes
-	%STR_VALUE.text = str(character_attributes.STR)
-	%CONS_VALUE.text = str(character_attributes.CONS)
-	%DEX_VALUE.text = str(character_attributes.DEX)
-	%INT_VALUE.text = str(character_attributes.INT)
+	%STR_VALUE.text = str(character_attributes.STR+str_add)
+	%CONS_VALUE.text = str(character_attributes.CONS+cons_add)
+	%DEX_VALUE.text = str(character_attributes.DEX+dex_add)
+	%INT_VALUE.text = str(character_attributes.INT+int_add)
 	
 	current_str = character_attributes.STR
 	current_cons = character_attributes.CONS
 	current_dex  = character_attributes.DEX
 	current_int = character_attributes.INT
 	
+
+func on_post_equips_attributes_adds(new_cons_add, new_str_add, new_dex_add, new_int_add):
+	cons_add = new_cons_add
+	str_add = new_str_add
+	dex_add = new_dex_add
+	int_add = new_int_add
+
+	if cons_add != 0:
+		cons_default_color = Color.hex(0x28d9ffff) if new_cons == 0 else Color.BLUE#RRGGBBAA
+	else:
+		cons_default_color = Color.WHITE if new_cons == 0 else Color.BLUE
+		
+	if str_add != 0:
+		str_default_color = Color.hex(0x28d9ffff) if new_str == 0 else Color.BLUE#RRGGBBAA
+	else:
+		str_default_color = Color.WHITE if new_str == 0 else Color.BLUE
+		
+	if dex_add != 0:
+		dex_default_color = Color.hex(0x28d9ffff) if new_dex == 0 else Color.BLUE#RRGGBBAA
+	else:
+		dex_default_color = Color.WHITE if new_dex == 0 else Color.BLUE
+		
+	if int_add != 0:
+		int_default_color = Color.hex(0x28d9ffff)  if new_int == 0 else Color.BLUE#RRGGBBAA
+	else:
+		int_default_color = Color.WHITE if new_int == 0 else Color.BLUE
+		
+	%STR_VALUE.label_settings.font_color = str_default_color
+	%CONS_VALUE.label_settings.font_color = cons_default_color
+	%DEX_VALUE.label_settings.font_color = dex_default_color
+	%INT_VALUE.label_settings.font_color = int_default_color
+	
+	%STR_VALUE.text = str(current_str+new_str+str_add)
+	%CONS_VALUE.text = str(current_cons+new_cons+cons_add)
+	%DEX_VALUE.text = str(current_dex+new_dex+dex_add)
+	%INT_VALUE.text = str(current_int+new_int+int_add)

@@ -245,6 +245,8 @@ func apply_item_add_effect(add, command):
 			AttributeAdd.Improvment.MP:
 				equips_adds.MP += add.value*remove_or_add
 				update_mp()
+			
+		Events.emit_signal("post_equips_attributes_adds",equips_adds.CONS, equips_adds.STR, equips_adds.DEX, equips_adds.INT)
 
 	elif add.type == Add.Type.COMBAT_PERFORMACE:
 		

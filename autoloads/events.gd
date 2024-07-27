@@ -12,6 +12,8 @@ signal post_equipped_shield(shield)
 signal post_equipped_ring(ring)
 signal post_equipped_amulet(amulet)
 
+signal post_equips_attributes_adds(cons_add, str_add, dex_add, int_add)
+
 signal armor_equipped(armor)
 signal weapon_equipped(weapon)
 signal shield_equipped(shield)

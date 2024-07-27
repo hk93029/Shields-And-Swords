@@ -30,9 +30,9 @@ item_name = ""
 description = ""
 price = 0
 necessary_level = 1
-necessary_str = 1
-necessary_dex = 1
-necessary_int = 1
+necessary_str = 0
+necessary_dex = 0
+necessary_int = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcr74"]
 radius = 224.114

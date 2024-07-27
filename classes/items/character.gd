@@ -316,26 +316,43 @@ func apply_item_add_effect(add, command):
 	
 
 func equip_item(item: Item):
-	if item is Armor:
-		char_stats.physical_defense += item.physical_defense
+	if item != null:
+		if item is Armor:
+			char_stats.physical_defense += item.physical_defense
 		
-	for add in item.adds:
-		apply_item_add_effect(add, "EQUIP")
+		if item is Weapon:
+			items.weapon = item
+			weapon = items.weapon
+		
+		if item is Shield:
+			char_stats.physical_defense += item.physical_defense
+		
+		for add in item.adds:
+			apply_item_add_effect(add, "EQUIP")
 
 
 func unequip_item(item: Item):
-	if item is Armor:
-		char_stats.physical_defense -= item.physical_defense
+	if item != null:
+		if item is Armor:
+			char_stats.physical_defense -= item.physical_defense
 		
-	for add in item.adds:
-		apply_item_add_effect(add, "UNEQUIP")
+		if item is Weapon:
+			items.weapon = null
+			weapon = items.weapon
+		
+		if item is Shield:
+			char_stats.physical_defense -= item.physical_defense
+			
+		for add in item.adds:
+			apply_item_add_effect(add, "UNEQUIP")
 		
 
 func get_damage() -> Damage:
 	var damage: Damage = Damage.new()
 #	var physical_damage = char_status.damage_base + weapon_damage.extra_damage +rng.randi_range(weapon.physical_damage_min, weapon.physical_damage_max)
-	damage = weapon.get_weapon_damage()
-	print("DAMAGE: "+str(damage.physical_damage))
+	if weapon != null:
+		damage = weapon.get_weapon_damage()
+
 	damage.physical_damage += char_stats.base_damage
 	
 	if is_critical_damage():

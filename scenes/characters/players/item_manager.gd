@@ -11,13 +11,31 @@ var player: Player
 
 func _ready():
 	player = get_parent().get_parent().get_parent()
-	Events.connect("armor_equiped", on_armor_equiped)
+	Events.connect("armor_equipped", on_armor_equipped)
+	Events.connect("weapon_equipped", on_weapon_equipped)
+	Events.connect("shield_equipped", on_shield_equipped)
+	
+	post_equipped_items()
+#	Events.connect("shield_equipped", on_shield_equipped)
+#	Events.connect("ring_equipped", on_ring_equipped)
+#	Events.connect("amulet_equipped", on_amulet_equipped)
+	
 	update_armor_texture()
 	update_weapon_texture()
 	update_shield_texture()
-	
 
-func on_shield_changed(new_shield: Shield):
+
+func post_equipped_items():
+	Events.emit_signal("post_equipped_armor", armor)
+#	if weapon == null:
+#		weapon = load("res://resources/items/weapons/empty_weapon.tres")
+	Events.emit_signal("post_equipped_weapon", weapon)
+	Events.emit_signal("post_equipped_shield", shield)
+	Events.emit_signal("post_equipped_ring", ring)
+	Events.emit_signal("post_equipped_amulet", amulet)
+
+
+func on_shield_equipped(new_shield: Shield):
 	player.unequip_item(shield)
 	shield = new_shield
 	player.equip_item(shield)
@@ -25,23 +43,29 @@ func on_shield_changed(new_shield: Shield):
 	
 	
 func update_shield_texture():
-	%Shield.texture = shield.texture
-
-func on_weapon_changed(new_weapon: Weapon):
+	%Shield.texture = shield.texture if shield != null else null
+	if %Shield.texture == null:
+		%Shield.color.a = 0
+	else:
+		%Shield.color.a = 1
+		
+		
+func on_weapon_equipped(new_weapon: Weapon):
+	if new_weapon == null:
+		new_weapon = load("res://resources/items/weapons/empty_weapon.tres")
 	player.unequip_item(weapon)
 	weapon = new_weapon
 	player.equip_item(weapon)
 	update_weapon_texture()
 
 func update_weapon_texture():
-	get_node("WeaponSprite").texture = weapon.texture
+	get_node("WeaponSprite").texture = weapon.texture if weapon != null else null
 
-func on_armor_equiped(new_armor: Armor): # quando sinal for emitido
+func on_armor_equipped(new_armor: Armor): # quando sinal for emitido
 	if new_armor == null:
 		new_armor = load("res://resources/items/armors/default_armor.tres")
 	player.unequip_item(armor)
 	armor = new_armor
-#	print("DEFESA: "+str(armor.defense.physical_defense))
 	player.equip_item(armor)
 	update_armor_texture()
 	

@@ -18,6 +18,10 @@ func _ready():
 
 
 func get_requeriments(item) -> bool:
+	#print("LVL NECESSARIO: "+str(item.necessary_level))
+	if item == null:
+		return true
+	
 	return item.necessary_level <= player_level_ref \
 		and item.necessary_str <= player_attributes_ref.STR \
 		and item.necessary_dex <= player_attributes_ref.DEX \
@@ -58,11 +62,10 @@ func _on_close_button_pressed():
 
 func _on_character_edge_mouse_entered():
 	mouse_is_on_edge = true
-	print("ENTROU!!")
+
 
 func _on_character_edge_mouse_exited():
 	mouse_is_on_edge = false
-	print("SAIU!!")
 	
 
 func on_post_current_level(level):

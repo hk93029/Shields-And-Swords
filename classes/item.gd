@@ -13,7 +13,7 @@ var is_stackable: bool = false
 var is_consumable: bool = false
 
 @export var necessary_level: int = 1
-@export var necessary_str: int = 1
-@export var necessary_dex: int = 1
-@export var necessary_int: int = 1
+@export var necessary_str: int = 0
+@export var necessary_dex: int = 0
+@export var necessary_int: int = 0
 #var necessary_class: ClassType

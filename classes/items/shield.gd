@@ -3,7 +3,10 @@ extends Item
 
 @export var texture: Texture2D
 
-@export var  base_physical_defense: int
+@export var  base_physical_defense: int :
+	set(value):
+		base_physical_defense = value
+		physical_defense = value
 
 
 var physical_defense: int = base_physical_defense

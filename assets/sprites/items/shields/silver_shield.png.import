@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfh1m2b52aru3"
-path="res://.godot/imported/iron_sword.png-c4f5ea9d617b3b2ab62936c48149d338.ctex"
+uid="uid://c26mawqrbrmml"
+path="res://.godot/imported/silver_shield.png-11421495a3991eb6c82f35b1f1234d2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/icons/items/iron_sword.png"
-dest_files=["res://.godot/imported/iron_sword.png-c4f5ea9d617b3b2ab62936c48149d338.ctex"]
+source_file="res://assets/sprites/items/shields/silver_shield.png"
+dest_files=["res://.godot/imported/silver_shield.png-11421495a3991eb6c82f35b1f1234d2d.ctex"]
 
 [params]
 

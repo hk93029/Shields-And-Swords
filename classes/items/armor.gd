@@ -9,3 +9,5 @@ extends Item
 @export_category("Armor Adds")
 @export var adds: Array[Add]
 
+func _init():
+	item_type = ItemType.ARMOR

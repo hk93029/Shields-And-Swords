@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=64 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Resource" uid="uid://c2qnc21pp4qvy" path="res://classes/inventory/player_inventory.tres" id="2_5722x"]
@@ -11,18 +11,16 @@
 [ext_resource type="Script" path="res://scenes/characters/players/item_manager.gd" id="6_5jqbh"]
 [ext_resource type="Script" path="res://camera.gd" id="6_k7dkl"]
 [ext_resource type="Texture2D" uid="uid://b3deeo4iho3f7" path="res://assets/sprites/misc/soft_light.png" id="6_ymrc8"]
-[ext_resource type="Resource" uid="uid://on7j3g3h1wpe" path="res://resources/items/armors/default_armor.tres" id="7_m2hfh"]
-[ext_resource type="Resource" uid="uid://cg6xxqgtspci1" path="res://resources/items/weapons/iron_sword.tres" id="8_qg6df"]
+[ext_resource type="Resource" uid="uid://dfyo5pt6tso6r" path="res://resources/items/armors/steel_armor.tres" id="7_becmq"]
 [ext_resource type="Texture2D" uid="uid://dks1wcwjjubat" path="res://assets/sprites/items/weapons/sword.png" id="8_u5jha"]
 [ext_resource type="Resource" uid="uid://d22eiq1ynxnh7" path="res://resources/items/shields/wood_shield.tres" id="9_kr01x"]
-[ext_resource type="Texture2D" uid="uid://dm86aivqnpnbj" path="res://assets/sprites/items/weapons/sword_old.png" id="14_367bt"]
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="14_lxko3"]
 
 [sub_resource type="Resource" id="Resource_d5a2t"]
 script = ExtResource("3_tovbt")
-STR = 10
-CONS = 0
-DEX = 2
+STR = 3
+CONS = 2
+DEX = 1
 INT = 0
 
 [sub_resource type="Environment" id="Environment_52cbf"]
@@ -937,94 +935,70 @@ tracks/53/keys = {
 tracks/54/type = "value"
 tracks/54/imported = false
 tracks/54/enabled = true
-tracks/54/path = NodePath("Player/Sprite/Polygons/WeaponF:position")
+tracks/54/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:position")
 tracks/54/interp = 1
 tracks/54/loop_wrap = true
 tracks/54/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-38.777, -9.881)]
+"values": [Vector2(-7.2446, -2.55578)]
 }
 tracks/55/type = "value"
 tracks/55/imported = false
 tracks/55/enabled = true
-tracks/55/path = NodePath("Player/Sprite/Polygons/WeaponF:rotation")
+tracks/55/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:rotation")
 tracks/55/interp = 1
 tracks/55/loop_wrap = true
 tracks/55/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.331613]
+"values": [-0.613725]
 }
 tracks/56/type = "value"
 tracks/56/imported = false
 tracks/56/enabled = true
-tracks/56/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:position")
+tracks/56/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:visible")
 tracks/56/interp = 1
 tracks/56/loop_wrap = true
 tracks/56/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-7.2446, -2.55578)]
+"update": 1,
+"values": [false]
 }
 tracks/57/type = "value"
 tracks/57/imported = false
 tracks/57/enabled = true
-tracks/57/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:rotation")
+tracks/57/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:frame")
 tracks/57/interp = 1
 tracks/57/loop_wrap = true
 tracks/57/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.613725]
+"update": 1,
+"values": [1]
 }
 tracks/58/type = "value"
 tracks/58/imported = false
 tracks/58/enabled = true
-tracks/58/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:visible")
+tracks/58/path = NodePath("Player/Sprite/Polygons/Shield:position")
 tracks/58/interp = 1
 tracks/58/loop_wrap = true
 tracks/58/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-6.48866, -67.5045)]
 }
 tracks/59/type = "value"
 tracks/59/imported = false
 tracks/59/enabled = true
-tracks/59/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:frame")
+tracks/59/path = NodePath("Player/AudioStreamPlayer2D:playing")
 tracks/59/interp = 1
 tracks/59/loop_wrap = true
 tracks/59/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/60/type = "value"
-tracks/60/imported = false
-tracks/60/enabled = true
-tracks/60/path = NodePath("Player/Sprite/Polygons/Shield:position")
-tracks/60/interp = 1
-tracks/60/loop_wrap = true
-tracks/60/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6.48866, -67.5045)]
-}
-tracks/61/type = "value"
-tracks/61/imported = false
-tracks/61/enabled = true
-tracks/61/path = NodePath("Player/AudioStreamPlayer2D:playing")
-tracks/61/interp = 1
-tracks/61/loop_wrap = true
-tracks/61/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -3066,130 +3040,106 @@ tracks/27/keys = {
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("Player/Sprite/Polygons/WeaponF:position")
+tracks/28/path = NodePath("Player/Sprite/Polygons/Shield:position")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-58.9736, -20.5362), Vector2(-58.9736, -20.5362), Vector2(-70.3001, -19.5923), Vector2(-70.3001, -19.5923), Vector2(-70.3001, -19.5923), Vector2(-70.3001, -19.5923), Vector2(-70.3001, -19.5923), Vector2(-34.0034, -2.0605), Vector2(-34.0034, -2.0605)]
-}
-tracks/29/type = "value"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("Player/Sprite/Polygons/WeaponF:rotation")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [-1.11913, -2.18986, -2.18986, -2.18986, -2.18986, -2.18986, -3.56526, -3.56526]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("Player/Sprite/Polygons/Shield:position")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
 "times": PackedFloat32Array(0, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-6.48866, -67.5045), Vector2(-6.48866, -67.5045), Vector2(-17.3481, -65.6505)]
 }
-tracks/31/type = "value"
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/path = NodePath("Player/Sprite/Skeleton2D/TargetPlume:position")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/keys = {
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Player/Sprite/Skeleton2D/TargetPlume:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
 "times": PackedFloat32Array(0.2, 0.5, 0.6, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(14.9706, -97.0281), Vector2(19.7328, -111.712), Vector2(19.7328, -111.712), Vector2(19.7328, -111.712), Vector2(13.8535, -42.2429)]
 }
-tracks/32/type = "value"
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/path = NodePath("Player/Sprite/Skeleton2D/TargetPlume:rotation")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/keys = {
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Player/Sprite/Skeleton2D/TargetPlume:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/33/type = "value"
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:position")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/keys = {
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-7.2446, -2.55578), Vector2(-7.2446, -2.55578), Vector2(-28.4419, -15.6808), Vector2(-28.4419, -15.6808), Vector2(-28.4419, -15.6808), Vector2(-9.84369, -1.82218), Vector2(-1.64099, 5.55705)]
 }
-tracks/34/type = "value"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:rotation")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:rotation")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [-0.331613, -0.331613, -0.929951, -1.84961, -3.30283, -3.57303, -3.51635]
 }
-tracks/35/type = "value"
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:visible")
-tracks/35/interp = 1
-tracks/35/loop_wrap = true
-tracks/35/keys = {
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
 "times": PackedFloat32Array(0.9, 1.17),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/36/type = "value"
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:frame")
-tracks/36/interp = 1
-tracks/36/loop_wrap = true
-tracks/36/keys = {
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Player/Sprite/Polygons/Effects/PhysicalSkillDamageEffect:frame")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
 "times": PackedFloat32Array(0.9, 0.93, 0.96, 0.99, 1.02, 1.05, 1.08, 1.11, 1.14),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
-tracks/37/type = "value"
-tracks/37/imported = false
-tracks/37/enabled = true
-tracks/37/path = NodePath("Player/Sprite/Polygons/FauldsL:rotation")
-tracks/37/interp = 1
-tracks/37/loop_wrap = true
-tracks/37/keys = {
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Player/Sprite/Polygons/FauldsL:rotation")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
 "times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, -0.194243, -0.593412, -0.667856]
 }
-tracks/38/type = "audio"
-tracks/38/imported = false
-tracks/38/enabled = true
-tracks/38/path = NodePath("Player/AudioStreamPlayer2D")
-tracks/38/interp = 1
-tracks/38/loop_wrap = true
-tracks/38/keys = {
+tracks/36/type = "audio"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Player/AudioStreamPlayer2D")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -3197,26 +3147,26 @@ tracks/38/keys = {
 }],
 "times": PackedFloat32Array(0.8)
 }
-tracks/38/use_blend = true
-tracks/39/type = "value"
-tracks/39/imported = false
-tracks/39/enabled = true
-tracks/39/path = NodePath("Player/AudioStreamPlayer2D:playing")
-tracks/39/interp = 1
-tracks/39/loop_wrap = true
-tracks/39/keys = {
+tracks/36/use_blend = true
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Player/AudioStreamPlayer2D:playing")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/40/type = "method"
-tracks/40/imported = false
-tracks/40/enabled = true
-tracks/40/path = NodePath("Player/Camera")
-tracks/40/interp = 1
-tracks/40/loop_wrap = true
-tracks/40/keys = {
+tracks/38/type = "method"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Player/Camera")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
 "times": PackedFloat32Array(0.8),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3714,8 +3664,7 @@ shape = SubResource("CircleShape2D_smckf")
 
 [node name="Items" type="Node2D" parent="Sprite/Polygons"]
 script = ExtResource("6_5jqbh")
-armor = ExtResource("7_m2hfh")
-weapon = ExtResource("8_qg6df")
+armor = ExtResource("7_becmq")
 shield = ExtResource("9_kr01x")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Sprite/Polygons/Items"]
@@ -3734,17 +3683,6 @@ position = Vector2(-49.1603, 60.3969)
 texture = ExtResource("3_w460m")
 vframes = 9
 frame = 1
-
-[node name="WeaponF" type="Polygon2D" parent="Sprite/Polygons"]
-visible = false
-position = Vector2(-38.777, -9.881)
-rotation = -0.331613
-scale = Vector2(0.99953, 0.99953)
-offset = Vector2(-23.5, -68.625)
-texture = ExtResource("14_367bt")
-polygon = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
-uv = PackedVector2Array(0, 0, 50, 0, 50, 100, 0, 100)
-bones = ["Bone2D", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="Plume" type="Polygon2D" parent="Sprite/Polygons" groups=["armor_part"]]
 position = Vector2(-112.501, -97.5003)
@@ -3969,6 +3907,7 @@ range_z_min = -1
 texture = ExtResource("6_ymrc8")
 
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
+visible = false
 modulate = Color(1, 0, 0, 1)
 position = Vector2(-34.7723, -7.22514)
 rotation = -0.613725

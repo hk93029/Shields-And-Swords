@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwimbei6g1uot"
-path="res://.godot/imported/mace.png-639e9c0061f0d6edc056afc9369e2726.ctex"
+uid="uid://dfh1m2b52aru3"
+path="res://.godot/imported/iron_sword_icon.png-12a0a5d1c6d5f5b27cc35a4ec702fc6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/icons/items/mace.png"
-dest_files=["res://.godot/imported/mace.png-639e9c0061f0d6edc056afc9369e2726.ctex"]
+source_file="res://assets/sprites/icons/items/iron_sword_icon.png"
+dest_files=["res://.godot/imported/iron_sword_icon.png-12a0a5d1c6d5f5b27cc35a4ec702fc6c.ctex"]
 
 [params]
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://bj4qxg7727gpq"]
+
+[ext_resource type="Script" path="res://classes/items/weapon.gd" id="1_h8yi3"]
+
+[resource]
+script = ExtResource("1_h8yi3")
+base_physical_damage_max = 0
+base_physical_damage_min = 0
+quality = 0
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 0
+item_name = ""
+description = ""
+price = 0
+necessary_level = 1
+necessary_str = 0
+necessary_dex = 0
+necessary_int = 0

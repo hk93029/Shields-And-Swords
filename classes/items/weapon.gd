@@ -3,8 +3,15 @@ extends Item
 
 @export var texture: Texture2D
 
-@export var  base_physical_damage_max: int
-@export var base_physical_damage_min: int
+@export var  base_physical_damage_max: int :
+	set(value):
+		base_physical_damage_max = value
+		physical_damage_max = value
+		
+@export var base_physical_damage_min: int :
+	set(value):
+		base_physical_damage_min = value
+		physical_damage_min = value
 
 
 var physical_damage_min: int = base_physical_damage_min

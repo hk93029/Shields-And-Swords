@@ -1,7 +1,7 @@
 class_name Item
 extends Resource
 
-enum ItemType{WEAPON, ARMOR, RING, AMULET, GEM, CRAFT_MATERIAL, CONSUMABLE, REFINING_DUST}
+enum ItemType{WEAPON, ARMOR, SHIELD, RING, AMULET, GEM, CRAFT_MATERIAL, CONSUMABLE, REFINING_DUST}
 
 @export var item_name: String
 @export_multiline var description: String

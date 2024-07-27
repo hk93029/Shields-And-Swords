@@ -84,6 +84,7 @@ func _input(event):
 func _physics_process(delta):
 
 	if (target_body_clicked != null):
+		
 		var direction_to_target = position.direction_to(target_body_clicked.position)
 		var distance_limit
 		

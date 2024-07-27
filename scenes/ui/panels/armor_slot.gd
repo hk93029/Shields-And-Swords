@@ -9,8 +9,9 @@ func _ready():
 	Events.connect("post_equipped_armor", on_post_equipped_armor)
 
 func on_post_equipped_armor(armor):
-	item_icon.item = armor
-	item_icon.texture = armor.icon
+	if armor != null:
+		item_icon.item = armor
+		item_icon.texture = armor.icon
 
 
 func _can_drop_data(at_position, data): # Define se o dado pode ser dropado aqui, ou seja, o emissor também é receptor, ele pode transmitir para outros slots bem como receber.

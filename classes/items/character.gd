@@ -16,11 +16,12 @@ var max_health: int
 @export var hp_bar: HPBar
 
 
-@export var items: Node2D
-@export var armor: Armor # = %Armor
-@export var ring: Ring # = %Ring
-@export var amulet: Amulet # = %Amulet
-@export var weapon: Weapon #Weapon
+@export var items: Node2D # Nó items que vai possuir todos os items equipados
+
+@export var armor: Armor
+@export var ring: Ring
+@export var amulet: Amulet
+@export var weapon: Weapon
 @export var shield: Shield
 
 var weapon_adds: Array[Add]
@@ -35,7 +36,7 @@ var evaded_damage_digit_prefab: PackedScene
 
 var char_stats: CharacterStatus
 var equips_adds: EquipmentsAdditionals # Amount of all equips adds togheter
-#var skill_adds: SkillAdditionals
+#var skill_adds: SkillAdditionals # Vai ser usado para os adicionais gerados por buff no personagem, normalmente em skills passivas
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var damage_received : int

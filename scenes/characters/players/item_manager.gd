@@ -16,9 +16,17 @@ func _ready():
 	Events.connect("shield_equipped", on_shield_equipped)
 	
 	post_equipped_items()
-#	Events.connect("shield_equipped", on_shield_equipped)
-#	Events.connect("ring_equipped", on_ring_equipped)
-#	Events.connect("amulet_equipped", on_amulet_equipped)
+
+	if armor == null:
+		armor = load("res://resources/items/armors/default_armor.tres")
+	if weapon == null:
+		weapon = load("res://resources/items/weapons/empty_weapon.tres")
+	if shield == null:
+		shield = load("res://resources/items/shields/empty_shield.tres")
+	if ring == null:
+		pass
+	if amulet == null:
+		pass
 	
 	update_armor_texture()
 	update_weapon_texture()
@@ -36,6 +44,8 @@ func post_equipped_items():
 
 
 func on_shield_equipped(new_shield: Shield):
+	if new_shield == null:
+		new_shield = load("res://resources/items/shields/empty_shield.tres")
 	player.unequip_item(shield)
 	shield = new_shield
 	player.equip_item(shield)

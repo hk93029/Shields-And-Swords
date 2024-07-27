@@ -23,3 +23,6 @@ var level: int = 1
 @export_category("Weapon Refining")
 @export var refining = 0
 
+func _init():
+	item_type = ItemType.SHIELD
+

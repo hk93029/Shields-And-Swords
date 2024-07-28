@@ -10,6 +10,14 @@ signal panel_moved
 func _ready():
 	visible = false
 	original_position = global_position
+	Events.connect("post_current_essence", on_post_current_essence)
+	Events.connect("post_current_gold", on_post_current_gold)
+
+func on_post_current_essence(essence):
+	%EssenceLabel.text = str(int(%EssenceLabel.text) + essence)
+
+func on_post_current_gold(gold):
+	%GoldLabel.text = str(int(%GoldLabel.text) + gold)
 
 func _input(event):
 	if event.is_action_pressed("open_inventory"):

@@ -1,48 +1,28 @@
-[gd_resource type="Resource" script_class="Armor" load_steps=10 format=3 uid="uid://dfyo5pt6tso6r"]
+[gd_resource type="Resource" script_class="Armor" load_steps=6 format=3 uid="uid://dfyo5pt6tso6r"]
 
+[ext_resource type="Script" path="res://classes/additionals/defense_add.gd" id="1_5xugx"]
 [ext_resource type="Script" path="res://classes/items/armor.gd" id="1_lm2p4"]
-[ext_resource type="Script" path="res://classes/additionals/boost_add.gd" id="1_rwief"]
 [ext_resource type="Texture2D" uid="uid://bwrntqfoq45ni" path="res://assets/sprites/icons/items/steel_armor_icon.png" id="2_grk8t"]
 [ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://assets/sprites/items/armors/steel_armor.png" id="4_warv7"]
 
-[sub_resource type="Resource" id="Resource_a4qvn"]
-script = ExtResource("1_rwief")
-improvment = 0
-value = 2
-
-[sub_resource type="Resource" id="Resource_ybfcj"]
-script = ExtResource("1_rwief")
+[sub_resource type="Resource" id="Resource_ofowe"]
+script = ExtResource("1_5xugx")
 improvment = 1
-value = 12
-
-[sub_resource type="Resource" id="Resource_rkxlw"]
-script = ExtResource("1_rwief")
-improvment = 2
-value = 20
-
-[sub_resource type="Resource" id="Resource_17f7r"]
-script = ExtResource("1_rwief")
-improvment = 0
-value = 12
-
-[sub_resource type="Resource" id="Resource_uua23"]
-script = ExtResource("1_rwief")
-improvment = 0
-value = 202
+value = 3
 
 [resource]
 script = ExtResource("1_lm2p4")
 texture = ExtResource("4_warv7")
 base_physical_defense = 13
-quality = 7
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_a4qvn"), SubResource("Resource_ybfcj"), SubResource("Resource_rkxlw"), SubResource("Resource_17f7r"), SubResource("Resource_uua23")])
+quality = 2
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_ofowe")])
 refining = 3
 item_name = "Steel Armor"
 description = "Steel Armor
 "
 icon = ExtResource("2_grk8t")
 price = 320
-level_required = 1
-str_required = 0
+level_required = 5
+str_required = 3
 dex_required = 0
 int_required = 0

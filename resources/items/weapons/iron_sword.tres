@@ -1,48 +1,28 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=10 format=3 uid="uid://cg6xxqgtspci1"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://cg6xxqgtspci1"]
 
 [ext_resource type="Texture2D" uid="uid://dfh1m2b52aru3" path="res://assets/sprites/icons/items/iron_sword_icon.png" id="1_7u03o"]
 [ext_resource type="Script" path="res://classes/items/weapon.gd" id="1_dwic6"]
-[ext_resource type="Script" path="res://classes/additionals/damage_add.gd" id="1_nsxo6"]
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_hycy2"]
 [ext_resource type="Texture2D" uid="uid://dks1wcwjjubat" path="res://assets/sprites/items/weapons/sword.png" id="3_psapm"]
 
-[sub_resource type="Resource" id="Resource_8s02i"]
-script = ExtResource("1_nsxo6")
+[sub_resource type="Resource" id="Resource_n0xl3"]
+script = ExtResource("1_hycy2")
 improvment = 0
-value = 20
-
-[sub_resource type="Resource" id="Resource_1eo0p"]
-script = ExtResource("1_nsxo6")
-improvment = 1
-value = 10
-
-[sub_resource type="Resource" id="Resource_lvode"]
-script = ExtResource("1_nsxo6")
-improvment = 2
-value = 7
-
-[sub_resource type="Resource" id="Resource_yi4ej"]
-script = ExtResource("1_nsxo6")
-improvment = 3
-value = 17
-
-[sub_resource type="Resource" id="Resource_udufu"]
-script = ExtResource("1_nsxo6")
-improvment = 4
-value = 30
+value = 3
 
 [resource]
 script = ExtResource("1_dwic6")
 texture = ExtResource("3_psapm")
 base_physical_damage_max = 8
 base_physical_damage_min = 6
-quality = 7
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_8s02i"), SubResource("Resource_1eo0p"), SubResource("Resource_lvode"), SubResource("Resource_yi4ej"), SubResource("Resource_udufu")])
+quality = 2
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_n0xl3")])
 refining = 0
 item_name = "Iron Sword"
 description = "Iron Sword"
 icon = ExtResource("1_7u03o")
 price = 70
-level_required = 1
-str_required = 0
-dex_required = 0
+level_required = 3
+str_required = 2
+dex_required = 1
 int_required = 0

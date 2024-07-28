@@ -14,6 +14,12 @@ signal post_equipped_amulet(amulet)
 
 signal post_equips_attributes_adds(cons_add, str_add, dex_add, int_add)
 
+signal post_current_essence(essence)
+signal post_current_gold(gold)
+
+signal drop_gold(gold)
+signal drop_essence(essence)
+
 signal armor_equipped(armor)
 signal weapon_equipped(weapon)
 signal shield_equipped(shield)

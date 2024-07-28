@@ -122,6 +122,10 @@ func _play_death_effect():
 func _die():
 	get_tree().call_group("player_stats", "update_exp", randi_range(death_experience_min, death_experience_max))
 	is_dead = true
+	if randi_range(0, 5) < 2:
+		Events.emit_signal("drop_gold", randi_range(10, 40))
+	if randi_range(0, 5) < 2:
+		Events.emit_signal("drop_essence", randi_range(1,4))
 	_play_death_effect()
 			
 

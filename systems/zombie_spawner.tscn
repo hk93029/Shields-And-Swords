@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwkfu4er1qgnc"]
+
+[ext_resource type="Script" path="res://systems/zombie_spawner.gd" id="1_mu1i1"]
+
+[sub_resource type="Curve2D" id="Curve2D_3y4pc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -37.5231, 95.7643, 0, 0, 0, 0, -158.385, 174.337, 0, 0, 0, 0, -267.842, 214.382, 0, 0, 0, 0, -487.561, 275.929, 0, 0, 0, 0, -580.728, 233.739, 0, 0, 0, 0, -199.402, 33.6379, 0, 0, 0, 0, -161.647, -136.259, 0, 0, 0, 0, -93.6884, -351.463, 0, 0, 0, 0, 419.779, -426.973, 0, 0, 0, 0, -370.266, -511.758, 0, 0, 0, 0, 72.119, -459.433, 0, 0, 0, 0, 214.824, -278.674, 0, 0, 0, 0, 238.608, -116.941, 0, 0, 0, 0, 267.149, 135.17, 0, 0, 0, 0, 348.015, 268.362, 0, 0, 0, 0, 514.504, 282.632, 0, 0, 0, 0, -799.706, 233.739)
+}
+point_count = 17
+
+[node name="ZombieSpawner" type="Node2D"]
+script = ExtResource("1_mu1i1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3y4pc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-37.5231, 95.7643)
+rotation = 2.56515
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

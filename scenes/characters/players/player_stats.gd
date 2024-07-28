@@ -6,13 +6,19 @@ var current_exp: int = 0
 var level_atribute_points: int = 0
 var player: Player
 
+var gold: int = 20
+var essence: int = 0
+
 func _ready():
 	Events.connect("attributes_changed", on_attributes_changed)
+	Events.connect("drop_gold", on_drop_gold)
+	Events.connect("drop_essence", on_drop_essence)
 	player = get_parent()
 	post_current_status()
 	post_current_attributes()
 	post_current_level()
-
+	post_current_essence()
+	post_current_level()
 #func _get_target_body():
 #	return player.get_target_body()
 
@@ -46,3 +52,18 @@ func post_current_attributes():
 
 func post_current_level():
 	Events.emit_signal("post_current_level", level)
+	
+func post_current_essence():
+	Events.emit_signal("post_current_essence", essence)
+	
+func post_current_gold():
+	Events.emit_signal("post_current_gold", gold)
+	
+
+func on_drop_gold(dropped_gold):
+	gold += dropped_gold
+	post_current_gold()
+
+func on_drop_essence(dropped_essence):
+	essence += dropped_essence
+	post_current_essence()

@@ -1,14 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3q87rwtxhh83"]
 
 [ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_gl1s8"]
-
-[sub_resource type="SystemFont" id="SystemFont_61jo3"]
-font_names = PackedStringArray("Century Gothic")
-font_italic = true
-multichannel_signed_distance_field = true
+[ext_resource type="FontFile" uid="uid://tfrsas05h3o7" path="res://addons/fonts/Cardo-Italic.ttf" id="2_nyp2s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyyl6"]
-font = SubResource("SystemFont_61jo3")
+font = ExtResource("2_nyp2s")
 font_size = 23
 outline_size = 8
 outline_color = Color(0.376471, 0, 0.670588, 1)
@@ -129,6 +125,7 @@ anchor_bottom = 1.0
 offset_left = -26.0
 offset_top = -29.0
 offset_right = 26.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4

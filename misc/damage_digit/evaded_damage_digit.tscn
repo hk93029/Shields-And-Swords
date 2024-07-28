@@ -1,14 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ydm4fxbm41nr"]
 
 [ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_2t3p2"]
-
-[sub_resource type="SystemFont" id="SystemFont_61jo3"]
-font_names = PackedStringArray("Century Gothic")
-font_italic = true
-multichannel_signed_distance_field = true
+[ext_resource type="FontFile" uid="uid://tfrsas05h3o7" path="res://addons/fonts/Cardo-Italic.ttf" id="2_lk0ei"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyyl6"]
-font = SubResource("SystemFont_61jo3")
+font = ExtResource("2_lk0ei")
 font_size = 23
 font_color = Color(0.845009, 0.185683, 0.834995, 1)
 outline_size = 8
@@ -224,12 +220,12 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
 offset_top = -11.4913
-offset_right = 43.0
-offset_bottom = 17.5087
+offset_right = 37.0
+offset_bottom = 20.5087
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-text = "MISS!!"
+text = "Miss!!"
 label_settings = SubResource("LabelSettings_pyyl6")
 horizontal_alignment = 1
 vertical_alignment = 1

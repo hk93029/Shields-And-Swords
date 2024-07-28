@@ -1,13 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://k7sfm6wc1ea2"]
 
 [ext_resource type="Script" path="res://misc/damage_digit/damage_digit.gd" id="1_orkr7"]
-
-[sub_resource type="SystemFont" id="SystemFont_61jo3"]
-font_names = PackedStringArray("Franklin Gothic")
-multichannel_signed_distance_field = true
+[ext_resource type="FontFile" uid="uid://b7qg6aq5odq0q" path="res://addons/fonts/Cardo-Bold.ttf" id="2_td7xn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pyyl6"]
-font = SubResource("SystemFont_61jo3")
+font = ExtResource("2_td7xn")
 font_size = 23
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
@@ -127,6 +124,7 @@ anchor_bottom = 1.0
 offset_left = -20.0
 offset_top = -27.0
 offset_right = 20.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8

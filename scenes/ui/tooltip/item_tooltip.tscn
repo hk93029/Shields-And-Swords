@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://56pwdgd54ert"]
+[gd_scene load_steps=11 format=3 uid="uid://56pwdgd54ert"]
 
 [ext_resource type="LabelSettings" uid="uid://de06i7hymr2wm" path="res://settings/item_title_label_settings.tres" id="1_r4e7n"]
 [ext_resource type="LabelSettings" uid="uid://c8g5q5xutqqsi" path="res://settings/item_defense_damage_label_settings.tres" id="2_5gc42"]
@@ -9,10 +9,8 @@
 [ext_resource type="LabelSettings" uid="uid://drp2gqymw38h" path="res://settings/stats_add_label_settings.tres" id="7_rst8e"]
 [ext_resource type="LabelSettings" uid="uid://bkrmf7qt0yius" path="res://settings/boost_add_label_settings.tres" id="8_spm8t"]
 [ext_resource type="LabelSettings" uid="uid://dgmqafhep5tbj" path="res://settings/empty_add_label_settings.tres" id="9_p5uv0"]
-[ext_resource type="SystemFont" uid="uid://7xgixsdl81ag" path="res://settings/item_rarity_label_settings.tres" id="10_yw3gb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xm42v"]
-font = ExtResource("10_yw3gb")
 font_color = Color(0.532121, 0.687183, 1, 1)
 outline_size = 7
 outline_color = Color(0, 0, 0, 0.313726)

@@ -44,7 +44,6 @@ func _physics_process(delta):
 		return
 	
 	if (target_body != null):
-	#	print("TESTE 232323")
 		var direction_to_target = position.direction_to(target_body.position)
 		var distance_limit
 		

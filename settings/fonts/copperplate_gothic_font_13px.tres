@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3 uid="uid://cqomwomusq0ak"]
+
+[resource]
+font_names = PackedStringArray("Copperplate Gothic")
+subpixel_positioning = 0

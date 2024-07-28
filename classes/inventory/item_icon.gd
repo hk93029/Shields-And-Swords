@@ -50,10 +50,6 @@ func get_preview(): # preview é apenas algo VISUAL, ele define o que será VIST
 
 
 func generate_tooltip():
-	
-
-	
-	
 	if item is Armor or item is Weapon or item is Shield or item is Ring:
 		var title_text = item.item_name
 		if item.refining > 0:
@@ -109,7 +105,6 @@ func generate_tooltip():
 			match add.type: ##Type{EMPTY, ATTRIBUTE, COMBAT_PERFORMACE, DAMAGE, DEFENSE, BOOST}
 			
 				0: #EMPTY
-					print("VAZIO")
 					add_label.label_settings = load("res://settings/empty_add_label_settings.tres")
 					add_label_text = "Empty"
 				1: #ATTRIBUTE
@@ -185,8 +180,8 @@ func generate_tooltip():
 		
 		
 		var quality_text = ""
-		match item.quality: # { COMMON = 0, SPECIAL = 2, VERY_SPECIAL = 3, EPIC = 4, CELESTIAL = 7}
-			0:
+		match item.quality: # { COMMON = 1, SPECIAL = 2, VERY_SPECIAL = 3, EPIC = 4, CELESTIAL = 7}
+			1:
 				quality_text = "Common"
 			2:
 				quality_text = "Special"
@@ -213,7 +208,6 @@ func _on_mouse_exited():
 func _on_timer_timeout():
 	if item != null:
 		get_parent().add_child(tooltip_item)
-		print("TIME OUT")
 
 
 

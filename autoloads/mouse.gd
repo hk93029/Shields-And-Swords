@@ -6,6 +6,7 @@ var attack_cursor = load("res://assets/sprites/cursor/attack_cursor.png")
 var pointing_cursor = load("res://assets/sprites/cursor/pointing_hand_cursor.png")
 var dragging_cursor = load("res://assets/sprites/cursor/drag_hand_cursor.png")
 var dialog_cursor = load("res://assets/sprites/cursor/dialog_cursor.png")
+var forbidden_cursor = load("res://assets/sprites/cursor/forbidden_cursor.png")
 
 var target_body = null
 var can_player_move: bool = true
@@ -21,7 +22,8 @@ func _ready():
 	Input.set_custom_mouse_cursor(pointing_cursor, Input.CURSOR_POINTING_HAND, Vector2(7, 7))
 	Input.set_custom_mouse_cursor(dragging_cursor, Input.CURSOR_DRAG, Vector2(7, 7))
 	Input.set_custom_mouse_cursor(dialog_cursor, Input.CURSOR_HELP, Vector2(7, 7))
-	
+	Input.set_custom_mouse_cursor(forbidden_cursor, Input.CURSOR_FORBIDDEN, Vector2(7, 7))
+	Input.set_custom_mouse_cursor(dragging_cursor, Input.CURSOR_CAN_DROP, Vector2(7, 7))
 
 func change_state(body):
 	target_body = body

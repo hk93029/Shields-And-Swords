@@ -1,12 +1,15 @@
-[gd_scene load_steps=37 format=3 uid="uid://btywxst6npsju"]
+[gd_scene load_steps=35 format=3 uid="uid://btywxst6npsju"]
 
-[ext_resource type="Script" path="res://scenes/ui/panel.gd" id="1_idn41"]
+[ext_resource type="Script" path="res://scenes/ui/panels/attributes_panel.gd" id="1_idn41"]
 [ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="2_n7x4x"]
 [ext_resource type="Texture2D" uid="uid://v2mlbocqy1pk" path="res://assets/sprites/ui/close_button.png" id="4_gqmv1"]
+[ext_resource type="SystemFont" uid="uid://b26s465f2yb7p" path="res://settings/fonts/old_english_text_mt_font_23px.tres" id="5_5je1o"]
 [ext_resource type="Texture2D" uid="uid://co1jna8u1urfn" path="res://assets/sprites/ui/close_button_pressed.png" id="5_ef61c"]
 [ext_resource type="Texture2D" uid="uid://bi5i5pmdrsb78" path="res://assets/sprites/ui/attributes_panel/skill_buttons_bg.png" id="6_767k3"]
 [ext_resource type="Texture2D" uid="uid://0ftojlqok0ym" path="res://assets/sprites/ui/attributes_panel/spacing_7x15.png" id="6_la6v6"]
+[ext_resource type="SystemFont" uid="uid://bl4g0u1jaoyi5" path="res://settings/fonts/franklin_gothic_font_16px.tres" id="7_6q1xw"]
 [ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="7_b2mlm"]
+[ext_resource type="SystemFont" uid="uid://cc5wm3l1uku87" path="res://settings/fonts/franklin_gothic_18px.tres" id="8_pe7ho"]
 [ext_resource type="Texture2D" uid="uid://3gmd625yh3bs" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button_pressed.png" id="8_rd1nw"]
 [ext_resource type="Texture2D" uid="uid://ipeal7nny7jt" path="res://assets/sprites/ui/attributes_panel/add_attribute_button.png" id="9_yu7qe"]
 [ext_resource type="Texture2D" uid="uid://u5qr2s16q1kn" path="res://assets/sprites/ui/attributes_panel/add_attribute_button_pressed.png" id="10_3ctwm"]
@@ -14,64 +17,40 @@
 [ext_resource type="Texture2D" uid="uid://dtv2yng1wq2la" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button.png" id="12_y6xtf"]
 [ext_resource type="Texture2D" uid="uid://ckf4q7l662025" path="res://assets/sprites/ui/attributes_panel/confirm_modifications_button_pressed.png" id="13_q8a4u"]
 [ext_resource type="Texture2D" uid="uid://cfncbpy4qclg2" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button.png" id="14_6ugnk"]
+[ext_resource type="SystemFont" uid="uid://cy62dh2q2s7le" path="res://settings/fonts/franklin_gothic_book_16px.tres" id="14_whxfq"]
 [ext_resource type="Texture2D" uid="uid://b4tf46xlad6hl" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button_pressed.png" id="15_gk0m4"]
 
-[sub_resource type="SystemFont" id="SystemFont_026vk"]
-font_names = PackedStringArray("Old English Text MT")
-hinting = 2
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_rqyfn"]
-font = SubResource("SystemFont_026vk")
+font = ExtResource("5_5je1o")
 font_size = 23
 
-[sub_resource type="SystemFont" id="SystemFont_kmqni"]
-font_names = PackedStringArray("Franklin Gothic")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_3o25s"]
-font = SubResource("SystemFont_kmqni")
-
-[sub_resource type="SystemFont" id="SystemFont_8rir0"]
-font_names = PackedStringArray("Franklin Gothic")
-subpixel_positioning = 0
+font = ExtResource("7_6q1xw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nkr2"]
-font = SubResource("SystemFont_8rir0")
+font = ExtResource("8_pe7ho")
 font_size = 18
 
-[sub_resource type="SystemFont" id="SystemFont_5q781"]
-font_names = PackedStringArray("Franklin Gothic")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_bcbxc"]
-font = SubResource("SystemFont_5q781")
+font = ExtResource("7_6q1xw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ge7tc"]
-font = SubResource("SystemFont_8rir0")
+font = ExtResource("8_pe7ho")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve4xd"]
-font = SubResource("SystemFont_8rir0")
+font = ExtResource("8_pe7ho")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0w4a"]
-font = SubResource("SystemFont_8rir0")
+font = ExtResource("8_pe7ho")
 font_size = 18
 
-[sub_resource type="SystemFont" id="SystemFont_naqs5"]
-font_names = PackedStringArray("Franklin Gothic Book")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_buug4"]
-font = SubResource("SystemFont_naqs5")
-
-[sub_resource type="SystemFont" id="SystemFont_14qjq"]
-font_names = PackedStringArray("Franklin Gothic Book")
-subpixel_positioning = 0
+font = ExtResource("14_whxfq")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xebo4"]
-font = SubResource("SystemFont_14qjq")
+font = ExtResource("14_whxfq")
 
 [sub_resource type="FontFile" id="FontFile_6lw7d"]
 subpixel_positioning = 0
@@ -266,11 +245,24 @@ subpixel_positioning = 0
 font = SubResource("SystemFont_0tp32")
 font_size = 14
 
-[sub_resource type="SystemFont" id="SystemFont_h4x6y"]
-subpixel_positioning = 0
+[sub_resource type="FontFile" id="FontFile_8wqeq"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_onfsd"]
-font = SubResource("SystemFont_h4x6y")
+font = SubResource("FontFile_8wqeq")
 font_size = 12
 
 [node name="AttributesPanel" type="Control" groups=["draggable"]]

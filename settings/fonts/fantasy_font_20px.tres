@@ -1,0 +1,5 @@
+[gd_resource type="SystemFont" format=3 uid="uid://cnbu8ief0jptd"]
+
+[resource]
+font_names = PackedStringArray("Gabriola")
+subpixel_positioning = 0

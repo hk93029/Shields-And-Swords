@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_a4qvn"]
 script = ExtResource("1_rwief")
 improvment = 0
-value = 202
+value = 2
 
 [sub_resource type="Resource" id="Resource_ybfcj"]
 script = ExtResource("1_rwief")

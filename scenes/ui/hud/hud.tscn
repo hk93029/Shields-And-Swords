@@ -1,25 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://dal0ib8ju1u5t"]
+[gd_scene load_steps=9 format=3 uid="uid://dal0ib8ju1u5t"]
 
 [ext_resource type="Texture2D" uid="uid://dmjtp5lweg35m" path="res://assets/sprites/ui/hud/skills_bar.png" id="1_8xf1j"]
 [ext_resource type="Texture2D" uid="uid://crjecv1kd0edf" path="res://assets/sprites/ui/hud/exp_bar_bg.png" id="2_4bodl"]
 [ext_resource type="Texture2D" uid="uid://dldkxmswo5lf7" path="res://assets/sprites/ui/hud/exp_bar_outline.png" id="3_5p8uu"]
 [ext_resource type="Texture2D" uid="uid://c8hfeoru3xuyg" path="res://assets/sprites/ui/hud/exp_bar_fill.png" id="4_ucg25"]
 [ext_resource type="Texture2D" uid="uid://dbxrydmprwjiy" path="res://assets/sprites/ui/hud/level_indicator_ui.png" id="5_ghs6s"]
-
-[sub_resource type="SystemFont" id="SystemFont_ttsd0"]
-font_names = PackedStringArray("Copperplate Gothic")
-subpixel_positioning = 0
+[ext_resource type="SystemFont" uid="uid://cqomwomusq0ak" path="res://settings/fonts/copperplate_gothic_font_13px.tres" id="6_33yt6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3kil"]
-font = SubResource("SystemFont_ttsd0")
+font = ExtResource("6_33yt6")
 font_size = 13
 
-[sub_resource type="SystemFont" id="SystemFont_3mdc0"]
-font_names = PackedStringArray("Copperplate Gothic")
-subpixel_positioning = 0
-
 [sub_resource type="LabelSettings" id="LabelSettings_w6j6b"]
-font = SubResource("SystemFont_3mdc0")
+font = ExtResource("6_33yt6")
 font_size = 13
 
 [node name="HUD" type="Control"]

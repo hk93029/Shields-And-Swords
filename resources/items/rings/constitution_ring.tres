@@ -11,7 +11,9 @@ value = 50
 
 [resource]
 script = ExtResource("1_k5pfe")
+quality = 1
 adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_u34pm")])
+refining = 0
 item_name = "Constitution Ring"
 description = ""
 icon = ExtResource("2_ijont")

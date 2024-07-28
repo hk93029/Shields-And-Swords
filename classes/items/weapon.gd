@@ -53,8 +53,8 @@ func _ready():
 	set_max_possible_adds(quality)
 	init_weapon_adds_slots()
 	update_weapon_physical_damge(base_physical_damage_min, base_physical_damage_max)
-	print("refining: +["+str(refining)+"]")
-	print("damage: "+str(base_physical_damage_min)+"-"+str(base_physical_damage_max)+" ("+str(physical_damage_min)+"-"+str(physical_damage_max)+")")
+#	print("refining: +["+str(refining)+"]")
+#	print("damage: "+str(base_physical_damage_min)+"-"+str(base_physical_damage_max)+" ("+str(physical_damage_min)+"-"+str(physical_damage_max)+")")
 	
 
 func set_max_possible_adds(max_value):
@@ -87,7 +87,7 @@ func reset_weapon_adds():
 
 
 func refine_weapon() -> bool:
-	if refining < 9:
+	if refining < 12:
 		refining += 1
 		
 		# AUMENTA ATTRIBUTOS DA ARMA #
@@ -120,7 +120,7 @@ func get_weapon_damage():
 					damage.darkness_damage = adds[index].value
 					break;
 	
-	print("Min: %s; Max: %s", [base_physical_damage_min, base_physical_damage_max])	
+	#print("Min: %s; Max: %s", [base_physical_damage_min, base_physical_damage_max])	
 	damage.physical_damage = randi_range(physical_damage_min, physical_damage_max)
 	
 	return damage

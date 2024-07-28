@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_7ccu8"]
 script = ExtResource("1_qellt")
 improvment = 3
-value = 5
+value = 50
 
 [resource]
 script = ExtResource("1_dgkhd")

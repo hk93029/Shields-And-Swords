@@ -143,24 +143,43 @@ func generate_tooltip():
 						4:
 							add_label_text = "[+] %.02s Evasion [+]"
 				3: #DAMAGE
+					add_label.label_settings = load("res://settings/defense_damage_add_label_settings.tres")
 					match add.improvment: # {EXTRA, FIRE, COLD, LIGHTNING, DARKNESS}
 						0:
-							add_label_text = "[+] %s EXTRA DAMAGE [+]"
+							add_label_text = "[+] %s Extra Damage [+]"
 						1:
-							add_label_text = "[+] %s FIRE DAMAGE [+]"
+							add_label_text = "[+] %s Fire Damage [+]"
 						2:
-							add_label_text = "[+] %s COLD DAMAGE [+]"
+							add_label_text = "[+] %s Cold Damage [+]"
 						3:
-							add_label_text = "[+] %s EXTRA DAMAGE [+]"
+							add_label_text = "[+] %s Lightning Damage [+]"
 						4:
-							add_label_text = "[+] %s DARKNESS DAMAGE [+]"
+							add_label_text = "[+] %s Darkness Damage [+]"
 							
-					add_label.label_settings = load("res://settings/defense_damage_add_label_settings.tres")
 				4: #DEFENSE
 					add_label.label_settings =  load("res://settings/defense_damage_add_label_settings.tres")
+					match add.improvment:
+						0:
+							add_label_text = "[+] %s Extra Defense [+]"
+						1:
+							add_label_text = "[+] %s Fire Defense [+]"
+						2:
+							add_label_text = "[+] %s Cold Defense [+]"
+						3:
+							add_label_text = "[+] %s Lightning Defense [+]"
+						4:
+							add_label_text = "[+] %s Darkness Defense [+]"
+							
 				5: #BOOST
 					add_label.label_settings = load("res://settings/boost_add_label_settings.tres")
-			
+					match add.improvment: # {XP, ESSENCE, GOLD}
+						0:
+							add_label_text = "[+] x%s XP BOOST [+]"
+						1:
+							add_label_text = "[+] x%s ESSENCE BOOST [+]"
+						2:
+							add_label_text = "[+] x%s GOLD BOOST [+]"
+						
 			add_label.text = add_label_text % str(add.value) if add.type != 0 else add_label_text
 			tooltip_item.get_node("%AdditionalsContainer").add_child(add_label)
 		

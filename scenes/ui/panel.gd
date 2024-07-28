@@ -190,7 +190,7 @@ func cancel_changes_pressed():
 	
 func on_level_upped(attribute_points):
 	self.attribute_points += attribute_points
-	print("LEVEL UPPED!!: "+ str(self.attribute_points))
+	#print("LEVEL UPPED!!: "+ str(self.attribute_points))
 	%AttributePointsValue.text = str(self.attribute_points)
 
 

@@ -1,17 +1,40 @@
-[gd_resource type="Resource" script_class="Ring" load_steps=5 format=3 uid="uid://q6npnfyg8vmb"]
+[gd_resource type="Resource" script_class="Ring" load_steps=10 format=3 uid="uid://q6npnfyg8vmb"]
 
 [ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_4o2vm"]
 [ext_resource type="Script" path="res://classes/items/ring.gd" id="1_316ce"]
 [ext_resource type="Texture2D" uid="uid://bwoy8adei1o4k" path="res://assets/sprites/icons/items/rings/strength_ring.png" id="2_dshug"]
+[ext_resource type="Script" path="res://classes/additionals/boost_add.gd" id="2_hxyfi"]
 
 [sub_resource type="Resource" id="Resource_legkk"]
 script = ExtResource("1_4o2vm")
 improvment = 0
 value = 50
 
+[sub_resource type="Resource" id="Resource_3qfwa"]
+script = ExtResource("2_hxyfi")
+improvment = 0
+value = 0
+
+[sub_resource type="Resource" id="Resource_2l5kq"]
+script = ExtResource("2_hxyfi")
+improvment = 1
+value = 12
+
+[sub_resource type="Resource" id="Resource_poc4h"]
+script = ExtResource("2_hxyfi")
+improvment = 2
+value = 20
+
+[sub_resource type="Resource" id="Resource_8kmny"]
+script = ExtResource("2_hxyfi")
+improvment = 0
+value = 12
+
 [resource]
 script = ExtResource("1_316ce")
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_legkk")])
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_legkk"), SubResource("Resource_3qfwa"), SubResource("Resource_2l5kq"), SubResource("Resource_poc4h"), SubResource("Resource_8kmny")])
+refining = 7
+quality = 7
 item_name = "Strength Ring"
 description = ""
 icon = ExtResource("2_dshug")

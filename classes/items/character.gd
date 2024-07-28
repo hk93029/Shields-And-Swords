@@ -486,7 +486,7 @@ func hurt(damage: Damage) -> void:
 	
 	get_parent().add_child(damage_digit)
 	
-	print(damage_received)
+	#print(damage_received)
 	if health > 0:
 		_play_damage_effect()
 	else:

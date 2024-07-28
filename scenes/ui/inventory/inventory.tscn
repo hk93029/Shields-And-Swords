@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dq7gim7icgkiq"]
+[gd_scene load_steps=23 format=3 uid="uid://dq7gim7icgkiq"]
 
 [ext_resource type="Script" path="res://scenes/ui/inventory/inventory.gd" id="1_kyntr"]
 [ext_resource type="Texture2D" uid="uid://b2qf5fvpsim4f" path="res://assets/sprites/ui/inventory/inventory_edge.png" id="1_vo6br"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://cg6xxqgtspci1" path="res://resources/items/weapons/iron_sword.tres" id="8_m3df7"]
 [ext_resource type="Resource" uid="uid://dfyo5pt6tso6r" path="res://resources/items/armors/steel_armor.tres" id="9_4gp0g"]
 [ext_resource type="Texture2D" uid="uid://vesoqiq6qi6i" path="res://assets/sprites/ui/inventory/essence_icon.png" id="9_goyl0"]
+[ext_resource type="Resource" uid="uid://q6npnfyg8vmb" path="res://resources/items/rings/strength_ring.tres" id="9_mrn5w"]
 [ext_resource type="Resource" uid="uid://t77p6y0c5ic6" path="res://resources/items/weapons/crystal_sword.tres" id="9_p4mu1"]
 [ext_resource type="Resource" uid="uid://cl32lifrl1yv0" path="res://resources/items/shields/silver_shield.tres" id="12_dfe0y"]
 
@@ -150,6 +151,9 @@ layout_mode = 2
 
 [node name="InventorySlot8" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
 layout_mode = 2
+
+[node name="ItemIcon" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot8" index="0"]
+item = ExtResource("9_mrn5w")
 
 [node name="InventorySlot9" parent="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer" instance=ExtResource("7_6i4ln")]
 layout_mode = 2
@@ -293,6 +297,7 @@ texture = ExtResource("2_piejc")
 [connection signal="mouse_exited" from="InventoryEdge" to="." method="_on_inventory_edge_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/InventoryContainerBG/CloseButton" to="." method="_on_close_button_pressed"]
 
+[editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot8"]
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot19"]
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot22"]
 [editable path="VBoxContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/SlotGridContainer/InventorySlot23"]

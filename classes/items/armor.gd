@@ -42,8 +42,8 @@ func _ready():
 	set_max_possible_adds(quality)
 	init_armor_adds_slots()
 	update_armor_physical_defense(base_physical_defense)
-	print("refining: +["+str(refining)+"]")
-	print("defense: "+str(physical_defense)+" ("+str(physical_defense)+")")
+#	print("refining: +["+str(refining)+"]")
+#	print("defense: "+str(physical_defense)+" ("+str(physical_defense)+")")
 	
 
 func set_max_possible_adds(max_value):

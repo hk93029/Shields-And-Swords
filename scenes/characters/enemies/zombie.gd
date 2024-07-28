@@ -69,7 +69,7 @@ func _physics_process(delta):
 				
 			if !animation_tree["parameters/Attack2_OneShot/active"] and !animation_tree["parameters/Attack1_OneShot/active"] and !animation_tree["parameters/CriticalDamage1_OneShot/active"]:#and !target_body.is_dead:
 				attack()
-				print("TESTE ATAQUE")
+
 			return
 
 			
@@ -124,7 +124,6 @@ func _die():
 	get_tree().call_group("player_stats", "update_exp", randi_range(death_experience_min, death_experience_max))
 	is_dead = true
 	_play_death_effect()
-	print("XD")
 			
 
 func recalc_path():

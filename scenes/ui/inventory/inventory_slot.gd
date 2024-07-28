@@ -40,4 +40,6 @@ func _drop_data(at_position, data):
 		Events.emit_signal("weapon_equipped", data.item)
 	if data.origin_slot == "Shield":
 		Events.emit_signal("shield_equipped", data.item)
+	if data.origin_slot == "Ring":
+		Events.emit_signal("ring_equipped", data.item)
 	$ItemIcon._on_mouse_entered()

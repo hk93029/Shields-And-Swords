@@ -29,4 +29,4 @@ func _drop_data(at_position, data):
 	
 	
 	Events.emit_signal("weapon_equipped", item_icon.item)
-	
+	$ItemIcon._on_mouse_entered()

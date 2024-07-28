@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Ring" load_steps=2 format=3 uid="uid://bmd4y7y28lnlc"]
+
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="1_t0xq7"]
+
+[resource]
+script = ExtResource("1_t0xq7")
+quality = 0
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 0
+item_name = ""
+description = ""
+price = 0
+level_required = 1
+str_required = 0
+dex_required = 0
+int_required = 0

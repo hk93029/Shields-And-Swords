@@ -1,15 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://btywxst6npsju"]
+[gd_scene load_steps=34 format=3 uid="uid://btywxst6npsju"]
 
 [ext_resource type="Script" path="res://scenes/ui/panels/attributes_panel.gd" id="1_idn41"]
 [ext_resource type="Texture2D" uid="uid://dut2d6sh2v5uq" path="res://assets/sprites/ui/attributes_panel/attributes_panel.png" id="2_n7x4x"]
 [ext_resource type="Texture2D" uid="uid://v2mlbocqy1pk" path="res://assets/sprites/ui/close_button.png" id="4_gqmv1"]
-[ext_resource type="SystemFont" uid="uid://b26s465f2yb7p" path="res://settings/fonts/old_english_text_mt_font_23px.tres" id="5_5je1o"]
 [ext_resource type="Texture2D" uid="uid://co1jna8u1urfn" path="res://assets/sprites/ui/close_button_pressed.png" id="5_ef61c"]
+[ext_resource type="FontFile" uid="uid://6fomvf7hlcu3" path="res://addons/fonts/Cardo-Regular.ttf" id="5_hxi4p"]
 [ext_resource type="Texture2D" uid="uid://bi5i5pmdrsb78" path="res://assets/sprites/ui/attributes_panel/skill_buttons_bg.png" id="6_767k3"]
 [ext_resource type="Texture2D" uid="uid://0ftojlqok0ym" path="res://assets/sprites/ui/attributes_panel/spacing_7x15.png" id="6_la6v6"]
-[ext_resource type="SystemFont" uid="uid://bl4g0u1jaoyi5" path="res://settings/fonts/franklin_gothic_font_16px.tres" id="7_6q1xw"]
 [ext_resource type="Texture2D" uid="uid://3hhhuyy6wokd" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button.png" id="7_b2mlm"]
-[ext_resource type="SystemFont" uid="uid://cc5wm3l1uku87" path="res://settings/fonts/franklin_gothic_18px.tres" id="8_pe7ho"]
+[ext_resource type="FontFile" uid="uid://b7qg6aq5odq0q" path="res://addons/fonts/Cardo-Bold.ttf" id="7_earx5"]
 [ext_resource type="Texture2D" uid="uid://3gmd625yh3bs" path="res://assets/sprites/ui/attributes_panel/sub_attribute_button_pressed.png" id="8_rd1nw"]
 [ext_resource type="Texture2D" uid="uid://ipeal7nny7jt" path="res://assets/sprites/ui/attributes_panel/add_attribute_button.png" id="9_yu7qe"]
 [ext_resource type="Texture2D" uid="uid://u5qr2s16q1kn" path="res://assets/sprites/ui/attributes_panel/add_attribute_button_pressed.png" id="10_3ctwm"]
@@ -21,29 +20,29 @@
 [ext_resource type="Texture2D" uid="uid://b4tf46xlad6hl" path="res://assets/sprites/ui/attributes_panel/deny_modifications_button_pressed.png" id="15_gk0m4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqyfn"]
-font = ExtResource("5_5je1o")
+font = ExtResource("5_hxi4p")
 font_size = 23
 
 [sub_resource type="LabelSettings" id="LabelSettings_3o25s"]
-font = ExtResource("7_6q1xw")
+font = ExtResource("7_earx5")
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nkr2"]
-font = ExtResource("8_pe7ho")
+font = ExtResource("7_earx5")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_bcbxc"]
-font = ExtResource("7_6q1xw")
+font = ExtResource("7_earx5")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ge7tc"]
-font = ExtResource("8_pe7ho")
+font = ExtResource("7_earx5")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_ve4xd"]
-font = ExtResource("8_pe7ho")
+font = ExtResource("7_earx5")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_r0w4a"]
-font = ExtResource("8_pe7ho")
+font = ExtResource("7_earx5")
 font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_buug4"]
@@ -310,6 +309,7 @@ offset_left = 10.0
 offset_top = 13.37
 offset_right = 177.0
 offset_bottom = 160.37
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="PanelTitle" type="Label" parent="Control/VBoxContainer"]
@@ -328,9 +328,11 @@ mouse_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme_override_constants/margin_top = 7
 
 [node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/v_separation = -1
 columns = 7
 
 [node name="StrIndentSpacing" type="TextureRect" parent="Control/VBoxContainer/MarginContainer/GridContainer"]

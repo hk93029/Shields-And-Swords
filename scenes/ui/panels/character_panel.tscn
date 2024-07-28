@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cb0hf4o221x56"]
+[gd_scene load_steps=18 format=3 uid="uid://cb0hf4o221x56"]
 
 [ext_resource type="Texture2D" uid="uid://dca0h17v4k6ti" path="res://assets/sprites/ui/character_panel/character_edge.png" id="1_accij"]
 [ext_resource type="Script" path="res://scenes/ui/panels/character_panel.gd" id="1_x8t5m"]
 [ext_resource type="Texture2D" uid="uid://croekrnckfqay" path="res://assets/sprites/ui/character_panel/character_container.png" id="2_4bkj8"]
 [ext_resource type="Texture2D" uid="uid://dxrlc428dc5t3" path="res://assets/sprites/ui/character_panel/armor_slot.png" id="3_guw3n"]
-[ext_resource type="SystemFont" uid="uid://b6odqsabqs8fe" path="res://settings/fonts/fantasy_font_18px.tres" id="3_ouh6c"]
+[ext_resource type="FontFile" uid="uid://6fomvf7hlcu3" path="res://addons/fonts/Cardo-Regular.ttf" id="3_p1g8f"]
 [ext_resource type="Script" path="res://scenes/ui/panels/armor_slot.gd" id="4_3wq2u"]
 [ext_resource type="Texture2D" uid="uid://v2mlbocqy1pk" path="res://assets/sprites/ui/close_button.png" id="4_bwkxf"]
 [ext_resource type="Texture2D" uid="uid://byu4ghdsm7x66" path="res://assets/sprites/ui/character_panel/weapon_slot.png" id="4_urd57"]
@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://b1m45jtxynek" path="res://assets/sprites/ui/character_panel/shield_slot.png" id="5_gx144"]
 [ext_resource type="Texture2D" uid="uid://d77e64wjgw8j" path="res://assets/sprites/ui/character_panel/ring_slot.png" id="6_s25i8"]
 [ext_resource type="Texture2D" uid="uid://fmo3okhg8807" path="res://assets/sprites/ui/character_panel/amulet_slot.png" id="7_m3hrd"]
-[ext_resource type="Script" path="res://scenes/ui/panels/item_icon.gd" id="8_r75f3"]
+[ext_resource type="PackedScene" uid="uid://cqyatourgp1cc" path="res://scenes/ui/panels/item_icon.tscn" id="9_xnjnt"]
 [ext_resource type="Script" path="res://scenes/ui/panels/weapon_slot.gd" id="10_m3bax"]
 [ext_resource type="Script" path="res://scenes/ui/panels/shield_slot.gd" id="12_b3few"]
+[ext_resource type="Script" path="res://scenes/ui/panels/ring_slog.gd" id="15_igof3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8h723"]
-font = ExtResource("3_ouh6c")
-font_size = 18
+font = ExtResource("3_p1g8f")
 
 [node name="CharacterPanel" type="Control"]
 layout_mode = 3
@@ -41,7 +41,7 @@ offset_right = 164.0
 offset_bottom = 210.0
 mouse_filter = 2
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -50,7 +50,6 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
 text = "Character"
 label_settings = SubResource("LabelSettings_8h723")
 
@@ -88,22 +87,15 @@ expand_mode = 1
 stretch_mode = 3
 script = ExtResource("4_3wq2u")
 
-[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ArmorSlot"]
+[node name="ItemIcon" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/ArmorSlot" instance=ExtResource("9_xnjnt")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-stretch_mode = 3
-script = ExtResource("8_r75f3")
 origin_slot = "Armor"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer"]
@@ -122,22 +114,15 @@ layout_mode = 2
 texture = ExtResource("4_urd57")
 script = ExtResource("10_m3bax")
 
-[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer/WeaponSlot"]
+[node name="ItemIcon" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer/WeaponSlot" instance=ExtResource("9_xnjnt")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-stretch_mode = 3
-script = ExtResource("8_r75f3")
 origin_slot = "Weapon"
 
 [node name="ShieldSlot" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer"]
@@ -145,27 +130,32 @@ layout_mode = 2
 texture = ExtResource("5_gx144")
 script = ExtResource("12_b3few")
 
-[node name="ItemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer/ShieldSlot"]
+[node name="ItemIcon" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer/ShieldSlot" instance=ExtResource("9_xnjnt")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
-stretch_mode = 3
-script = ExtResource("8_r75f3")
 origin_slot = "Shield"
 
 [node name="RingSlot" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("6_s25i8")
+script = ExtResource("15_igof3")
+
+[node name="ItemIcon" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer/RingSlot" instance=ExtResource("9_xnjnt")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+origin_slot = "Ring"
 
 [node name="AmuletSlot" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/VBoxContainer/MarginContainer/GridContainer"]
 layout_mode = 2

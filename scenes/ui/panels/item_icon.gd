@@ -1,6 +1,7 @@
 extends TextureRect
 
 var item: Item
+var tooltip_item: Control
 @export var origin_slot: String = "Inventory"
 	
 	
@@ -23,3 +24,18 @@ func get_preview(): # preview é apenas algo VISUAL, ele define o que será VIST
 	preview.add_child(preview_texture)
 	
 	return preview
+
+
+func _on_mouse_entered():
+	if item != null:
+		tooltip_item = TooltipManager.generate_tooltip(item)
+		$Timer.start(0.5)
+
+func _on_mouse_exited():
+	if item != null:
+		get_parent().remove_child(tooltip_item)
+		$Timer.stop()
+	
+func _on_timer_timeout():
+	if item != null:
+		get_parent().add_child(tooltip_item)

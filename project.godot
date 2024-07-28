@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 Mouse="*res://autoloads/mouse.tscn"
 UI="*res://autoloads/ui.tscn"
 Events="*res://autoloads/events.gd"
+TooltipManager="*res://autoloads/tooltip_manager.gd"
 
 [display]
 

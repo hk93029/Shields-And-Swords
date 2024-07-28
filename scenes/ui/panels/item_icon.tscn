@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqyatourgp1cc"]
+
+[ext_resource type="Script" path="res://scenes/ui/panels/item_icon.gd" id="1_nwuqs"]
+
+[node name="ItemIcon" type="TextureRect"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("1_nwuqs")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

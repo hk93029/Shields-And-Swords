@@ -334,6 +334,10 @@ func equip_item(item: Item):
 		if item is Shield:
 			char_stats.physical_defense += item.physical_defense
 		
+		if item is Ring:
+			items.ring = item
+			ring = items.ring
+			
 		for add in item.adds:
 			apply_item_add_effect(add, "EQUIP")
 
@@ -349,6 +353,10 @@ func unequip_item(item: Item):
 		
 		if item is Shield:
 			char_stats.physical_defense -= item.physical_defense
+			
+		if item is Ring:
+			items.ring = null
+			ring = items.ring
 			
 		for add in item.adds:
 			apply_item_add_effect(add, "UNEQUIP")

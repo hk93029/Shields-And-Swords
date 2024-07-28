@@ -69,7 +69,9 @@ func ready_character():
 		weapon._ready()
 		equip_item(weapon)
 		#weapon_adds = weapon.adds
-
+	if items.shield != null:
+		shield = items.shield
+		equip_item(shield)
 	
 
 	damage_digit_prefab = preload("res://misc/damage_digit/damage_digit.tscn")
@@ -88,7 +90,7 @@ func recalculate_status() -> void: # Atributos que serão exibidos na interface 
 	char_stats.blocking_chance = equips_adds.blocking_chance
 	char_stats.critical_damage = equips_adds.critical_damage + (char_attributes.STR+equips_adds.STR)*3
 	char_stats.evasion = equips_adds.evasion + (char_attributes.DEX+equips_adds.DEX)*1.3
-	char_stats.attack_speed = equips_adds.attack_speed + 1 + 5 * easeInSine(float(char_attributes.DEX+equips_adds.DEX)/100)
+	char_stats.attack_speed = equips_adds.attack_speed/100 + 1 + 5 * easeInSine(float(char_attributes.DEX+equips_adds.DEX)/100)
 	char_stats.base_damage = (equips_adds.STR+char_attributes.STR)*2
 	max_health = char_stats.HP
 	health = max_health
@@ -99,6 +101,8 @@ func recalculate_status() -> void: # Atributos que serão exibidos na interface 
 
 func update_hp() -> void:
 	char_stats.HP = 100 + equips_adds.HP + (char_attributes.CONS+equips_adds.CONS)*20	
+	max_health = char_stats.HP
+	hp_bar.max_value = max_health
 	
 func update_mp() -> void:
 	char_stats.MP = 20 + equips_adds.MP + (char_attributes.INT+equips_adds.INT)*24
@@ -117,7 +121,7 @@ func update_evasion() -> void:
 	char_stats.evasion = equips_adds.evasion + (char_attributes.DEX+equips_adds.DEX)*1.3
 		
 func update_attack_speed() -> void:
-	char_stats.attack_speed = equips_adds.attack_speed + 1 + 5 * easeInSine(float(char_attributes.DEX+equips_adds.DEX)/100)
+	char_stats.attack_speed = equips_adds.attack_speed/100 + 1 + 5 * easeInSine(float(char_attributes.DEX+equips_adds.DEX)/100)
 	
 func get_attack_speed() -> float:
 	return char_stats.attack_speed
@@ -225,7 +229,7 @@ func apply_item_add_effect(add, command):
 				update_base_damage()
 
 			AttributeAdd.Improvment.INT:
-				equips_adds.MP += add.value*remove_or_add
+				equips_adds.INT += add.value*remove_or_add
 				update_mp()
 
 			AttributeAdd.Improvment.CONS:

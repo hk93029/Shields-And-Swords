@@ -17,21 +17,30 @@ extends Item
 var physical_damage_min: int = base_physical_damage_min
 var physical_damage_max: int = base_physical_damage_max
 
-enum QualityType{ COMMON = 0, SPECIAL = 2, VERY_SPECIAL = 3, EPIC = 4, CELESTIAL = 7}
+enum QualityType{ COMMON = 1, SPECIAL = 2, VERY_SPECIAL = 3, EPIC = 4, CELESTIAL = 7}
 @export var quality: QualityType
 
 var max_possible_adds: int = 0
 var level: int = 1
 
 @export_category("Weapon Adds")  
-@export var adds: Array[Add]
+@export var adds: Array[Add] :
+		set(values):
+			values.resize(quality) # Limita o valor de adicionais possíveis em um item
+			for i in values.size():
+				if values[i] == null:
+					var new_add: Add = Add.new()
+#					new_add.type = 0
+					values[i] = new_add
+			adds = values
+
 
 @export_category("Weapon Refining")
 @export var refining: int : 
 	set(value):
-		refining = value
-		physical_damage_min = base_physical_damage_min+refining*2
-		physical_damage_max = base_physical_damage_max+refining*2
+		refining = clamp(value, 0, 12)
+		physical_damage_min = base_physical_damage_min+refining*2 if refining < 12 else base_physical_damage_min*2
+		physical_damage_max = base_physical_damage_max+refining*2 if refining < 12 else base_physical_damage_max*2
 
 
 func _init():
@@ -54,7 +63,8 @@ func set_max_possible_adds(max_value):
 
 func init_weapon_adds_slots():
 	for index in max_possible_adds:
-		adds.append(Add.new())
+		if adds[index] == null:
+			adds[index] = Add.new()
 
 
 func update_weapon_physical_damge(base_physical_damage_min: int, base_physical_damage_max: int):

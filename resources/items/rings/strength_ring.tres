@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ring" load_steps=5 format=3 uid="uid://q6npnfyg8vmb"]
+
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_4o2vm"]
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="1_316ce"]
+[ext_resource type="Texture2D" uid="uid://bwoy8adei1o4k" path="res://assets/sprites/icons/items/rings/strength_ring.png" id="2_dshug"]
+
+[sub_resource type="Resource" id="Resource_legkk"]
+script = ExtResource("1_4o2vm")
+improvment = 0
+value = 50
+
+[resource]
+script = ExtResource("1_316ce")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_legkk")])
+item_name = "Strength Ring"
+description = ""
+icon = ExtResource("2_dshug")
+price = 900
+level_required = 3
+str_required = 0
+dex_required = 0
+int_required = 0

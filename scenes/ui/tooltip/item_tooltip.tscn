@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://56pwdgd54ert"]
+[gd_scene load_steps=12 format=3 uid="uid://56pwdgd54ert"]
 
 [ext_resource type="LabelSettings" uid="uid://de06i7hymr2wm" path="res://settings/item_title_label_settings.tres" id="1_r4e7n"]
-[ext_resource type="SystemFont" uid="uid://b7vrqiiiufh5l" path="res://settings/item_defense_damage_label_settings.tres" id="2_5gc42"]
+[ext_resource type="LabelSettings" uid="uid://c8g5q5xutqqsi" path="res://settings/item_defense_damage_label_settings.tres" id="2_5gc42"]
 [ext_resource type="LabelSettings" uid="uid://bqcg48ony60ij" path="res://settings/item_requeriments_label_settings.tres" id="3_s4k4i"]
 [ext_resource type="LabelSettings" uid="uid://5adu2wpvxfey" path="res://settings/hp_mp_add_label_settings.tres" id="4_coiar"]
 [ext_resource type="LabelSettings" uid="uid://dmuckt5alkesx" path="res://settings/attributes_add_label_settings.tres" id="5_ykcei"]
@@ -10,10 +10,6 @@
 [ext_resource type="LabelSettings" uid="uid://bkrmf7qt0yius" path="res://settings/boost_add_label_settings.tres" id="8_spm8t"]
 [ext_resource type="LabelSettings" uid="uid://dgmqafhep5tbj" path="res://settings/empty_add_label_settings.tres" id="9_p5uv0"]
 [ext_resource type="SystemFont" uid="uid://7xgixsdl81ag" path="res://settings/item_rarity_label_settings.tres" id="10_yw3gb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ehvv8"]
-line_spacing = 10.0
-font = ExtResource("2_5gc42")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xm42v"]
 font = ExtResource("10_yw3gb")
@@ -83,7 +79,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = 8
 text = "Damage: 340 - 430 (346-473}"
-label_settings = SubResource("LabelSettings_ehvv8")
+label_settings = ExtResource("2_5gc42")
 
 [node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

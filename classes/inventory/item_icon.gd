@@ -54,7 +54,7 @@ func generate_tooltip():
 
 	
 	
-	if item is Armor or item is Weapon or item is Shield:
+	if item is Armor or item is Weapon or item is Shield or item is Ring:
 		var title_text = item.item_name
 		if item.refining > 0:
 			title_text += " [+"+str(item.refining)+"]"
@@ -67,7 +67,7 @@ func generate_tooltip():
 			damage_defense_text =  "Damage: "+str(item.base_physical_damage_min)+" - "+str(item.base_physical_damage_max)
 			if item.refining > 0:
 				damage_defense_text += " ["+str(item.physical_damage_min)+" - "+str(item.physical_damage_max)+"]"
-		else:
+		elif item is Armor or item is Shield:
 			damage_defense_text = "Defense: "+str(item.base_physical_defense)
 			if item.refining > 0:
 				damage_defense_text += " ["+str(item.physical_defense)+"]"
@@ -107,10 +107,12 @@ func generate_tooltip():
 			var add_label: Label = Label.new()
 			var add_label_text = ""
 			match add.type: ##Type{EMPTY, ATTRIBUTE, COMBAT_PERFORMACE, DAMAGE, DEFENSE, BOOST}
-				0:
+			
+				0: #EMPTY
+					print("VAZIO")
 					add_label.label_settings = load("res://settings/empty_add_label_settings.tres")
 					add_label_text = "Empty"
-				1:
+				1: #ATTRIBUTE
 					add_label.label_settings = load("res://settings/attributes_add_label_settings.tres")
 					match add.improvment: #{STR, INT, CONS, DEX, HP, MP}
 						0:
@@ -123,20 +125,43 @@ func generate_tooltip():
 							add_label_text = "[+] %s Dexterity [+]"
 						4:
 							add_label.label_settings = load("res://settings/hp_mp_add_label_settings.tres")
-							add_label_text = "[+] HP [+]"
+							add_label_text = "[+] %s HP [+]"
 						5:
 							add_label.label_settings = load("res://settings/hp_mp_add_label_settings.tres")
-							add_label_text = "[+] MP [+]"
-				2:
+							add_label_text = "[+] %s MP [+]"
+				2: #COMBAT_PERFORMACE
 					add_label.label_settings = load("res://settings/stats_add_label_settings.tres")
-				3:
+					match add.improvment: # {CRITICAL_CHANCE, BLOCKING_CHANCE, CRITICAL_DAMAGE, ATTACK_SPEED, EVASION}
+						0:
+							add_label_text = "[+] %.02s%% Critical Chance [+]"
+						1:
+							add_label_text = "[+] %.02s%% Blocking Chance [+]"
+						2:
+							add_label_text = "[+] %.02s%% Critical Damage [+]"
+						3:
+							add_label_text = "[+] %.02s%% Attack Speed [+]"
+						4:
+							add_label_text = "[+] %.02s Evasion [+]"
+				3: #DAMAGE
+					match add.improvment: # {EXTRA, FIRE, COLD, LIGHTNING, DARKNESS}
+						0:
+							add_label_text = "[+] %s EXTRA DAMAGE [+]"
+						1:
+							add_label_text = "[+] %s FIRE DAMAGE [+]"
+						2:
+							add_label_text = "[+] %s COLD DAMAGE [+]"
+						3:
+							add_label_text = "[+] %s EXTRA DAMAGE [+]"
+						4:
+							add_label_text = "[+] %s DARKNESS DAMAGE [+]"
+							
 					add_label.label_settings = load("res://settings/defense_damage_add_label_settings.tres")
-				4:
+				4: #DEFENSE
 					add_label.label_settings =  load("res://settings/defense_damage_add_label_settings.tres")
-				5:
+				5: #BOOST
 					add_label.label_settings = load("res://settings/boost_add_label_settings.tres")
 			
-			add_label.text = add_label_text % str(add.value)
+			add_label.text = add_label_text % str(add.value) if add.type != 0 else add_label_text
 			tooltip_item.get_node("%AdditionalsContainer").add_child(add_label)
 		
 		

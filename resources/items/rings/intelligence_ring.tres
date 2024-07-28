@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ring" load_steps=5 format=3 uid="uid://d0x0dp6yelkh"]
+
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_io6j7"]
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="1_rt6pf"]
+[ext_resource type="Texture2D" uid="uid://d4m6b6k517mkh" path="res://assets/sprites/icons/items/rings/intelligence_ring.png" id="2_liwus"]
+
+[sub_resource type="Resource" id="Resource_c2act"]
+script = ExtResource("1_io6j7")
+improvment = 1
+value = 50
+
+[resource]
+script = ExtResource("1_rt6pf")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_c2act")])
+item_name = "Inteligence Ring"
+description = ""
+icon = ExtResource("2_liwus")
+price = 900
+level_required = 3
+str_required = 0
+dex_required = 0
+int_required = 0

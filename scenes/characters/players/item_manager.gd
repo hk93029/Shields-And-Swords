@@ -45,6 +45,7 @@ func post_equipped_items():
 
 func on_shield_equipped(new_shield: Shield):
 	if new_shield == null:
+		print("SHIELD SAIU")
 		new_shield = load("res://resources/items/shields/empty_shield.tres")
 	player.unequip_item(shield)
 	shield = new_shield

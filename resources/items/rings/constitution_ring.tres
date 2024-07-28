@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Ring" load_steps=5 format=3 uid="uid://4j53wnwhsy3k"]
+
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_3s41m"]
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="1_k5pfe"]
+[ext_resource type="Texture2D" uid="uid://cs8pd2ynwvu3p" path="res://assets/sprites/icons/items/rings/constitution_ring.png" id="2_ijont"]
+
+[sub_resource type="Resource" id="Resource_u34pm"]
+script = ExtResource("1_3s41m")
+improvment = 2
+value = 50
+
+[resource]
+script = ExtResource("1_k5pfe")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_u34pm")])
+item_name = "Constitution Ring"
+description = ""
+icon = ExtResource("2_ijont")
+price = 900
+level_required = 3
+str_required = 0
+dex_required = 0
+int_required = 0

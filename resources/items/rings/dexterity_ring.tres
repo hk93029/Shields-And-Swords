@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Ring" load_steps=5 format=3 uid="uid://df10ff2g23lls"]
+
+[ext_resource type="Script" path="res://classes/items/ring.gd" id="1_as8ob"]
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_xrw5o"]
+[ext_resource type="Texture2D" uid="uid://8qf48frblbgu" path="res://assets/sprites/icons/items/rings/dexterity_ring.png" id="2_npn87"]
+
+[sub_resource type="Resource" id="Resource_s14jk"]
+script = ExtResource("1_xrw5o")
+improvment = 3
+value = 50
+
+[resource]
+script = ExtResource("1_as8ob")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_s14jk"), null, null, null, null, null, null])
+refining = 0
+quality = 2
+item_name = "Dexterity Ring"
+description = ""
+icon = ExtResource("2_npn87")
+price = 900
+level_required = 3
+str_required = 0
+dex_required = 0
+int_required = 0

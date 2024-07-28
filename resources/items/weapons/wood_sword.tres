@@ -1,22 +1,53 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://ctnpnoar2v1o6"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=11 format=3 uid="uid://ctnpnoar2v1o6"]
 
 [ext_resource type="Texture2D" uid="uid://c3wbfwlxu6f3s" path="res://assets/sprites/icons/items/wood_sword_icon.png" id="1_ioph6"]
+[ext_resource type="Script" path="res://classes/additionals/attribute_add.gd" id="1_otftr"]
 [ext_resource type="Script" path="res://classes/items/weapon.gd" id="1_yyisx"]
 [ext_resource type="Texture2D" uid="uid://bpn7wwt84tt47" path="res://assets/sprites/items/weapons/wood_sword.png" id="3_t75e7"]
+
+[sub_resource type="Resource" id="Resource_ge7ne"]
+script = ExtResource("1_otftr")
+improvment = 0
+value = 3
+
+[sub_resource type="Resource" id="Resource_6ylk1"]
+script = ExtResource("1_otftr")
+improvment = 1
+value = 7
+
+[sub_resource type="Resource" id="Resource_odbla"]
+script = ExtResource("1_otftr")
+improvment = 2
+value = 20
+
+[sub_resource type="Resource" id="Resource_nyo8u"]
+script = ExtResource("1_otftr")
+improvment = 3
+value = 7
+
+[sub_resource type="Resource" id="Resource_naabh"]
+script = ExtResource("1_otftr")
+improvment = 4
+value = 200
+
+[sub_resource type="Resource" id="Resource_i6jb6"]
+script = ExtResource("1_otftr")
+improvment = 5
+value = 600
 
 [resource]
 script = ExtResource("1_yyisx")
 texture = ExtResource("3_t75e7")
 base_physical_damage_max = 4
 base_physical_damage_min = 3
-quality = 0
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+quality = 7
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_ge7ne"), SubResource("Resource_6ylk1"), SubResource("Resource_odbla"), SubResource("Resource_nyo8u"), SubResource("Resource_naabh"), SubResource("Resource_i6jb6")])
 refining = 0
 item_name = "Wood Sword"
 description = ""
 icon = ExtResource("1_ioph6")
 price = 20
-necessary_level = 1
-necessary_str = 0
-necessary_dex = 0
-necessary_int = 0
+level_required = 1
+str_required = 0
+dex_required = 0
+int_required = 0

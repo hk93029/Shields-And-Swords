@@ -1,0 +1,5 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b7vrqiiiufh5l"]
+
+[resource]
+line_spacing = 10.0
+font = null

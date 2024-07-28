@@ -18,14 +18,14 @@ func _ready():
 
 
 func get_requeriments(item) -> bool:
-	#print("LVL NECESSARIO: "+str(item.necessary_level))
+	#print("LVL NECESSARIO: "+str(item.level_required))
 	if item == null:
 		return true
 	
-	return item.necessary_level <= player_level_ref \
-		and item.necessary_str <= player_attributes_ref.STR \
-		and item.necessary_dex <= player_attributes_ref.DEX \
-		and item.necessary_int <=  player_attributes_ref.INT
+	return item.level_required <= player_level_ref \
+		and item.str_required <= player_attributes_ref.STR \
+		and item.dex_required <= player_attributes_ref.DEX \
+		and item.int_required <=  player_attributes_ref.INT
 
 
 func _input(event):

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://de06i7hymr2wm"]
+
+[sub_resource type="SystemFont" id="SystemFont_rl1vp"]
+font_names = PackedStringArray("Franklin Gothic Book")
+
+[resource]
+font = SubResource("SystemFont_rl1vp")
+font_size = 20

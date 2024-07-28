@@ -7,8 +7,10 @@
 [resource]
 script = ExtResource("1_lm2p4")
 texture = ExtResource("4_warv7")
-physical_defense = 30
+base_physical_defense = 13
 adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+refining = 3
+quality = 0
 item_name = "Steel Armor"
 description = "Steel Armor
 "

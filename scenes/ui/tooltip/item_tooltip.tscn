@@ -1,100 +1,45 @@
-[gd_scene load_steps=20 format=3 uid="uid://56pwdgd54ert"]
+[gd_scene load_steps=13 format=3 uid="uid://56pwdgd54ert"]
 
-[sub_resource type="SystemFont" id="SystemFont_rl1vp"]
-font_names = PackedStringArray("Franklin Gothic Book")
-
-[sub_resource type="LabelSettings" id="LabelSettings_r1xg7"]
-font = SubResource("SystemFont_rl1vp")
-font_size = 20
-
-[sub_resource type="SystemFont" id="SystemFont_gwvrq"]
-font_names = PackedStringArray("Franklin Gothic Book")
+[ext_resource type="LabelSettings" uid="uid://de06i7hymr2wm" path="res://settings/item_title_label_settings.tres" id="1_r4e7n"]
+[ext_resource type="SystemFont" uid="uid://b7vrqiiiufh5l" path="res://settings/item_defense_damage_label_settings.tres" id="2_5gc42"]
+[ext_resource type="LabelSettings" uid="uid://bqcg48ony60ij" path="res://settings/item_requeriments_label_settings.tres" id="3_s4k4i"]
+[ext_resource type="LabelSettings" uid="uid://5adu2wpvxfey" path="res://settings/hp_mp_add_label_settings.tres" id="4_coiar"]
+[ext_resource type="LabelSettings" uid="uid://dmuckt5alkesx" path="res://settings/attributes_add_label_settings.tres" id="5_ykcei"]
+[ext_resource type="LabelSettings" uid="uid://bwhgp7c5lpkh0" path="res://settings/defense_damage_add_label_settings.tres" id="6_38kkq"]
+[ext_resource type="LabelSettings" uid="uid://drp2gqymw38h" path="res://settings/stats_add_label_settings.tres" id="7_rst8e"]
+[ext_resource type="LabelSettings" uid="uid://bkrmf7qt0yius" path="res://settings/boost_add_label_settings.tres" id="8_spm8t"]
+[ext_resource type="LabelSettings" uid="uid://dgmqafhep5tbj" path="res://settings/empty_add_label_settings.tres" id="9_p5uv0"]
+[ext_resource type="SystemFont" uid="uid://7xgixsdl81ag" path="res://settings/item_rarity_label_settings.tres" id="10_yw3gb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ehvv8"]
 line_spacing = 10.0
-font = SubResource("SystemFont_gwvrq")
-
-[sub_resource type="SystemFont" id="SystemFont_y2u3v"]
-font_names = PackedStringArray("Franklin Gothic Book")
-
-[sub_resource type="LabelSettings" id="LabelSettings_h7iwb"]
-font = SubResource("SystemFont_y2u3v")
-
-[sub_resource type="SystemFont" id="SystemFont_mjqg4"]
-font_names = PackedStringArray("Franklin Gothic Book")
-
-[sub_resource type="LabelSettings" id="LabelSettings_jo0c6"]
-font = SubResource("SystemFont_mjqg4")
-font_size = 13
-
-[sub_resource type="SystemFont" id="SystemFont_t20rg"]
-font_names = PackedStringArray("Franklin Gothic Book")
-
-[sub_resource type="LabelSettings" id="LabelSettings_w4yiq"]
-font = SubResource("SystemFont_t20rg")
-font_size = 13
-
-[sub_resource type="SystemFont" id="SystemFont_uqaen"]
-font_names = PackedStringArray("Franklin Gothic")
-
-[sub_resource type="LabelSettings" id="LabelSettings_tqge6"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(0, 0.929412, 0, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_cfhh4"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(0.156863, 0.85098, 1, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_f0ihl"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(1, 0.124573, 0.0864923, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dhnta"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(0.745098, 0.411765, 0.858824, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hh30k"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(0.971811, 0.44378, 0.173568, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="LabelSettings" id="LabelSettings_hi5qa"]
-font = SubResource("SystemFont_uqaen")
-font_size = 13
-font_color = Color(0.631035, 0.631035, 0.631035, 1)
-shadow_color = Color(0, 0, 0, 0.686275)
-
-[sub_resource type="SystemFont" id="SystemFont_6o1gm"]
-font_names = PackedStringArray("Franklin Gothic Book")
-font_italic = true
+font = ExtResource("2_5gc42")
 
 [sub_resource type="LabelSettings" id="LabelSettings_xm42v"]
-font = SubResource("SystemFont_6o1gm")
+font = ExtResource("10_yw3gb")
 font_color = Color(0.532121, 0.687183, 1, 1)
 outline_size = 7
 outline_color = Color(0, 0, 0, 0.313726)
 
 [node name="ToolTip" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 115.0
-offset_bottom = 82.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -114.0
+offset_right = 109.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -111,23 +56,12 @@ theme_override_constants/margin_right = 15
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Iron Sword"
-label_settings = SubResource("LabelSettings_r1xg7")
-
-[node name="Title2" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "[+3]"
-label_settings = SubResource("LabelSettings_r1xg7")
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/CenterContainer/MarginContainer/VBoxContainer2"]
-layout_mode = 2
+text = "Iron Sword [+3]"
+label_settings = ExtResource("1_r4e7n")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -144,205 +78,141 @@ theme_override_constants/separation = 2
 layout_mode = 2
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="DamageLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="DefenseDamageLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = 8
-text = "Damage:"
+text = "Damage: 340 - 430 (346-473}"
 label_settings = SubResource("LabelSettings_ehvv8")
 
-[node name="DamageValue" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "340 - 430 (346-473}"
-label_settings = SubResource("LabelSettings_h7iwb")
+text = "Level Required: 2"
+label_settings = ExtResource("3_s4k4i")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="StrRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+text = "Strenght Required: 2"
+label_settings = ExtResource("3_s4k4i")
 
-[node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="DexRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Necessary Level:"
-label_settings = SubResource("LabelSettings_jo0c6")
+text = "Dexterity Required: 3"
+label_settings = ExtResource("3_s4k4i")
 
-[node name="LevelRequerimentValue" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="IntRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "2"
-label_settings = SubResource("LabelSettings_w4yiq")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Necessary STR:"
-label_settings = SubResource("LabelSettings_jo0c6")
-
-[node name="LevelRequerimentValue" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "2"
-label_settings = SubResource("LabelSettings_w4yiq")
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-text = "Necessary DEX:"
-label_settings = SubResource("LabelSettings_jo0c6")
-
-[node name="LevelRequerimentValue" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
-layout_mode = 2
-text = "2"
-label_settings = SubResource("LabelSettings_w4yiq")
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="LevelRequerimentLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-text = "Necessary INT:"
-label_settings = SubResource("LabelSettings_jo0c6")
-
-[node name="LevelRequerimentValue" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
-layout_mode = 2
-text = "2"
-label_settings = SubResource("LabelSettings_w4yiq")
+text = "Intelligence Required: 5"
+label_settings = ExtResource("3_s4k4i")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="AdditionalsContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer7"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 300 MP [+]"
-label_settings = SubResource("LabelSettings_tqge6")
+label_settings = ExtResource("4_coiar")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 3 inteligence [+]"
-label_settings = SubResource("LabelSettings_cfhh4")
+label_settings = ExtResource("5_ykcei")
 
-[node name="HBoxContainer8" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer8"]
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 345 Fire Damage [+]"
-label_settings = SubResource("LabelSettings_f0ihl")
+label_settings = ExtResource("6_38kkq")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 3 Dexterity [+]"
-label_settings = SubResource("LabelSettings_cfhh4")
+label_settings = ExtResource("5_ykcei")
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer6"]
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 25 HP [+]"
-label_settings = SubResource("LabelSettings_tqge6")
+label_settings = ExtResource("4_coiar")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="Label6" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 3 Strenght [+]"
-label_settings = SubResource("LabelSettings_cfhh4")
+label_settings = ExtResource("5_ykcei")
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+[node name="Label7" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] %5 Critical Chance [+]"
-label_settings = SubResource("LabelSettings_dhnta")
+label_settings = ExtResource("7_rst8e")
 
-[node name="HBoxContainer10" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer10"]
+[node name="Label8" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] x12 XP [+]"
-label_settings = SubResource("LabelSettings_hh30k")
+label_settings = ExtResource("8_spm8t")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label9" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+] 3 Inteligence [+]"
-label_settings = SubResource("LabelSettings_cfhh4")
+label_settings = ExtResource("5_ykcei")
 
-[node name="HBoxContainer9" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer9"]
+[node name="Label10" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "[+} x8 GOLD [+]"
-label_settings = SubResource("LabelSettings_hh30k")
+label_settings = ExtResource("8_spm8t")
 
-[node name="HBoxContainer11" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer11"]
+[node name="Label11" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "Empty"
-label_settings = SubResource("LabelSettings_hi5qa")
+label_settings = ExtResource("9_p5uv0")
 
-[node name="HBoxContainer12" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer12"]
+[node name="Label12" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "Empty"
-label_settings = SubResource("LabelSettings_hi5qa")
+label_settings = ExtResource("9_p5uv0")
 
-[node name="HBoxContainer13" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer13"]
+[node name="Label13" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "Empty"
-label_settings = SubResource("LabelSettings_hi5qa")
+label_settings = ExtResource("9_p5uv0")
 
-[node name="HBoxContainer14" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer14"]
+[node name="Label14" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "Empty"
-label_settings = SubResource("LabelSettings_hi5qa")
+label_settings = ExtResource("9_p5uv0")
 
-[node name="HBoxContainer15" type="HBoxContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer15"]
+[node name="Label15" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/AdditionalsContainer"]
+visible = false
 layout_mode = 2
 text = "Empty"
-label_settings = SubResource("LabelSettings_hi5qa")
+label_settings = ExtResource("9_p5uv0")
 
 [node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="RarityLabel" type="Label" parent="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Common"

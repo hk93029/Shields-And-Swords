@@ -27,7 +27,11 @@ var level: int = 1
 @export var adds: Array[Add]
 
 @export_category("Weapon Refining")
-@export var refining = 0
+@export var refining: int : 
+	set(value):
+		refining = value
+		physical_damage_min = base_physical_damage_min+refining*2
+		physical_damage_max = base_physical_damage_max+refining*2
 
 
 func _init():

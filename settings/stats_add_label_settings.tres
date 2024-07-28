@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://drp2gqymw38h"]
+
+[sub_resource type="SystemFont" id="SystemFont_uqaen"]
+font_names = PackedStringArray("Franklin Gothic")
+
+[resource]
+font = SubResource("SystemFont_uqaen")
+font_size = 13
+font_color = Color(0.745098, 0.411765, 0.858824, 1)
+shadow_color = Color(0, 0, 0, 0.686275)

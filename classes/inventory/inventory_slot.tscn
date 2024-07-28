@@ -16,8 +16,15 @@ expand_mode = 1
 stretch_mode = 3
 script = ExtResource("3_f54u7")
 
+[node name="Timer" type="Timer" parent="ItemIcon"]
+one_shot = true
+
 [node name="QuantityLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[connection signal="mouse_entered" from="ItemIcon" to="ItemIcon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ItemIcon" to="ItemIcon" method="_on_mouse_exited"]
+[connection signal="timeout" from="ItemIcon/Timer" to="ItemIcon" method="_on_timer_timeout"]

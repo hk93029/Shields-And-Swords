@@ -29,10 +29,10 @@ refining = 0
 item_name = ""
 description = ""
 price = 0
-necessary_level = 1
-necessary_str = 0
-necessary_dex = 0
-necessary_int = 0
+level_required = 1
+str_required = 0
+dex_required = 0
+int_required = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcr74"]
 radius = 224.114

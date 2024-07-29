@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3lb1u3kfuede"]
+[gd_scene load_steps=9 format=3 uid="uid://d3lb1u3kfuede"]
 
 [ext_resource type="Script" path="res://autoloads/ui.gd" id="1_e6k7u"]
+[ext_resource type="PackedScene" uid="uid://56pwdgd54ert" path="res://scenes/ui/tooltip/item_tooltip.tscn" id="2_8xw4y"]
 [ext_resource type="PackedScene" uid="uid://dal0ib8ju1u5t" path="res://scenes/ui/hud/hud.tscn" id="2_18lcd"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="3_io5fl"]
 [ext_resource type="PackedScene" uid="uid://dq7gim7icgkiq" path="res://scenes/ui/inventory/inventory.tscn" id="6_5pexb"]
@@ -40,6 +41,8 @@ offset_left = 690.0
 offset_top = 22.0
 offset_right = 690.0
 offset_bottom = 22.0
+
+[node name="ToolTip" parent="." instance=ExtResource("2_8xw4y")]
 
 [connection signal="mouse_entered" from="HUD" to="." method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="HUD" to="." method="_on_ui_mouse_exited"]

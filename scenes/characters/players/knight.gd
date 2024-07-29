@@ -235,3 +235,17 @@ func _get_target_body():
 func _on_recalculate_path_timer_timeout():
 #	print("ué")
 	recalc_path(target_body_clicked)
+
+func _play_death_effect():
+	set_physics_process(false)
+	set_process_input(false)
+	animation_tree["parameters/Attack1_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	animation_tree["parameters/Attack2_OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+	
+	animation_tree["parameters/Transition/transition_request"] = "die"
+
+
+func _die():
+	is_dead = true
+	_play_death_effect()
+			

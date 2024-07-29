@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b8ge7ksmpr3aa"]
+[gd_scene load_steps=62 format=3 uid="uid://b8ge7ksmpr3aa"]
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Resource" uid="uid://c2qnc21pp4qvy" path="res://classes/inventory/player_inventory.tres" id="2_5722x"]
@@ -179,10 +179,6 @@ fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_bpm21"]
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_71gf8"]
-
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_eq3cn"]
-
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1cy2n"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_d177j"]
@@ -195,30 +191,21 @@ input_0/reset = true
 input_1/name = "run"
 input_1/auto_advance = false
 input_1/reset = true
-input_2/name = "attack_1"
+input_2/name = "die"
 input_2/auto_advance = false
 input_2/reset = true
-input_3/name = "attack_2"
-input_3/auto_advance = false
-input_3/reset = true
-input_4/name = "physical_skill_area"
-input_4/auto_advance = false
-input_4/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g78lo"]
-animation = &"attack_1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_epkqo"]
 animation = &"attack_1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eqlnb"]
 animation = &"attack_2"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w53ot"]
-animation = &"attack_2"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r75j2"]
 animation = &"buff_skill"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yd14s"]
+animation = &"die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lwo6m"]
 animation = &"idle"
@@ -233,6 +220,7 @@ animation = &"physical_skill_area"
 animation = &"run"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_hors5"]
+graph_offset = Vector2(-250.592, 99.6616)
 nodes/Attack1_OneShot/node = SubResource("AnimationNodeOneShot_kxr61")
 nodes/Attack1_OneShot/position = Vector2(640, 186.667)
 nodes/Attack1_TimeScale/node = SubResource("AnimationNodeTimeScale_1ssjg")
@@ -253,24 +241,18 @@ nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_d177j")
 nodes/TimeScale/position = Vector2(-26.6667, 80)
 "nodes/TimeScale 2/node" = SubResource("AnimationNodeTimeScale_bpm21")
 "nodes/TimeScale 2/position" = Vector2(-26.6667, 240)
-"nodes/TimeScale 3/node" = SubResource("AnimationNodeTimeScale_71gf8")
-"nodes/TimeScale 3/position" = Vector2(-26.6667, 400)
-"nodes/TimeScale 4/node" = SubResource("AnimationNodeTimeScale_eq3cn")
-"nodes/TimeScale 4/position" = Vector2(-26.6667, 560)
 "nodes/TimeScale 5/node" = SubResource("AnimationNodeTimeScale_1cy2n")
 "nodes/TimeScale 5/position" = Vector2(-26.6667, 746.667)
 nodes/Transition/node = SubResource("AnimationNodeTransition_kthhr")
 nodes/Transition/position = Vector2(203.716, 123.896)
 nodes/attack_1/node = SubResource("AnimationNodeAnimation_g78lo")
 nodes/attack_1/position = Vector2(320, 453.333)
-nodes/attack_1d/node = SubResource("AnimationNodeAnimation_epkqo")
-nodes/attack_1d/position = Vector2(-213.333, 426.667)
 nodes/attack_2/node = SubResource("AnimationNodeAnimation_eqlnb")
 nodes/attack_2/position = Vector2(560, 506.667)
-nodes/attack_22/node = SubResource("AnimationNodeAnimation_w53ot")
-nodes/attack_22/position = Vector2(-213.333, 586.667)
 nodes/buff_skill/node = SubResource("AnimationNodeAnimation_r75j2")
 nodes/buff_skill/position = Vector2(1120, 613.333)
+nodes/die/node = SubResource("AnimationNodeAnimation_yd14s")
+nodes/die/position = Vector2(53.3333, 426.667)
 nodes/idle/node = SubResource("AnimationNodeAnimation_lwo6m")
 nodes/idle/position = Vector2(-213.333, 80)
 nodes/output/position = Vector2(1760, 53.3333)
@@ -280,7 +262,7 @@ nodes/physical_skill_area22/node = SubResource("AnimationNodeAnimation_gvsoj")
 nodes/physical_skill_area22/position = Vector2(-213.333, 746.667)
 nodes/run/node = SubResource("AnimationNodeAnimation_mw173")
 nodes/run/position = Vector2(-213.333, 240)
-node_connections = [&"Attack1_OneShot", 0, &"Transition", &"Attack1_OneShot", 1, &"Attack1_TimeScale", &"Attack1_TimeScale", 0, &"attack_1", &"Attack2_OneShot", 0, &"Attack1_OneShot", &"Attack2_OneShot", 1, &"Attack2_TimeScale", &"Attack2_TimeScale", 0, &"attack_2", &"BuffSkill_OneShot", 0, &"PhysicalSkillArea_OneShot", &"BuffSkill_OneShot", 1, &"BuffSkill_TimeScale", &"BuffSkill_TimeScale", 0, &"buff_skill", &"PhysicalSkillArea_OneShot", 0, &"Attack2_OneShot", &"PhysicalSkillArea_OneShot", 1, &"PhysicalSkillArea_TimeScale", &"PhysicalSkillArea_TimeScale", 0, &"physical_skill_area", &"TimeScale", 0, &"idle", &"TimeScale 2", 0, &"run", &"TimeScale 3", 0, &"attack_1d", &"TimeScale 4", 0, &"attack_22", &"TimeScale 5", 0, &"physical_skill_area22", &"Transition", 0, &"TimeScale", &"Transition", 1, &"TimeScale 2", &"output", 0, &"BuffSkill_OneShot"]
+node_connections = [&"Attack1_OneShot", 0, &"Transition", &"Attack1_OneShot", 1, &"Attack1_TimeScale", &"Attack1_TimeScale", 0, &"attack_1", &"Attack2_OneShot", 0, &"Attack1_OneShot", &"Attack2_OneShot", 1, &"Attack2_TimeScale", &"Attack2_TimeScale", 0, &"attack_2", &"BuffSkill_OneShot", 0, &"PhysicalSkillArea_OneShot", &"BuffSkill_OneShot", 1, &"BuffSkill_TimeScale", &"BuffSkill_TimeScale", 0, &"buff_skill", &"PhysicalSkillArea_OneShot", 0, &"Attack2_OneShot", &"PhysicalSkillArea_OneShot", 1, &"PhysicalSkillArea_TimeScale", &"PhysicalSkillArea_TimeScale", 0, &"physical_skill_area", &"TimeScale", 0, &"idle", &"TimeScale 2", 0, &"run", &"TimeScale 5", 0, &"physical_skill_area22", &"Transition", 0, &"TimeScale", &"Transition", 1, &"TimeScale 2", &"Transition", 2, &"die", &"output", 0, &"BuffSkill_OneShot"]
 
 [sub_resource type="Animation" id="Animation_10qtj"]
 length = 0.001
@@ -1003,6 +985,66 @@ tracks/59/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/60/type = "value"
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D/RemoteTransform2D:remote_path")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [NodePath("../../../../../../../../Polygons/Items/WeaponSprite")]
+}
+tracks/61/type = "value"
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/path = NodePath("Player/Sprite/Polygons/Shield:skeleton")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [NodePath("../../Skeleton2D")]
+}
+tracks/62/type = "value"
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/path = NodePath("Player/Sprite/Polygons/Shield:rotation")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/63/type = "value"
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/path = NodePath("Player/Sprite:modulate")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/64/type = "value"
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/path = NodePath("Player/HPBar:modulate")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wyups"]
@@ -2067,6 +2109,420 @@ tracks/29/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 1.21738), Vector2(0, 0.0923767)]
+}
+
+[sub_resource type="Animation" id="Animation_qvqtn"]
+resource_name = "die"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Sprite/Skeleton2D/TargetsHands/TargetHandR:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-30.7019, -6.42509), Vector2(-17.2324, 3.67706), Vector2(-17.2324, 10.4042), Vector2(-25.0105, 35.153), Vector2(-22.0375, 61.9101)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Sprite/Skeleton2D/TargetsHands/TargetHandL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16.6454, -17.3677), Vector2(16.0842, -5.58185), Vector2(16.0842, 1.14532), Vector2(8.306, 25.8941), Vector2(-57.1004, 46.7052)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Sprite/Skeleton2D/TargetsFeets/TargetFeetR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-9.5243, 50.1928), Vector2(6.52999, 42.463)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player/Sprite/Skeleton2D/TargetsFeets/TargetFeetL:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(27.1295, 50.9358), Vector2(12.859, 55.098)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player/Sprite/Skeleton2D/Hip:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 6.72717), Vector2(-7.77817, 31.4759), Vector2(-43.0948, 54.3454)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player/Sprite/Skeleton2D/Hip:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 1.03452e-07, -0.694253, -1.38851, -1.38851, -1.38851]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.2446, -2.55578), Vector2(-7.2446, -2.55578), Vector2(-41.5948, 18.837)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Player/Sprite/Polygons/Shield:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.21, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-6.48866, -67.5045), Vector2(-6.48866, -67.5045), Vector2(-71.0031, -50.261), Vector2(-29.3584, 84.9866), Vector2(-24.9685, 89.9564)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D/RemoteTransform2D:remote_path")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [NodePath("../../../../../../../../Polygons/Items/WeaponSprite"), NodePath("../../../../../../../../Polygons/Items/WeaponSprite"), NodePath("../../../../../../../../Polygons/Items/WeaponSprite"), NodePath("")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Player/Sprite/Polygons/Shield:skeleton")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.21, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [NodePath("../../Skeleton2D"), NodePath("../../Skeleton2D"), NodePath("../../Skeleton2D"), NodePath(""), NodePath("")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player/Sprite/Polygons/Shield:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.21, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, -1.57632, -1.59157]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmL:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.000633359, 0.230621, 0.295592, 0.407912, 0.503403, 0.408636, 0.565783, 0.565783]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmL/ForearmL:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.000686916, -1.22308, -1.46116, -1.85265, -2.1167, -2.1167, -0.469318, -0.469318]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmL/ForearmL/HandL:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0526435, -0.21855, -0.221909, -0.225062, -0.889631, -0.748371, -0.505576, -0.505576]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0509755, -0.747087, -0.747087, -0.747087, 0.751409, -0.747087, -0.747087, -0.747087]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Player/Sprite/Skeleton2D/Hip/ArmR/ForearmR/HandR/WeaponSkeleton/Bone2D:rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.613725, -0.613725, -0.613725, -0.613725, -0.613725, -0.613725, -0.613725, -0.613725]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighL:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.00226104, 0.171875, 0.312939, 0.439666, 1.21137, 0.305399, 0.3054, 0.305399]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighL/LegL:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.00429687, -0.256992, -0.445651, -0.597887, -1.40162, 0.0614837, 0.0614851]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighL/LegL/FeetL:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0024161, 0.0847037, 0.132305, 0.157817, 0.884272, 1.02144, 1.02144]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighR:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.00149631, 0.109407, 0.158698, 0.168099, 0.396098, -0.825075, -0.825075, -0.825075]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighR/LegR:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.00308403, -0.359029, -0.618045, -0.824087, -1.80585, 0.472129, 0.472129, 0.472129]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Player/Sprite/Skeleton2D/Hip/ThighR/LegR/FeetR:rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.00218686, 0.249032, 0.458785, 0.655467, 2.10386, 1.74121, 1.74121, 1.74121]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Player/Sprite/Skeleton2D/TargetPlume:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(21.4589, -52.7546), Vector2(17.4904, -55.1357), Vector2(17.4904, -55.1357), Vector2(-73.7264, 53.0516)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.05332, 2.71734, 2.71734, 2.71734, -0.424243, -0.424245, -0.424247, 0.688522]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.706023, 2.34444, 2.20085, 2.05162, 1.4258, 1.91818, 1.91818, 2.47617]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head/PlumeBone1:rotation")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.126704, -2.00745, -1.76056, -1.56769, -0.475883, -0.475891, -0.475888, -0.472468]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Player/Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.412225, -2.44281, -2.56112, -2.66411, -0.691451, -0.69143, -0.691426, -0.730624]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Player/Sprite:modulate")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Player/HPBar:modulate")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/33/type = "method"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Player")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_fikcj"]
@@ -3617,6 +4073,7 @@ _data = {
 "attack_1": SubResource("Animation_wyups"),
 "attack_2": SubResource("Animation_i5mgs"),
 "buff_skill": SubResource("Animation_jrj4s"),
+"die": SubResource("Animation_qvqtn"),
 "idle": SubResource("Animation_fikcj"),
 "physical_skill_area": SubResource("Animation_xv4cq"),
 "run": SubResource("Animation_74gnb")
@@ -3669,9 +4126,9 @@ shield = ExtResource("9_kr01x")
 
 [node name="WeaponSprite" type="Sprite2D" parent="Sprite/Polygons/Items"]
 unique_name_in_owner = true
-position = Vector2(-39.668, -10.564)
+position = Vector2(-39.6682, -10.5638)
 rotation = -0.613725
-scale = Vector2(0.99942, 0.99942)
+scale = Vector2(0.99943, 0.99943)
 texture = ExtResource("8_u5jha")
 offset = Vector2(1.24936, -19.3502)
 
@@ -3909,9 +4366,9 @@ texture = ExtResource("6_ymrc8")
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
 visible = false
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-34.7723, -7.22514)
+position = Vector2(-34.7725, -7.22495)
 rotation = -0.613725
-scale = Vector2(0.249986, 0.249986)
+scale = Vector2(0.249946, 0.249946)
 texture = ExtResource("6_ymrc8")
 
 [node name="SoftLight" type="Sprite2D" parent="Sprite/Polygons/BuffHandREffect"]
@@ -3934,24 +4391,25 @@ libraries = {
 autoplay = "default"
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Sprite"]
+visible = false
 modification_stack = SubResource("SkeletonModificationStack2D_ltl2p")
 
 [node name="TargetPlume" type="Marker2D" parent="Sprite/Skeleton2D"]
 position = Vector2(17.4904, -55.1357)
 
 [node name="Hip" type="Bone2D" parent="Sprite/Skeleton2D"]
-scale = Vector2(0.999839, 0.999839)
+scale = Vector2(0.99984, 0.99984)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(14.4174, -35.9205)
 rotation = -0.000549317
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999833, 0.999833)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]
 position = Vector2(11.1419, 18.6048)
-scale = Vector2(0.999827, 0.999827)
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 11.1419, 18.6048)
 
 [node name="HandL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL/ForearmL"]
@@ -3963,12 +4421,12 @@ bone_angle = -175.385
 
 [node name="ArmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-13.6276, -32.5266)
-scale = Vector2(0.99983, 0.99983)
+scale = Vector2(0.999837, 0.999837)
 rest = Transform2D(1, 0, 0, 1, -13.6276, -32.5266)
 
 [node name="ForearmR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR"]
 position = Vector2(-5.8724, 17.4641)
-scale = Vector2(0.999828, 0.999828)
+scale = Vector2(0.999829, 0.999829)
 rest = Transform2D(1, 0, 0, 1, -5.8724, 17.4641)
 
 [node name="HandR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmR/ForearmR"]
@@ -4002,17 +4460,17 @@ position = Vector2(2.07261, 5.53456)
 
 [node name="ThighL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(6.96354, 0.668175)
-scale = Vector2(0.999835, 0.999835)
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 6.96354, 0.668175)
 
 [node name="LegL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL"]
 position = Vector2(3.18919, 27.3548)
-scale = Vector2(0.999831, 0.999831)
+scale = Vector2(0.999836, 0.999836)
 rest = Transform2D(1, 0, 0, 1, 3.18919, 27.3548)
 
 [node name="FeetL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2(16.9723, 22.906)
-scale = Vector2(1.00049, 1.00049)
+scale = Vector2(1.00035, 1.00035)
 rest = Transform2D(1, 0, 0, 1, 16.9723, 22.906)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -4020,12 +4478,12 @@ bone_angle = 156.923
 
 [node name="ThighR" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(-4.70424, 0.420632)
-scale = Vector2(0.999829, 0.999829)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, -4.70424, 0.420632)
 
 [node name="LegR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR"]
 position = Vector2(-11.3393, 25.1197)
-scale = Vector2(0.999838, 0.999838)
+scale = Vector2(0.999836, 0.999836)
 rest = Transform2D(1, 0, 0, 1, -11.3393, 25.1197)
 
 [node name="FeetR" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ThighR/LegR"]
@@ -4047,24 +4505,24 @@ rest = Transform2D(1, 0, 0, 1, 2.10224, -22.7042)
 
 [node name="PulmeBone2" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1"]
 position = Vector2(0.420448, -6.51694)
-scale = Vector2(0.998069, 0.998069)
+scale = Vector2(0.998179, 0.998179)
 rest = Transform2D(1, 0, 0, 1, 0.420448, -6.51694)
 
 [node name="PulmeBone3" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2"]
 position = Vector2(3.7298, -8.5863)
-scale = Vector2(0.999823, 0.999823)
+scale = Vector2(0.999852, 0.999852)
 rest = Transform2D(1, 0, 0, 1, 3.7298, -8.5863)
 
 [node name="PulmeBone4" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3"]
 position = Vector2(7.04407, -3.57545)
 rotation = 0.841846
-scale = Vector2(0.999877, 0.999877)
+scale = Vector2(0.999845, 0.999845)
 rest = Transform2D(0.666087, 0.745874, -0.745874, 0.666087, 7.04407, -3.57545)
 
 [node name="PlumeBone5" type="Bone2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4"]
 position = Vector2(10.139, 0.062693)
 rotation = 0.426852
-scale = Vector2(0.999847, 0.999847)
+scale = Vector2(0.999865, 0.999865)
 rest = Transform2D(0.910274, 0.414007, -0.414007, 0.910274, 10.139, 0.062693)
 
 [node name="TipPlume" type="Marker2D" parent="Sprite/Skeleton2D/Hip/Head/PlumeBone1/PulmeBone2/PulmeBone3/PulmeBone4/PlumeBone5"]
@@ -4141,8 +4599,6 @@ parameters/PhysicalSkillArea_OneShot/request = 0
 parameters/PhysicalSkillArea_TimeScale/scale = 1.0
 parameters/TimeScale/scale = 1.0
 "parameters/TimeScale 2/scale" = 1.8
-"parameters/TimeScale 3/scale" = 1.8
-"parameters/TimeScale 4/scale" = 1.8
 "parameters/TimeScale 5/scale" = 1.0
 parameters/Transition/current_state = "idle"
 parameters/Transition/transition_request = ""

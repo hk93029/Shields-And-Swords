@@ -17,6 +17,7 @@ stretch_mode = 3
 script = ExtResource("3_f54u7")
 
 [node name="Timer" type="Timer" parent="ItemIcon"]
+unique_name_in_owner = true
 one_shot = true
 
 [node name="QuantityLabel" type="Label" parent="."]

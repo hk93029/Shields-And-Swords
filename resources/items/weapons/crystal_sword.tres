@@ -13,8 +13,8 @@ value = 50
 [resource]
 script = ExtResource("1_dgkhd")
 texture = ExtResource("3_m4j2f")
-base_physical_damage_max = 33
-base_physical_damage_min = 30
+base_physical_damage_max = 67
+base_physical_damage_min = 63
 quality = 4
 adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_7ccu8")])
 refining = 13

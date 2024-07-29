@@ -28,13 +28,15 @@ func get_preview(): # preview é apenas algo VISUAL, ele define o que será VIST
 
 func _on_mouse_entered():
 	if item != null:
+		for child in get_parent().get_children():
+			if child.name.begins_with("ToolTip"):
+				get_parent().remove_child(child)
 		tooltip_item = TooltipManager.generate_tooltip(item)
 		$Timer.start(0.5)
 
 func _on_mouse_exited():
-	if item != null:
-		get_parent().remove_child(tooltip_item)
-		$Timer.stop()
+	get_parent().remove_child(tooltip_item)
+	$Timer.stop()
 	
 func _on_timer_timeout():
 	if item != null:

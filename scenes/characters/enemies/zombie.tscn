@@ -2544,7 +2544,7 @@ animation = &"idle"
 animation = &"walk"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xvu2v"]
-graph_offset = Vector2(-97.4052, 113.177)
+graph_offset = Vector2(-108.644, -185.719)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_5m1d5")
 nodes/Animation/position = Vector2(0, 480)
 nodes/Attack1_OneShot/node = SubResource("AnimationNodeOneShot_j52up")
@@ -2602,7 +2602,7 @@ one_way_collision_margin = 0.0
 [node name="Sprite" type="Node2D" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite"]
-modulate = Color(0, 0, 0, 0.721569)
+modulate = Color(0, 0, 0, 0.435294)
 position = Vector2(14.8492, 0)
 texture = ExtResource("3_qnafd")
 
@@ -2616,13 +2616,15 @@ position = Vector2(14.4771, 0)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Sprite/Navigation"]
 unique_name_in_owner = true
+path_max_distance = 300.0
 avoidance_enabled = true
+radius = 20.0
 avoidance_layers = 2
 avoidance_mask = 7
 debug_enabled = true
 
 [node name="RecalculateTimer" type="Timer" parent="Sprite/Navigation"]
-wait_time = 0.1
+wait_time = 0.4
 autostart = true
 
 [node name="Aggro" type="Node2D" parent="Sprite"]

@@ -132,7 +132,7 @@ func _die():
 func recalc_path():
 	if target_body != null:
 		nav_agent.target_position = target_body.global_position
-	else:
+	elif nav_agent.target_position != start_position:
 		nav_agent.target_position = start_position
 
 

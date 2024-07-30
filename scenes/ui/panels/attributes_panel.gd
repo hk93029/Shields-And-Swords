@@ -37,7 +37,7 @@ func _ready():
 	Events.connect("post_current_status", update_status)
 	Events.connect("post_current_attributes", update_char_attributes)
 	Events.connect("post_equips_attributes_adds", on_post_equips_attributes_adds)
-
+	Events.connect("attributes_panel_button_pressed", _change_panel_visibility)
 
 func _input(event):
 	if event.is_action_pressed("open_attributes_panel"):

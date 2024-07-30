@@ -25,3 +25,7 @@ signal weapon_equipped(weapon)
 signal shield_equipped(shield)
 signal ring_equipped(ring)
 signal amulet_equipped(amulet)
+
+signal inventory_panel_button_pressed
+signal character_panel_button_pressed
+signal attributes_panel_button_pressed

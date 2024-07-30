@@ -4104,7 +4104,7 @@ environment = SubResource("Environment_52cbf")
 position = Vector2(0.0112829, -57.5291)
 
 [node name="Shadow" type="Sprite2D" parent="Sprite"]
-modulate = Color(0, 0, 0, 0.721569)
+modulate = Color(0, 0, 0, 0.435294)
 position = Vector2(0, 57.7407)
 texture = ExtResource("4_i2epj")
 
@@ -4128,7 +4128,7 @@ shield = ExtResource("9_kr01x")
 unique_name_in_owner = true
 position = Vector2(-39.6682, -10.5638)
 rotation = -0.613725
-scale = Vector2(0.99943, 0.99943)
+scale = Vector2(0.999429, 0.999429)
 texture = ExtResource("8_u5jha")
 offset = Vector2(1.24936, -19.3502)
 
@@ -4366,7 +4366,7 @@ texture = ExtResource("6_ymrc8")
 [node name="BuffHandREffect" type="Sprite2D" parent="Sprite/Polygons"]
 visible = false
 modulate = Color(1, 0, 0, 1)
-position = Vector2(-34.7725, -7.22495)
+position = Vector2(-34.7725, -7.22497)
 rotation = -0.613725
 scale = Vector2(0.249946, 0.249946)
 texture = ExtResource("6_ymrc8")
@@ -4404,7 +4404,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(14.4174, -35.9205)
 rotation = -0.000549317
-scale = Vector2(0.999833, 0.999833)
+scale = Vector2(0.999831, 0.999831)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]

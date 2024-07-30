@@ -12,6 +12,7 @@ signal panel_moved
 func _ready():
 	Events.connect("post_current_level", on_post_current_level)
 	Events.connect("post_current_attributes", on_post_current_attributes)
+	Events.connect("character_panel_button_pressed", _change_panel_visibility)
 	
 	visible = false
 	original_position = global_position

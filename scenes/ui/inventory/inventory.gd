@@ -12,6 +12,7 @@ func _ready():
 	original_position = global_position
 	Events.connect("post_current_essence", on_post_current_essence)
 	Events.connect("post_current_gold", on_post_current_gold)
+	Events.connect("inventory_panel_button_pressed", _change_panel_visibility)
 
 func on_post_current_essence(essence):
 	%EssenceLabel.text = str(int(%EssenceLabel.text) + essence)

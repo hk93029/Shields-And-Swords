@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dal0ib8ju1u5t"]
+[gd_scene load_steps=21 format=3 uid="uid://dal0ib8ju1u5t"]
 
 [ext_resource type="Texture2D" uid="uid://dmjtp5lweg35m" path="res://assets/sprites/ui/hud/skills_bar.png" id="1_8xf1j"]
 [ext_resource type="Texture2D" uid="uid://crjecv1kd0edf" path="res://assets/sprites/ui/hud/exp_bar_bg.png" id="2_4bodl"]
@@ -6,6 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://c8hfeoru3xuyg" path="res://assets/sprites/ui/hud/exp_bar_fill.png" id="4_ucg25"]
 [ext_resource type="Texture2D" uid="uid://dbxrydmprwjiy" path="res://assets/sprites/ui/hud/level_indicator_ui.png" id="5_ghs6s"]
 [ext_resource type="SystemFont" uid="uid://cqomwomusq0ak" path="res://settings/fonts/copperplate_gothic_font_13px.tres" id="6_33yt6"]
+[ext_resource type="Texture2D" uid="uid://b05kf7flh5bom" path="res://assets/sprites/ui/hud/inventory_panel_button.png" id="7_cuubl"]
+[ext_resource type="Texture2D" uid="uid://c8lvrmqyicf6h" path="res://assets/sprites/ui/hud/inventory_panel_button_pressed.png" id="8_5ikpb"]
+[ext_resource type="Texture2D" uid="uid://dowuycv2he0gj" path="res://assets/sprites/ui/hud/character_panel_button.png" id="8_48tma"]
+[ext_resource type="Texture2D" uid="uid://bxioeo4gkft7u" path="res://assets/sprites/ui/hud/attributes_panel.png" id="9_iegxm"]
+[ext_resource type="Texture2D" uid="uid://baxpun1aoefys" path="res://assets/sprites/ui/hud/inventory_panel_button_hover.png" id="9_rheyl"]
+[ext_resource type="Script" path="res://scenes/ui/hud/inventory_panel_button.gd" id="10_r6g7e"]
+[ext_resource type="Texture2D" uid="uid://chd4wgc4m5mxc" path="res://assets/sprites/ui/hud/character_panel_button_pressed.png" id="11_tnfcd"]
+[ext_resource type="Texture2D" uid="uid://diq1pida7ty7b" path="res://assets/sprites/ui/hud/character_panel_button_hover.png" id="12_lux3r"]
+[ext_resource type="Texture2D" uid="uid://cjguy81h03icb" path="res://assets/sprites/ui/hud/attributes_panel_pressed.png" id="14_ix0ff"]
+[ext_resource type="Script" path="res://scenes/ui/hud/character_panel_button.gd" id="14_kdmsy"]
+[ext_resource type="Texture2D" uid="uid://dsso8267brfxm" path="res://assets/sprites/ui/hud/attributes_panel_hover.png" id="15_nmbbs"]
+[ext_resource type="Script" path="res://scenes/ui/hud/attributes_panel_button_pressed.gd" id="18_rfu2q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3kil"]
 font = ExtResource("6_33yt6")
@@ -93,3 +105,47 @@ text = "2"
 label_settings = SubResource("LabelSettings_w6j6b")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 835.15
+offset_top = 566.276
+offset_right = 1073.15
+offset_bottom = 628.276
+
+[node name="AttributesPanel" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Attributes - A"
+mouse_filter = 1
+texture_normal = ExtResource("9_iegxm")
+texture_pressed = ExtResource("14_ix0ff")
+texture_hover = ExtResource("15_nmbbs")
+script = ExtResource("18_rfu2q")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = 22
+
+[node name="InventoryPanelButton" type="TextureButton" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+tooltip_text = "Inventory - I"
+mouse_filter = 1
+texture_normal = ExtResource("7_cuubl")
+texture_pressed = ExtResource("8_5ikpb")
+texture_hover = ExtResource("9_rheyl")
+script = ExtResource("10_r6g7e")
+
+[node name="CharacterPanelButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Character - C"
+mouse_filter = 1
+texture_normal = ExtResource("8_48tma")
+texture_pressed = ExtResource("11_tnfcd")
+texture_hover = ExtResource("12_lux3r")
+script = ExtResource("14_kdmsy")
+
+[connection signal="pressed" from="HBoxContainer/AttributesPanel" to="HBoxContainer/AttributesPanel" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/InventoryPanelButton" to="HBoxContainer/MarginContainer/InventoryPanelButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/CharacterPanelButton" to="HBoxContainer/CharacterPanelButton" method="_on_pressed"]

@@ -12,7 +12,7 @@ value = 50
 [resource]
 script = ExtResource("1_as8ob")
 quality = 1
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_s14jk"), null, null, null, null, null, null])
+adds = Array[Resource("res://classes/additionals/add.gd")]([SubResource("Resource_s14jk"), null, null, null, null, null, null])
 refining = 0
 item_name = "Dexterity Ring"
 description = ""

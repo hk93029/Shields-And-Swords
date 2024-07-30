@@ -11,7 +11,7 @@ func _ready():
 
 func _on_timer_timeout():
 	$Timer.start(2)
-	if get_tree().get_nodes_in_group("enemy").size() <= 10:
+	if get_tree().get_nodes_in_group("enemy").size() <= 2:
 		var zombie_instance = zombie_packed_scene.instantiate()
 		zombie_instance.global_position = get_point()
 		get_parent().add_child(zombie_instance)

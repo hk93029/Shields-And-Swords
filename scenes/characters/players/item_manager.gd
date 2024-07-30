@@ -21,6 +21,7 @@ func _ready():
 	if armor == null:
 		armor = load("res://resources/items/armors/default_armor.tres")
 	if weapon == null:
+		print("Empty weapon")
 		weapon = load("res://resources/items/weapons/empty_weapon.tres")
 	if shield == null:
 		shield = load("res://resources/items/shields/empty_shield.tres")

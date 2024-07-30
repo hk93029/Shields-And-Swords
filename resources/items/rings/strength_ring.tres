@@ -33,7 +33,7 @@ value = 12
 [resource]
 script = ExtResource("1_316ce")
 quality = 1
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_legkk"), SubResource("Resource_3qfwa"), SubResource("Resource_2l5kq"), SubResource("Resource_poc4h"), SubResource("Resource_8kmny")])
+adds = Array[Resource("res://classes/additionals/add.gd")]([SubResource("Resource_legkk"), SubResource("Resource_3qfwa"), SubResource("Resource_2l5kq"), SubResource("Resource_poc4h"), SubResource("Resource_8kmny")])
 refining = 0
 item_name = "Strength Ring"
 description = ""

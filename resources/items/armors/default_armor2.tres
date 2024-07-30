@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Armor" load_steps=5 format=3 uid="uid://on7j3g3h1wpe"]
+
+[ext_resource type="Script" path="res://classes/items/armor.gd" id="1_7mlp7"]
+[ext_resource type="Script" path="res://classes/defense.gd" id="1_q5fov"]
+[ext_resource type="Texture2D" uid="uid://dn3fn0gnxdqub" path="res://assets/sprites/characters/knight/player_sprite_default.png" id="3_2tt28"]
+
+[sub_resource type="Resource" id="Resource_cy5ju"]
+script = ExtResource("1_q5fov")
+physical_defense = 0
+extra_defense = 0
+fire_defense = 0
+cold_defense = 0
+lightning_defense = 0
+dark_defense = 0
+
+[resource]
+script = ExtResource("1_7mlp7")
+texture = ExtResource("3_2tt28")
+defense = SubResource("Resource_cy5ju")
+adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([])
+item_name = ""
+description = ""
+price = 0

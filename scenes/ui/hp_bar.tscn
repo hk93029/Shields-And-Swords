@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b7itlagrocj1f" path="res://assets/sprites/ui/lifebar_bg.png" id="1_yfxnw"]
 [ext_resource type="Texture2D" uid="uid://cmgbu5b8noioo" path="res://assets/sprites/ui/lifebar_fill.png" id="2_t38y2"]
-[ext_resource type="Script" path="res://resources_scripts/types/hp_bar.gd" id="3_omty2"]
+[ext_resource type="Script" path="res://classes/hp_bar.gd" id="3_x7a5c"]
 
 [node name="HPBar" type="TextureProgressBar"]
 anchors_preset = 15
@@ -13,4 +13,4 @@ grow_vertical = 2
 value = 100.0
 texture_under = ExtResource("1_yfxnw")
 texture_progress = ExtResource("2_t38y2")
-script = ExtResource("3_omty2")
+script = ExtResource("3_x7a5c")

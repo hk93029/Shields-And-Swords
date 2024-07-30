@@ -12,7 +12,7 @@ value = 50
 [resource]
 script = ExtResource("1_rt6pf")
 quality = 1
-adds = Array[Resource("res://resources_scripts/types/additionals/add.gd")]([SubResource("Resource_c2act")])
+adds = Array[Resource("res://classes/additionals/add.gd")]([SubResource("Resource_c2act")])
 refining = 0
 item_name = "Inteligence Ring"
 description = ""

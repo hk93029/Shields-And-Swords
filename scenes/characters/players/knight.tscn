@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/characters/players/knight.gd" id="1_hgjer"]
 [ext_resource type="Resource" uid="uid://c2qnc21pp4qvy" path="res://classes/inventory/player_inventory.tres" id="2_5722x"]
-[ext_resource type="Script" path="res://resources_scripts/types/character_attributes.gd" id="3_tovbt"]
+[ext_resource type="Script" path="res://classes/character_attributes.gd" id="3_l7inm"]
 [ext_resource type="Texture2D" uid="uid://bgpg6rapmwgtt" path="res://physical_skill_damage.png" id="3_w460m"]
 [ext_resource type="Texture2D" uid="uid://doijt84lpujlf" path="res://assets/sprites/items/armors/steel_armor.png" id="4_3byib"]
 [ext_resource type="Texture2D" uid="uid://bqbyoml2o1pj1" path="res://assets/sprites/misc/shadow.png" id="4_i2epj"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://brt5tttww7hpk" path="res://scenes/ui/hp_bar.tscn" id="14_lxko3"]
 
 [sub_resource type="Resource" id="Resource_d5a2t"]
-script = ExtResource("3_tovbt")
+script = ExtResource("3_l7inm")
 STR = 3
 CONS = 2
 DEX = 1
@@ -4404,7 +4404,7 @@ rest = Transform2D(1, 0, 0, 1, 0, 0)
 [node name="ArmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip"]
 position = Vector2(14.4174, -35.9205)
 rotation = -0.000549317
-scale = Vector2(0.999831, 0.999831)
+scale = Vector2(0.99983, 0.99983)
 rest = Transform2D(1, 0, 0, 1, 14.4174, -35.9205)
 
 [node name="ForearmL" type="Bone2D" parent="Sprite/Skeleton2D/Hip/ArmL"]

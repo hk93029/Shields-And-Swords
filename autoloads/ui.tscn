@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3lb1u3kfuede"]
+[gd_scene load_steps=11 format=3 uid="uid://d3lb1u3kfuede"]
 
 [ext_resource type="Script" path="res://autoloads/ui.gd" id="1_e6k7u"]
 [ext_resource type="PackedScene" uid="uid://56pwdgd54ert" path="res://scenes/ui/tooltip/item_tooltip.tscn" id="2_8xw4y"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dq7gim7icgkiq" path="res://scenes/ui/inventory/inventory.tscn" id="6_5pexb"]
 [ext_resource type="PackedScene" uid="uid://cb0hf4o221x56" path="res://scenes/ui/panels/character_panel.tscn" id="7_t1xq7"]
 [ext_resource type="Script" path="res://scenes/ui/panels/panels.gd" id="8_h1jgx"]
+[ext_resource type="Texture2D" uid="uid://c1oh673bybyf1" path="res://assets/sprites/ui/hud/hp_mp_panel_reference.png" id="9_55wag"]
 [ext_resource type="PackedScene" uid="uid://btywxst6npsju" path="res://scenes/ui/panels/attributes_panel.tscn" id="9_hu8he"]
+[ext_resource type="Texture2D" uid="uid://bbu3mebmwn83t" path="res://assets/sprites/ui/hud/hud_class.png" id="10_qcjfb"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_e6k7u")
@@ -43,6 +45,15 @@ offset_right = 690.0
 offset_bottom = 22.0
 
 [node name="ToolTip" parent="." instance=ExtResource("2_8xw4y")]
+
+[node name="HpMpPanel" type="Sprite2D" parent="."]
+position = Vector2(173.236, 53.5602)
+texture = ExtResource("9_55wag")
+
+[node name="HudClass" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(96.8124, 76.5325)
+texture = ExtResource("10_qcjfb")
 
 [connection signal="mouse_entered" from="HUD" to="." method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="HUD" to="." method="_on_ui_mouse_exited"]

@@ -11,6 +11,7 @@ var essence: int = 0
 
 func _ready():
 	Events.connect("attributes_changed", on_attributes_changed)
+#	get_tree().get_first_node_in_group("attributes_panel").connect("attributes_changed", on_attributes_changed)
 	Events.connect("drop_gold", on_drop_gold)
 	Events.connect("drop_essence", on_drop_essence)
 	player = get_parent()

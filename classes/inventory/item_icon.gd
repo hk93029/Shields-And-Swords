@@ -206,7 +206,9 @@ func _on_mouse_entered():
 		$Timer.start(0.5)
 
 func _on_mouse_exited():
-	get_parent().remove_child(tooltip_item)
+	for child in get_parent().get_children():
+		if child.name.begins_with("ToolTip"):
+			get_parent().remove_child(child)
 	$Timer.stop()
 	
 func _on_timer_timeout():

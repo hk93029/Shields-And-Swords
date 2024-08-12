@@ -55,7 +55,10 @@ func _physics_process(delta):
 			else:
 				distance_limit = 10
 		
+
 		if (nav_agent.distance_to_target() <= distance_limit):
+			print("Distance Limit: "+str(distance_limit))
+			print("Distance to target: "+str(nav_agent.distance_to_target()))
 		#	print("AAAAAAAAAAAA")
 			#print(nav_agent.distance_to_target())
 			animation_tree["parameters/Transition/transition_request"] = "idle"

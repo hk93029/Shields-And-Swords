@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://db2kklsy85vnm"]
+[gd_scene load_steps=27 format=3 uid="uid://db2kklsy85vnm"]
 
 [ext_resource type="Texture2D" uid="uid://c32h1ti83hnku" path="res://blocks.png" id="1_mppef"]
 [ext_resource type="Texture2D" uid="uid://dl1tie5rscha8" path="res://assets/sprites/terrain/ground/ground.png" id="2_qqqqm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rqdddympkgo3" path="res://assets/sprites/terrain/ground/light_checkered_grass.png" id="4_d5u4v"]
 [ext_resource type="PackedScene" uid="uid://dk2ylxs75hlfh" path="res://scenes/characters/enemies/zombie.tscn" id="5_por0m"]
 [ext_resource type="PackedScene" uid="uid://bwkfu4er1qgnc" path="res://systems/zombie_spawner.tscn" id="8_yef31"]
+[ext_resource type="Texture2D" uid="uid://4rgg0dbubd6e" path="res://assets/sprites/training_scarecrow_base.png" id="9_p7qku"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ew068"]
 source_geometry_group_name = &"navigation_polygon_source_group"
@@ -934,5 +935,9 @@ position = Vector2(963.343, 299.168)
 
 [node name="ZombieSpawner" parent="." instance=ExtResource("8_yef31")]
 position = Vector2(865.359, 411.525)
+
+[node name="TrainingScarecrowBase" type="Sprite2D" parent="."]
+position = Vector2(1265.83, 213.693)
+texture = ExtResource("9_p7qku")
 
 [editable path="ZombieSpawner"]
